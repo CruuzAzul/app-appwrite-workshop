@@ -1,6 +1,7 @@
 import Image from "next/image";
+
 import styles from "./page.module.css";
-import Destinations from "../components/Destinations";
+import Destinations from "../src/components/Destinations";
 
 export default function Home() {
   return (
