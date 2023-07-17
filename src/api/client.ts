@@ -1,7 +1,13 @@
-import { Destination } from "@/models/destination";
+import {Destination} from '@/models/destination';
+
+import {database} from './appwrite';
+import {Server} from './server';
 
 export const getDestinations = async (): Promise<Destination[]> => {
-  const response = await fetch("/api/destinations");
+	const {documents: destinations} = await database.listDocuments<Destination>(
+		Server.databaseId,
+		Server.destinationCollectionId
+	);
 
-  return response.json();
+	return destinations;
 };
