@@ -1,28 +1,28 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "import/order": [
-      "error",
-      {
-        "groups": ["builtin", "external", "internal"],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ],
-    "padding-line-between-statements": [
-      "error",
-      { "blankLine": "always", "prev": "*", "next": "return" }
-    ]
-  }
+	"extends": "next/core-web-vitals",
+	"rules": {
+		"import/order": [
+			"error",
+			{
+				"groups": ["builtin", "external", "internal"],
+				"pathGroups": [
+					{
+						"pattern": "react",
+						"group": "external",
+						"position": "before"
+					}
+				],
+				"pathGroupsExcludedImportTypes": ["react"],
+				"newlines-between": "always",
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				}
+			}
+		],
+		"padding-line-between-statements": [
+			"error",
+			{"blankLine": "always", "prev": "*", "next": "return"}
+		]
+	}
 }
