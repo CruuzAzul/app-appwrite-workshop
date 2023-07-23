@@ -1,4 +1,8 @@
 import './globals.css';
+
+import '@appwrite.io/pink';
+import '@appwrite.io/pink-icons';
+
 import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 

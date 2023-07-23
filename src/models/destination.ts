@@ -1,5 +1,5 @@
-import { Models } from "appwrite";
+import {Models} from 'appwrite';
 
 export type Destination = Models.Document & {
-  name: string;
+	name: string;
 };
