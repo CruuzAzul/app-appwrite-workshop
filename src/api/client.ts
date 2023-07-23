@@ -21,7 +21,16 @@ export const createAccount = async (
 ): Promise<Models.User<Models.Preferences>> => {
 	const session = await account.create(ID.unique(), email, password, name);
 
-	await account.createEmailSession(email, password);
+	await creatEmailSession(email, password);
 
 	return session;
+};
+
+export const creatEmailSession = async (
+	email: string,
+	password: string
+): Promise<Models.Session> => {
+	await account.createEmailSession(email, password);
+
+	return await account.getSession('current');
 };
