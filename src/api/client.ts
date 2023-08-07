@@ -1,6 +1,8 @@
+import {ID, Models} from 'appwrite';
+
 import {Destination} from '@/models/destination';
 
-import {database} from './appwrite';
+import {account, database} from './appwrite';
 import {Server} from './server';
 
 export const getDestinations = async (): Promise<Destination[]> => {
@@ -10,4 +12,16 @@ export const getDestinations = async (): Promise<Destination[]> => {
 	);
 
 	return destinations;
+};
+
+export const createAccount = async (
+	email: string,
+	password: string,
+	name: string
+): Promise<Models.User<Models.Preferences>> => {
+	const session = await account.create(ID.unique(), email, password, name);
+
+	await account.createEmailSession(email, password);
+
+	return session;
 };
