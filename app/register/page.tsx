@@ -2,13 +2,11 @@
 
 import {FormEvent, useState} from 'react';
 
-import {useRouter} from 'next/navigation';
-
-import {createAccount} from '@/api/client';
 import {RegisterForm} from '@/components/app/register/RegisterForm';
+import {UseUser} from '@/hooks/useUser';
 
 export default function Register() {
-	const router = useRouter();
+  const {register} = UseUser();
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -17,12 +15,7 @@ export default function Register() {
 	const handleSignup = async (e: FormEvent<EventTarget>) => {
 		e.preventDefault();
 
-		try {
-			await createAccount(email, password, name);
-			await router.push('/');
-		} catch (error) {
-			console.error(error);
-		}
+    await register(email, password, name);
 	};
 
 	return (
