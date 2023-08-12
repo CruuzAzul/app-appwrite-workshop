@@ -1,10 +1,10 @@
 import {Account, Client, Databases} from 'appwrite';
 
-import {Server} from "./server";
+import {ServerConfig} from "./server.config";
 
 export const AppwriteClient = new Client()
-	.setEndpoint(Server.endpoint ?? '')
-	.setProject(Server.projectId ?? '');
+	.setEndpoint(ServerConfig.endpoint ?? '')
+	.setProject(ServerConfig.projectId ?? '');
 
 export const database = new Databases(AppwriteClient);
 

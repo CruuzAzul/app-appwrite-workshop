@@ -1,10 +1,10 @@
 import Image from 'next/image';
 
-import {Logout} from "@/components/Logout";
-import {UserInfos} from "@/components/UserInfos";
+import {Logout} from "@/components/app/authentication/Logout";
+import Destinations from '@/components/app/destinations/Destinations';
+import {UserInfos} from "@/components/app/user/UserInfos";
 
 import styles from './page.module.css';
-import Destinations from '../src/components/Destinations';
 
 export default function Home() {
 	return (

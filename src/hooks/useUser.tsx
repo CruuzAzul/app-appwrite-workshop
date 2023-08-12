@@ -5,7 +5,7 @@ import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {AppwriteException, ID, Models} from 'appwrite';
 import {useRouter} from 'next/navigation';
 
-import {account} from '@/api/appwrite';
+import {account} from '@/api/config/appwrite.config';
 
 export interface UserState {
 	user: Models.User<Models.Preferences> | null;

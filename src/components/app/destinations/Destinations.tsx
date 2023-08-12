@@ -1,4 +1,4 @@
-import {getDestinations} from '@/api/client';
+import {getDestinations} from '@/api/destinations';
 
 export default async function Destinations() {
 	const destinations = await getDestinations();

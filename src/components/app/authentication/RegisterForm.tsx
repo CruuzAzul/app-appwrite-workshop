@@ -2,8 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import {PasswordInput} from '@/components/common/PasswordInput';
-import {TextInput} from '@/components/common/TextInput';
+import {PasswordInput} from '@/components/common/inputs/PasswordInput';
+import {TextInput} from '@/components/common/inputs/TextInput';
 
 export const RegisterForm: React.FC<{
 	onSubmit: (e: React.FormEvent<EventTarget>) => Promise<void>;
