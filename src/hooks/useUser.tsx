@@ -58,7 +58,7 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 		try {
 			await account.createEmailSession(email, password);
 			await loadAccount();
-			router.push('/');
+			router.push('/dashboard');
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
 			console.error(appwriteException.message);
@@ -70,7 +70,7 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 			const session = await account.create(ID.unique(), email, password, name);
 			setUser(session);
 			await login(email, password);
-			router.push('/');
+			router.push('/dashboard');
 		} catch (error) {
 			console.error(error);
 		}
@@ -96,7 +96,7 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 	const logout = async () => {
 		await account.deleteSession('current');
 		setUser(null);
-		router.push('/');
+		router.push('/dashboard');
 	};
 
 	useEffect(() => {
