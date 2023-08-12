@@ -1,12 +1,13 @@
-import React from 'react';
+import {FC, FormEvent} from 'react';
 
 import Link from 'next/link';
 
+import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
 
-export const RegisterForm: React.FC<{
-	onSubmit: (e: React.FormEvent<EventTarget>) => Promise<void>;
+export const RegisterForm: FC<{
+	onSubmit: (e: FormEvent<EventTarget>) => Promise<void>;
 	setName: (value: ((prevState: string) => string) | string) => void;
 	setEmail: (value: ((prevState: string) => string) | string) => void;
 	setPassword: (value: ((prevState: string) => string) | string) => void;
@@ -37,12 +38,13 @@ export const RegisterForm: React.FC<{
 						>
 							S&apos;inscrire
 						</button>
-						<p className="u-padding-block-start-16">
+						<p className="u-padding-32">
 							Vous avez déjà un compte ?{' '}
 							<Link href="/login" className="link u-color-text-info">
 								Connectez-vous
 							</Link>
 						</p>
+						<SocialLogin provider="google" />
 					</div>
 				</form>
 			</div>

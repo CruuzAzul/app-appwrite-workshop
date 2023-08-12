@@ -1,11 +1,11 @@
-import React from 'react';
+import {FC, ReactNode} from 'react';
 
-export const TextInput: React.FC<{
+export const TextInput: FC<{
 	label: string;
 	setValue: (value: string) => void;
 	type?: string;
 	placeholder?: string;
-	children?: React.ReactNode;
+	children?: ReactNode;
 }> = ({label, setValue, type = 'text', placeholder = '', children}) => {
 	return (
 		<div className="form-item">
