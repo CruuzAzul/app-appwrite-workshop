@@ -1,5 +1,8 @@
 import Image from 'next/image';
 
+import {Logout} from "@/components/Logout";
+import {UserInfos} from "@/components/UserInfos";
+
 import styles from './page.module.css';
 import Destinations from '../src/components/Destinations';
 
@@ -37,6 +40,7 @@ export default function Home() {
 						/>
 					</a>
 				</div>
+        <Logout />
 			</div>
 
 			<div className={styles.center}>
@@ -48,8 +52,12 @@ export default function Home() {
 					height={37}
 					priority
 				/>
-				<Destinations />
 			</div>
+
+      <div className="u-flex u-gap-32">
+        <UserInfos />
+        <Destinations />
+      </div>
 
 			<div className={styles.grid}>
 				<a
