@@ -1,115 +1,39 @@
-import Image from 'next/image';
+'use client';
 
-import {Logout} from "@/components/app/authentication/Logout";
-import Destinations from '@/components/app/destinations/Destinations';
-import {UserInfos} from "@/components/app/user/UserInfos";
+import {useState} from 'react';
 
-import styles from './page.module.css';
+import {useRouter} from 'next/navigation';
+import Typewriter from 'react-ts-typewriter';
 
 export default function Home() {
+	const router = useRouter();
+	const [displayStartButton, setDisplayStartButton] = useState(false);
+
+	const description =
+		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget mattis\n' +
+		'tellus. Proin feugiat, magna at posuere bibendum, urna nisl pulvinar\n' +
+		'ipsum, eu eleifend justo sem quis risus. Vestibulum fringilla varius\n' +
+		'sagittis.';
+
 	return (
-		<main className={styles.main}>
-			<div className={styles.description}>
-				<p>
-					Get started by editing&nbsp;
-					<code className={styles.code}>src/app/page.tsx</code>
-				</p>
-				<a
-					className="button is-secondary"
-					aria-label="Go to documentation"
-					href="https://pink.appwrite.io/"
-					target="_blank"
-				>
-					<span className="icon-external-link" aria-hidden="true"></span>
-					<span className="text">Go to Pink documentation</span>
-				</a>
-				<div>
-					<a
-						href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						By{' '}
-						<Image
-							src="/vercel.svg"
-							alt="Vercel Logo"
-							className={styles.vercelLogo}
-							width={100}
-							height={24}
-							priority
-						/>
-					</a>
-				</div>
-        <Logout />
-			</div>
-
-			<div className={styles.center}>
-				<Image
-					className={styles.logo}
-					src="/next.svg"
-					alt="Next.js Logo"
-					width={180}
-					height={37}
-					priority
+		<main className="u-full-screen-height u-flex u-flex-vertical u-main-center u-cross-center u-gap-32">
+			<h1 className="heading-level-1 eyebrow-heading-1 u-color-text-pink u-font-size-32">
+				Appwrite Workshop
+			</h1>
+			<p className="u-color-text-gray u-text-center u-bold u-width-600">
+				<Typewriter
+					text={description}
+					speed={20}
+					random={50}
+					onFinished={() => setDisplayStartButton(true)}
 				/>
-			</div>
-
-      <div className="u-flex u-gap-32">
-        <UserInfos />
-        <Destinations />
-      </div>
-
-			<div className={styles.grid}>
-				<a
-					href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Docs <span>-&gt;</span>
-					</h2>
-					<p>Find in-depth information about Next.js features and API.</p>
-				</a>
-
-				<a
-					href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Learn <span>-&gt;</span>
-					</h2>
-					<p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-				</a>
-
-				<a
-					href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Templates <span>-&gt;</span>
-					</h2>
-					<p>Explore the Next.js 13 playground.</p>
-				</a>
-
-				<a
-					href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Deploy <span>-&gt;</span>
-					</h2>
-					<p>
-						Instantly deploy your Next.js site to a shareable URL with Vercel.
-					</p>
-				</a>
-			</div>
+			</p>
+			{displayStartButton && (
+				<button className="button" onClick={() => router.push('/dashboard')}>
+					<span className="text">Commencer l&apos;adventure</span>
+					<span className="icon-paper-airplane" aria-hidden="true" />
+				</button>
+			)}
 		</main>
 	);
 }
