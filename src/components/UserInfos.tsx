@@ -2,6 +2,7 @@
 
 import {useRouter} from 'next/navigation';
 
+import {SocialLogin} from '@/components/app/login/SocialLogin';
 import {UseUser} from '@/hooks/useUser';
 
 export const UserInfos = () => {
@@ -44,6 +45,7 @@ export const UserInfos = () => {
 							<span className="text">Register</span>
 							<span className="icon-user-add" aria-hidden="true"></span>
 						</button>
+						<SocialLogin provider="google" />
 					</div>
 				</>
 			)}
