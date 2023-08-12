@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TextInput} from '@/components/common/TextInput';
+import {TextInput} from '@/components/common/inputs/TextInput';
 
 export const PasswordInput: React.FC<{
 	setValue: (value: string) => void;

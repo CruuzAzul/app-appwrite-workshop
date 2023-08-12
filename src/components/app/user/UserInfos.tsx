@@ -2,7 +2,7 @@
 
 import {useRouter} from 'next/navigation';
 
-import {SocialLogin} from '@/components/app/login/SocialLogin';
+import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {UseUser} from '@/hooks/useUser';
 
 export const UserInfos = () => {

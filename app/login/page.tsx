@@ -2,7 +2,7 @@
 
 import {FormEvent, useState} from 'react';
 
-import {LoginForm} from '@/components/app/login/LoginForm';
+import {LoginForm} from '@/components/app/authentication/LoginForm';
 import {UseUser} from '@/hooks/useUser';
 
 export default function Login() {

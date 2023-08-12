@@ -2,7 +2,7 @@
 
 import {FormEvent, useState} from 'react';
 
-import {RegisterForm} from '@/components/app/register/RegisterForm';
+import {RegisterForm} from '@/components/app/authentication/RegisterForm';
 import {UseUser} from '@/hooks/useUser';
 
 export default function Register() {
