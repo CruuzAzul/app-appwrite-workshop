@@ -14,6 +14,11 @@ export interface UserState {
 	logout: () => Promise<void>;
 	login: (email: string, password: string) => Promise<void>;
 	register: (email: string, password: string, name: string) => Promise<void>;
+	socialLogin: (
+		provider: string,
+		successRedirectUrl: string,
+		failureRedirectUrl: string
+	) => Promise<void>;
 }
 
 const defaultState: UserState = {
@@ -23,6 +28,7 @@ const defaultState: UserState = {
 	logout: async () => {},
 	register: async () => {},
 	login: async () => {},
+	socialLogin: async () => {},
 };
 
 const userContext = createContext<UserState>(defaultState);
@@ -70,6 +76,23 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
+  const socialLogin = async (
+		provider: string,
+		successRedirectUrl: string,
+		failureRedirectUrl: string
+	) => {
+		try {
+			account.createOAuth2Session(
+				provider,
+				successRedirectUrl,
+				failureRedirectUrl
+			);
+		} catch (error: any) {
+			const appwriteException = error as AppwriteException;
+			console.error(appwriteException.message);
+		}
+	};
+
 	const logout = async () => {
 		await account.deleteSession('current');
 		setUser(null);
@@ -82,7 +105,7 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 
 	return (
 		<userContext.Provider
-			value={{user, loading, error, logout, login, register}}
+			value={{user, loading, error, logout, login, register, socialLogin}}
 		>
 			{children}
 		</userContext.Provider>
