@@ -6,7 +6,7 @@ import {RegisterForm} from '@/components/app/authentication/RegisterForm';
 import {UseUser} from '@/hooks/useUser';
 
 export default function Register() {
-  const {register} = UseUser();
+	const {register} = UseUser();
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ export default function Register() {
 	const handleSignup = async (e: FormEvent<EventTarget>) => {
 		e.preventDefault();
 
-    await register(email, password, name);
+		await register(email, password, name);
 	};
 
 	return (

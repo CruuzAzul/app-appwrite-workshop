@@ -21,7 +21,7 @@ export const PasswordInput: FC<{
 				type="button"
 				onClick={() => setVisible(!visible)}
 			>
-				<span className="icon-eye" aria-hidden="true"/>
+				<span className="icon-eye" aria-hidden="true" />
 			</button>
 		</TextInput>
 	);

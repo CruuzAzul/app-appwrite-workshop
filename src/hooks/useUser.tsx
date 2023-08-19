@@ -45,7 +45,7 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 		try {
 			const loadedAccount = await account.get();
 			setUser(loadedAccount);
-      setError('');
+			setError('');
 		} catch (error) {
 			console.error(error);
 			setError('No user logged in...');
@@ -76,7 +76,7 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
-  const socialLogin = async (
+	const socialLogin = async (
 		provider: string,
 		successRedirectUrl: string,
 		failureRedirectUrl: string

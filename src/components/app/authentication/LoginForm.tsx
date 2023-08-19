@@ -2,7 +2,7 @@ import {FC, FormEvent} from 'react';
 
 import Link from 'next/link';
 
-import {SocialLogin} from "@/components/app/authentication/SocialLogin";
+import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
 
@@ -41,7 +41,7 @@ export const LoginForm: FC<{
 								Inscrivez-vous
 							</Link>
 						</p>
-            <SocialLogin provider="google" />
+						<SocialLogin provider="google" />
 					</div>
 				</form>
 			</div>
