@@ -8,7 +8,7 @@ export const SocialLogin: FC<{
 	provider: string;
 }> = ({provider}) => {
 	const {socialLogin} = UseUser();
-  const currentPathname =
+	const currentPathname =
 		typeof window !== 'undefined' ? window.location.href : '';
 	const successRedirectUrl = currentPathname + '/dashboard';
 	const failureRedirectUrl = currentPathname + '/failure';

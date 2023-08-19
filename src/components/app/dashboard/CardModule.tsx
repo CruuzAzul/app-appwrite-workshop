@@ -12,7 +12,8 @@ interface CardModuleProps {
 
 export const CardModule: FC<CardModuleProps> = ({module}) => {
 	const router = useRouter();
-	const {moduleName, path, status, tag, infos, icons, validationComponent} = module;
+	const {moduleName, path, status, tag, infos, icons, validationComponent} =
+		module;
 
 	return (
 		<li className="u-cursor-pointer" onClick={() => router.push(`${path}`)}>
@@ -48,7 +49,7 @@ export const CardModule: FC<CardModuleProps> = ({module}) => {
 					<div className="grid-item-1-end-start">
 						<div className="u-flex u-gap-16 u-flex-wrap">
 							<div className="tag">
-								<span className="icon-duplicate" aria-hidden="true"/>
+								<span className="icon-duplicate" aria-hidden="true" />
 								<span className="text">{tag}</span>
 							</div>
 						</div>
@@ -65,7 +66,7 @@ export const CardModule: FC<CardModuleProps> = ({module}) => {
 							))}
 						</ul>
 					</div>
-          {validationComponent}
+					{validationComponent}
 				</div>
 			</div>
 		</li>

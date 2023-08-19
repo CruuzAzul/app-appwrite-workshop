@@ -31,7 +31,7 @@ export default function Home() {
 			{displayStartButton && (
 				<button className="button" onClick={() => router.push('/dashboard')}>
 					<span className="text">Commencer l&apos;adventure</span>
-					<span className="icon-paper-airplane" aria-hidden="true"/>
+					<span className="icon-paper-airplane" aria-hidden="true" />
 				</button>
 			)}
 		</main>
