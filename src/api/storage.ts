@@ -1,4 +1,4 @@
-import {ID} from 'appwrite';
+import {AppwriteException, ID} from 'appwrite';
 
 import {storage} from '@/api/config/appwrite.config';
 import {ServerConfig} from '@/api/config/server.config';
@@ -11,11 +11,9 @@ export const getStorageFiles = async (): Promise<FilesList> => {
 export const uploadFiles = async (files: File[]): Promise<void> => {
 	await Promise.all(
 		files.map(async (file) => {
-			console.log(file);
-
 			await storage.createFile(ServerConfig.storageBucketId, ID.unique(), file);
 		})
 	).catch((reason) => {
-		console.error(reason);
+		throw new AppwriteException(reason);
 	});
 };
