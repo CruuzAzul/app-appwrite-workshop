@@ -1,6 +1,5 @@
-import Image from 'next/image';
-
 import {getFilesForPreviews, getStorageFiles} from '@/api/storage';
+import {DraggableFilePreview} from '@/components/app/storage/DraggableFilePreview';
 
 export default async function StoragePreview() {
 	const filesList = await getStorageFiles();
@@ -18,16 +17,7 @@ export default async function StoragePreview() {
 						background: file.mimeType === 'image/png' ? '000000' : undefined,
 					});
 
-					return (
-						<Image
-							src={imgSrc.toString()}
-							key={file.name}
-							alt={file.name}
-							width={200}
-							height={200}
-							className="u-width-140 u-height-auto"
-						/>
-					);
+					return <DraggableFilePreview key={file.name} imgSrc={imgSrc} />;
 				})}
 			</div>
 		</main>
