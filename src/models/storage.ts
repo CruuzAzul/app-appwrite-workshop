@@ -1,5 +1,7 @@
 import {Models} from 'appwrite';
 
+export type File = Models.File;
+
 export type FilesList = Models.FileList;
 
 export type FilePreview = {

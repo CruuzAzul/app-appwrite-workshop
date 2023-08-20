@@ -53,7 +53,7 @@ export const modulesConfig: ModuleConfig[] = [
 	{
 		moduleName: 'Storage',
 		path: '/storage',
-		status: 'In progress',
+		status: 'Ready',
 		tag: 'Interactive',
 		infos: [
 			{
