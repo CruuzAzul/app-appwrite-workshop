@@ -50,4 +50,18 @@ export const modulesConfig: ModuleConfig[] = [
 		],
 		icons: ['icon-database', 'icon-shield-check'],
 	},
+	{
+		moduleName: 'Storage',
+		path: '/storage',
+		status: 'In progress',
+		tag: 'Interactive',
+		infos: [
+			{
+				icon: 'icon-info',
+				description:
+					"Ce module va vous permettre de communiquer avec des buckets de storage et les fichiers à l'intérieur.",
+			},
+		],
+		icons: ['icon-database', 'icon-shield-check'],
+	},
 ];

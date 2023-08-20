@@ -5,7 +5,7 @@ export const Files = async () => {
 	const {total, files} = filesList;
 
 	return (
-		<div className="card">
+		<div className="card u-min-width-100-percent u-height-100-percent">
 			<h2 className="eyebrow-heading-1 u-padding-block-end-32 u-color-text-pink">
 				Vous avez {total} fichier dans ce bucket
 			</h2>
