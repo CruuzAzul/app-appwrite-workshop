@@ -1,6 +1,8 @@
 'use client';
 
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {FormEvent, useState} from 'react';
+
+import {FileUploader} from 'react-drag-drop-files';
 
 import {uploadFiles} from '@/api/storage';
 import {DropZone} from '@/components/app/storage/DropZone';
@@ -13,14 +15,10 @@ export const UploadBox = () => {
 	const [filesToUpload, setFilesToUpload] = useState<File[]>([]);
 	const [error, setError] = useState<string | null>(null);
 
-	const handleFilesChange = (e: ChangeEvent<HTMLInputElement>) => {
-		e.preventDefault();
-
-		const fileList = e.target.files;
-
-		if (fileList) {
-			const updatesFiles: File[] = [...filesToUpload, ...fileList];
-			setFilesToUpload(updatesFiles);
+	const handleFilesChange = (files: FileList | null) => {
+		if (files) {
+			const updatedFiles: File[] = [...filesToUpload, ...files];
+			setFilesToUpload(updatedFiles);
 		}
 	};
 
@@ -42,13 +40,28 @@ export const UploadBox = () => {
 		}
 	};
 
+	const fileTypes = ['JPG', 'PNG', 'GIF'];
+
 	return (
 		<div className="u-min-width-100-percent">
 			<form onSubmit={handleSubmit}>
 				<div className="box is-border-dashed is-no-shadow u-padding-24">
 					<div className="upload-file-box">
-						<DropZone />
-						<InputFile handleFilesChange={handleFilesChange} />
+						<FileUploader
+							multiple
+							handleChange={handleFilesChange}
+							name="file"
+							types={fileTypes}
+							classes="u-flex-vertical u-main-center u-cross-center u-gap-32"
+						>
+							<DropZone />
+						</FileUploader>
+						<InputFile
+							handleFilesChange={(e) => {
+								e.preventDefault();
+								handleFilesChange(e.target.files);
+							}}
+						/>
 						<FilesToUploadList
 							filesToUpload={filesToUpload}
 							handleDelete={handleDelete}

@@ -16,7 +16,7 @@ export default function Home() {
 		'sagittis.';
 
 	return (
-		<main className="u-full-screen-height u-flex u-flex-vertical u-main-center u-cross-center u-gap-32">
+		<main className="u-full-screen-height u-flex-vertical u-main-center u-cross-center u-gap-32">
 			<h1 className="heading-level-1 eyebrow-heading-1 u-color-text-pink u-font-size-32">
 				Appwrite Workshop
 			</h1>

@@ -14,20 +14,17 @@ export const LoginForm: FC<{
 	password: string;
 }> = ({onSubmit, setEmail, setPassword, email, password}) => {
 	return (
-		<section className="u-flex u-main-center u-cross-center u-full-screen-height u-flex-vertical u-gap-32">
+		<section className="u-flex-vertical u-main-center u-cross-center u-full-screen-height u-gap-32">
 			<h1 className="eyebrow-heading-1 u-text-center u-color-text-pink">
 				Accédez à votre compte
 			</h1>
 			<div className="card u-width-600 u-min-width-200">
-				<form
-					onSubmit={onSubmit}
-					className="u-flex u-flex-vertical u-row-gap-24"
-				>
+				<form onSubmit={onSubmit} className="u-flex-vertical u-row-gap-24">
 					<ul className="form-list">
 						<TextInput label="Email" setValue={setEmail} type="email" />
 						<PasswordInput setValue={setPassword} />
 					</ul>
-					<div className="u-flex u-flex-vertical u-main-center u-cross-center">
+					<div className="u-flex-vertical u-main-center u-cross-center">
 						<button
 							type="submit"
 							disabled={!email || !password}

@@ -2,7 +2,7 @@ import {UploadBox} from '@/components/app/storage/UploadBox';
 
 export default function StorageUpload() {
 	return (
-		<main className="u-full-screen-height u-flex u-flex-vertical u-gap-32 u-cross-center u-padding-64">
+		<main className="u-full-screen-height u-flex-vertical u-gap-32 u-cross-center u-padding-64">
 			<h1 className="eyebrow-heading-1 u-color-text-pink u-bold u-font-size-32">
 				Ajouter au bucket la clé manquante
 			</h1>
