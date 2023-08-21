@@ -1,9 +1,7 @@
-import {ChangeEventHandler} from 'react';
-
 export const InputFile = ({
 	handleFilesChange,
 }: {
-	handleFilesChange: ChangeEventHandler<HTMLInputElement>;
+	handleFilesChange: (files: FileList | null) => void;
 }) => (
 	<div className="u-flex u-main-center u-cross-center u-gap-16 u-flex-vertical-mobile">
 		<p className="upload-file-box-info body-text-2">Max file size: 10MB</p>
@@ -15,7 +13,10 @@ export const InputFile = ({
 				multiple
 				style={{display: 'none'}}
 				accept="image/png, image/jpeg"
-				onChange={handleFilesChange}
+				onChange={(e) => {
+					e.preventDefault();
+					handleFilesChange(e.target.files);
+				}}
 			/>
 		</button>
 	</div>
