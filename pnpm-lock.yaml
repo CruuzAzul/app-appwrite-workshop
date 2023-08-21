@@ -39,7 +39,7 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-drag-drop-files:
-    specifier: ^2.3.10
+    specifier: 2.3.10
     version: 2.3.10(@babel/core@7.22.10)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
   react-draggable:
     specifier: 4.4.5

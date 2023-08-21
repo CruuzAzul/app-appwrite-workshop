@@ -2,8 +2,6 @@
 
 import {FormEvent, useState} from 'react';
 
-import {FileUploader} from 'react-drag-drop-files';
-
 import {uploadFiles} from '@/api/storage';
 import {DropZone} from '@/components/app/storage/DropZone';
 import {ErrorMessage} from '@/components/app/storage/ErrorMessage';
@@ -40,28 +38,13 @@ export const UploadBox = () => {
 		}
 	};
 
-	const fileTypes = ['JPG', 'PNG', 'GIF'];
-
 	return (
 		<div className="u-min-width-100-percent">
 			<form onSubmit={handleSubmit}>
 				<div className="box is-border-dashed is-no-shadow u-padding-24">
 					<div className="upload-file-box">
-						<FileUploader
-							multiple
-							handleChange={handleFilesChange}
-							name="file"
-							types={fileTypes}
-							classes="u-flex-vertical u-main-center u-cross-center u-gap-32"
-						>
-							<DropZone />
-						</FileUploader>
-						<InputFile
-							handleFilesChange={(e) => {
-								e.preventDefault();
-								handleFilesChange(e.target.files);
-							}}
-						/>
+						<DropZone handleFilesChange={handleFilesChange} />
+						<InputFile handleFilesChange={handleFilesChange} />
 						<FilesToUploadList
 							filesToUpload={filesToUpload}
 							handleDelete={handleDelete}
