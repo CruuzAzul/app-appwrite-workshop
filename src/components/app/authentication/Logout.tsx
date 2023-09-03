@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 
-import {UseUser} from '@/hooks/useUser';
+import {UseAccount} from '@/hooks/useAccount';
 
 export const Logout = () => {
-	const {logout, user} = UseUser();
+	const {logout, user} = UseAccount();
 
 	return user ? (
 		<button className="button" onClick={logout}>

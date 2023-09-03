@@ -3,10 +3,10 @@
 import {FormEvent, useState} from 'react';
 
 import {LoginForm} from '@/components/app/authentication/LoginForm';
-import {UseUser} from '@/hooks/useUser';
+import {UseAccount} from '@/hooks/useAccount';
 
 export default function Login() {
-	const {login} = UseUser();
+	const {login} = UseAccount();
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
