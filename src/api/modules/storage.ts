@@ -1,17 +1,17 @@
 import {AppwriteException, ID} from 'appwrite';
 
-import {storage} from '@/api/config/appwrite.config';
-import {ServerConfig} from '@/api/config/server.config';
+import {storage} from '@/api/config/client.config';
+import {EnvConfig} from '@/api/config/env.config';
 import {FilePreview, FilesList} from '@/models/storage';
 
 export const getStorageFiles = async (): Promise<FilesList> => {
-	return await storage.listFiles(ServerConfig.storageBucketId);
+	return await storage.listFiles(EnvConfig.storageBucketId);
 };
 
 export const uploadFiles = async (files: File[]): Promise<void> => {
 	await Promise.all(
 		files.map(async (file) => {
-			await storage.createFile(ServerConfig.storageBucketId, ID.unique(), file);
+			await storage.createFile(EnvConfig.storageBucketId, ID.unique(), file);
 		})
 	).catch((reason) => {
 		throw new AppwriteException(reason);
@@ -33,7 +33,7 @@ export const getFilesForPreviews = ({
 	output,
 }: FilePreview): URL => {
 	return storage.getFilePreview(
-		ServerConfig.storageBucketId,
+		EnvConfig.storageBucketId,
 		fileId,
 		width,
 		height,

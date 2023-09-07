@@ -1,10 +1,10 @@
 import {Account, Client, Databases, Storage} from 'appwrite';
 
-import {ServerConfig} from './server.config';
+import {EnvConfig} from './env.config';
 
 export const AppwriteClient = new Client()
-	.setEndpoint(ServerConfig.endpoint ?? '')
-	.setProject(ServerConfig.projectId ?? '');
+	.setEndpoint(EnvConfig.endpoint ?? '')
+	.setProject(EnvConfig.projectId ?? '');
 
 export const database = new Databases(AppwriteClient);
 

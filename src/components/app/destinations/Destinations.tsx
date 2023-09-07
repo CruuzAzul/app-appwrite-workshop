@@ -1,4 +1,4 @@
-import {getDestinations} from '@/api/destinations';
+import {getDestinations} from '@/api/modules/destinations';
 
 export const Destinations = async () => {
 	const destinations = await getDestinations();
