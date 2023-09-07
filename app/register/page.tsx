@@ -3,10 +3,10 @@
 import {FormEvent, useState} from 'react';
 
 import {RegisterForm} from '@/components/app/authentication/RegisterForm';
-import {UseUser} from '@/hooks/useUser';
+import {UseAccount} from '@/hooks/useAccount';
 
 export default function Register() {
-	const {register} = UseUser();
+	const {register} = UseAccount();
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');

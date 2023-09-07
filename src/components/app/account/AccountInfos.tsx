@@ -1,9 +1,9 @@
 'use client';
 
-import {UseUser} from '@/hooks/useUser';
+import {UseAccount} from '@/hooks/useAccount';
 
-export const UserInfos = () => {
-	const {user, loading, error} = UseUser();
+export const AccountInfos = () => {
+	const {user, loading, error} = UseAccount();
 
 	const shouldDisplayIndice = !loading && !user;
 	const shouldDisplayUserInfos = !loading && user;

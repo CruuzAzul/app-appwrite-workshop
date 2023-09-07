@@ -7,7 +7,7 @@ import {useRouter} from 'next/navigation';
 
 import {account} from '@/api/config/appwrite.config';
 
-export interface UserState {
+type AccountState = {
 	user: Models.User<Models.Preferences> | null;
 	loading: boolean;
 	error: string | null;
@@ -21,7 +21,7 @@ export interface UserState {
 	) => Promise<void>;
 }
 
-const defaultState: UserState = {
+const defaultState: AccountState = {
 	user: null,
 	loading: true,
 	error: null,
@@ -31,9 +31,9 @@ const defaultState: UserState = {
 	socialLogin: async () => {},
 };
 
-const userContext = createContext<UserState>(defaultState);
+const accountContext = createContext<AccountState>(defaultState);
 
-export const UserProvider = ({children}: {children: ReactNode}) => {
+export const AccountProvider = ({children}: {children: ReactNode}) => {
 	const [user, setUser] = useState<Models.User<Models.Preferences> | null>(
 		null
 	);
@@ -104,14 +104,14 @@ export const UserProvider = ({children}: {children: ReactNode}) => {
 	}, []);
 
 	return (
-		<userContext.Provider
+		<accountContext.Provider
 			value={{user, loading, error, logout, login, register, socialLogin}}
 		>
 			{children}
-		</userContext.Provider>
+		</accountContext.Provider>
 	);
 };
 
-export const UseUser = () => {
-	return useContext<UserState>(userContext);
+export const UseAccount = () => {
+	return useContext<AccountState>(accountContext);
 };

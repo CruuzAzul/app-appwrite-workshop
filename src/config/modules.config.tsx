@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {UserInfos} from '@/components/app/user/UserInfos';
+import {AccountInfos} from '@/components/app/account/AccountInfos';
 
 export type ModuleConfig = {
 	moduleName: string;
@@ -34,7 +34,7 @@ export const modulesConfig: ModuleConfig[] = [
 			},
 		],
 		icons: ['icon-user-circle', 'icon-shield-check'],
-		validationComponent: <UserInfos />,
+		validationComponent: <AccountInfos />,
 	},
 	{
 		moduleName: 'Databases',

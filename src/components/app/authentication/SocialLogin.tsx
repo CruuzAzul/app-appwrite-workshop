@@ -2,12 +2,12 @@
 
 import {FC} from 'react';
 
-import {UseUser} from '@/hooks/useUser';
+import {UseAccount} from '@/hooks/useAccount';
 
 export const SocialLogin: FC<{
 	provider: string;
 }> = ({provider}) => {
-	const {socialLogin} = UseUser();
+	const {socialLogin} = UseAccount();
 	const currentPathname =
 		typeof window !== 'undefined' ? window.location.href : '';
 	const successRedirectUrl = currentPathname + '/dashboard';
