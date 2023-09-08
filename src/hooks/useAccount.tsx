@@ -5,7 +5,7 @@ import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {AppwriteException, ID, Models} from 'appwrite';
 import {useRouter} from 'next/navigation';
 
-import {account} from '@/api/config/appwrite.config';
+import {account} from '@/api/config/client.config';
 
 type AccountState = {
 	user: Models.User<Models.Preferences> | null;
@@ -19,7 +19,7 @@ type AccountState = {
 		successRedirectUrl: string,
 		failureRedirectUrl: string
 	) => Promise<void>;
-}
+};
 
 const defaultState: AccountState = {
 	user: null,

@@ -1,4 +1,4 @@
-import {getStorageFiles} from '@/api/storage';
+import {getStorageFiles} from '@/api/modules/storage';
 
 export const Files = async () => {
 	const filesList = await getStorageFiles();

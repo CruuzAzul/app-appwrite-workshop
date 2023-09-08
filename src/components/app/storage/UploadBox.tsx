@@ -2,7 +2,7 @@
 
 import {FormEvent, useState} from 'react';
 
-import {uploadFiles} from '@/api/storage';
+import {uploadFiles} from '@/api/modules/storage';
 import {DropZone} from '@/components/app/storage/DropZone';
 import {ErrorMessage} from '@/components/app/storage/ErrorMessage';
 import {FilesToUploadList} from '@/components/app/storage/FilesToUploadList';

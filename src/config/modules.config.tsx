@@ -37,6 +37,20 @@ export const modulesConfig: ModuleConfig[] = [
 		validationComponent: <AccountInfos />,
 	},
 	{
+		moduleName: 'Users',
+		path: '/users',
+		status: 'Ready',
+		tag: 'Server SDK',
+		infos: [
+			{
+				icon: 'icon-info',
+				description:
+					'Ce module va vous permettre de communiquer avec le service users en utilisant un SDK côté server obligatoire pour ce service.',
+			},
+		],
+		icons: ['icon-users', 'icon-server'],
+	},
+	{
 		moduleName: 'Databases',
 		path: '/dashboard',
 		status: 'In progress',

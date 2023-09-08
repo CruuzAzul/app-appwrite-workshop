@@ -1,12 +1,12 @@
 import {Destination} from '@/models/destination';
 
-import {database} from './config/appwrite.config';
-import {ServerConfig} from './config/server.config';
+import {database} from '../config/client.config';
+import {EnvConfig} from '../config/env.config';
 
 export const getDestinations = async (): Promise<Destination[]> => {
 	const {documents: destinations} = await database.listDocuments<Destination>(
-		ServerConfig.databaseId,
-		ServerConfig.destinationCollectionId
+		EnvConfig.databaseId,
+		EnvConfig.destinationCollectionId
 	);
 
 	return destinations;

@@ -1,4 +1,4 @@
-import {getFilesForPreviews, getStorageFiles} from '@/api/storage';
+import {getFilesForPreviews, getStorageFiles} from '@/api/modules/storage';
 import {DraggableFilePreview} from '@/components/app/storage/DraggableFilePreview';
 
 export default async function StoragePreview() {
