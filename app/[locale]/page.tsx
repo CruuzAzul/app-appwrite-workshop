@@ -5,8 +5,11 @@ import {useState} from 'react';
 import {useRouter} from 'next/navigation';
 import Typewriter from 'react-ts-typewriter';
 
+import {useCurrentLocale} from '@/locales/client';
+
 export default function Home() {
 	const router = useRouter();
+	const locale = useCurrentLocale();
 	const [displayStartButton, setDisplayStartButton] = useState(false);
 
 	const description =
@@ -29,7 +32,10 @@ export default function Home() {
 				/>
 			</p>
 			{displayStartButton && (
-				<button className="button" onClick={() => router.push('/dashboard')}>
+				<button
+					className="button"
+					onClick={() => router.push(`/${locale}/dashboard`)}
+				>
 					<span className="text">Commencer l&apos;adventure</span>
 					<span className="icon-paper-airplane" aria-hidden="true" />
 				</button>

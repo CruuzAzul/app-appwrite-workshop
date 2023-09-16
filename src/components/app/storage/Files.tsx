@@ -1,13 +1,15 @@
 import {getStorageFiles} from '@/api/modules/storage';
+import {getScopedI18n} from '@/locales/server';
 
 export const Files = async () => {
+	const t = await getScopedI18n('storage');
 	const filesList = await getStorageFiles();
 	const {total, files} = filesList;
 
 	return (
 		<div className="card u-min-width-100-percent u-height-100-percent">
 			<h2 className="eyebrow-heading-1 u-padding-block-end-32 u-color-text-pink">
-				Vous avez {total} fichier dans ce bucket
+				{t('count', {count: total})}
 			</h2>
 			<ul className="numeric-list">
 				{(files ?? []).map((file) => (

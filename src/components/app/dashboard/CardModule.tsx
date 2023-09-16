@@ -5,6 +5,7 @@ import {FC} from 'react';
 import {useRouter} from 'next/navigation';
 
 import {ModuleConfig} from '@/config/modules.config';
+import {useI18n} from '@/locales/client';
 
 interface CardModuleProps {
 	module: ModuleConfig;
@@ -14,6 +15,8 @@ export const CardModule: FC<CardModuleProps> = ({module}) => {
 	const router = useRouter();
 	const {moduleName, path, status, tag, infos, icons, validationComponent} =
 		module;
+
+	const t = useI18n();
 
 	return (
 		<li className="u-cursor-pointer" onClick={() => router.push(`${path}`)}>
@@ -34,7 +37,7 @@ export const CardModule: FC<CardModuleProps> = ({module}) => {
 									aria-hidden="true"
 								/>
 								<span className="u-color-light-only-text-neutral-70 u-color-dark-only-text-neutral-50">
-									{info.description}
+									{t(info.description as any, {} as any)}
 								</span>
 							</p>
 						))}

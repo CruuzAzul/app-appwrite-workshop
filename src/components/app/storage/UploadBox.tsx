@@ -8,6 +8,7 @@ import {ErrorMessage} from '@/components/app/storage/ErrorMessage';
 import {FilesToUploadList} from '@/components/app/storage/FilesToUploadList';
 import {InputFile} from '@/components/app/storage/InputFile';
 import {UploadButton} from '@/components/app/storage/UploadButton';
+import {I18nProviderClient} from '@/locales/client';
 
 export const UploadBox = () => {
 	const [filesToUpload, setFilesToUpload] = useState<File[]>([]);
@@ -52,7 +53,9 @@ export const UploadBox = () => {
 					</div>
 					{error && <ErrorMessage error={error} />}
 				</div>
-				<UploadButton />
+				<I18nProviderClient>
+					<UploadButton />
+				</I18nProviderClient>
 			</form>
 		</div>
 	);
