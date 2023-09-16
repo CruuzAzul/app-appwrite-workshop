@@ -19,6 +19,12 @@ const storage = new Storage(client);
 const users = new Users(client);
 
 const createDatabase = async () => {
+	const existingDatabase = database.get(process.env.APPWRITE_DATABASE_ID);
+
+	if (existingDatabase) {
+		return;
+	}
+
 	return await database.create(
 		process.env.APPWRITE_DATABASE_ID,
 		'databaseName'
@@ -26,6 +32,12 @@ const createDatabase = async () => {
 };
 
 const createBucket = async () => {
+	const existingBucket = storage.getBucket(process.env.APPWRITE_BUCKET_ID);
+
+	if (existingBucket) {
+		return;
+	}
+
 	return await storage.createBucket(
 		process.env.APPWRITE_BUCKET_ID,
 		'Bucket',
@@ -51,6 +63,15 @@ const addFileToBucket = async () => {
 };
 
 const createCollection = async () => {
+	const existingCollection = database.getCollection(
+		process.env.APPWRITE_DATABASE_ID,
+		process.env.APPWRITE_DESTINATION_COLLECTION_ID
+	);
+
+	if (existingCollection) {
+		return;
+	}
+
 	return await database.createCollection(
 		process.env.APPWRITE_DATABASE_ID,
 		process.env.APPWRITE_DESTINATION_COLLECTION_ID,
