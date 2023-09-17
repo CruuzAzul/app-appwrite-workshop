@@ -17,7 +17,12 @@ export default async function StoragePreview() {
 						background: file.mimeType === 'image/png' ? '000000' : undefined,
 					});
 
-					return <DraggableFilePreview key={file.name} imgSrc={imgSrc} />;
+					return (
+						<DraggableFilePreview
+							key={file.name}
+							imgSrc={JSON.parse(JSON.stringify(imgSrc))}
+						/>
+					);
 				})}
 			</div>
 		</main>
