@@ -53,4 +53,22 @@ export default {
 			'ipsum, eu eleifend justo sem quis risus. Vestibulum fringilla varius\n' +
 			'sagittis.',
 	},
+	databases: {
+		coordinates: {
+			title: 'What do we have here...',
+			list: {
+				title: 'Coordinates:',
+			},
+			form: {
+				title: 'You found a new coordinate ?',
+				submitButton: 'Add this coordinate',
+			},
+			labels: {
+				name: 'Name',
+				latitude: 'Latitude',
+				longitude: 'Longitude',
+				picture: 'Picture',
+			},
+		},
+	},
 } as const;
