@@ -5,29 +5,50 @@ import React, {useRef, useState} from 'react';
 import {AppwriteException} from 'appwrite';
 
 import {createCoordinates} from '@/api/modules/coordinates';
+import {getFileForView, uploadFiles} from '@/api/modules/storage';
+import {FileInput} from '@/components/common/inputs/FileInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
 
 export const CoordinatesForm = () => {
 	const formRef = useRef<HTMLFormElement | null>(null);
 	const [error, setError] = useState<AppwriteException | null>(null);
 
+	const getInputValue = (
+		elements: HTMLFormControlsCollection,
+		name: string
+	): string => {
+		return (elements.namedItem(name) as HTMLInputElement).value;
+	};
+
+	const uploadAndRetrievePicture = async (
+		elements: HTMLFormControlsCollection
+	): Promise<URL | undefined> => {
+		const pictureInput = elements.namedItem('picture') as HTMLInputElement;
+		const picture = pictureInput.files?.[0];
+
+		if (picture) {
+			const uploadedFile = await uploadFiles([picture]);
+
+			return getFileForView(uploadedFile[0].$id);
+		}
+
+		return undefined;
+	};
+
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+
 		const {elements} = event.currentTarget;
 
-		const data = {
-			name: (elements.namedItem('name') as HTMLInputElement).value,
-			latitude: parseFloat(
-				(elements.namedItem('latitude') as HTMLInputElement).value
-			),
-			longitude: parseFloat(
-				(elements.namedItem('longitude') as HTMLInputElement).value
-			),
+		const formData = {
+			name: getInputValue(elements, 'name'),
+			latitude: parseFloat(getInputValue(elements, 'latitude')),
+			longitude: parseFloat(getInputValue(elements, 'longitude')),
+			picture: await uploadAndRetrievePicture(elements),
 		};
 
 		try {
-			await createCoordinates(data);
-
+			await createCoordinates(formData);
 			formRef.current && formRef.current.reset();
 		} catch (error: any) {
 			setError(error as AppwriteException);
@@ -48,6 +69,7 @@ export const CoordinatesForm = () => {
 					<TextInput id="name" label="Name" type="text" />
 					<TextInput id="latitude" label="Latitude" type="number" />
 					<TextInput id="longitude" label="Longitude" type="number" />
+					<FileInput id="picture" label="Picture" />
 				</ul>
 				{error && (
 					<p className="u-color-text-pink u-text-center">{error.message}</p>
