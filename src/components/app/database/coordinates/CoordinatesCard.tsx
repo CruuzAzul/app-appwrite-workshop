@@ -6,7 +6,7 @@ import {deleteCoordinates} from '@/api/modules/coordinates';
 import {Coordinates} from '@/models/coordinates';
 
 export interface CoordinatesCardProps {
-  coordinates: Coordinates,
+	coordinates: Coordinates;
 }
 
 export const CoordinatesCard: FC<CoordinatesCardProps> = ({coordinates}) => {
