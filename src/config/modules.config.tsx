@@ -49,7 +49,7 @@ export const modulesConfig = [
 	},
 	{
 		moduleName: 'Databases',
-		path: 'dashboard',
+		path: 'databases',
 		status: 'In progress',
 		tag: 'Interactive',
 		infos: [
