@@ -6,8 +6,8 @@ import {uploadFiles} from '@/api/modules/storage';
 import {DropZone} from '@/components/app/storage/DropZone';
 import {ErrorMessage} from '@/components/app/storage/ErrorMessage';
 import {FilesToUploadList} from '@/components/app/storage/FilesToUploadList';
-import {InputFile} from '@/components/app/storage/InputFile';
 import {UploadButton} from '@/components/app/storage/UploadButton';
+import {MultipleFileInput} from '@/components/common/inputs/MultipleFileInput';
 
 export const UploadBox = () => {
 	const [filesToUpload, setFilesToUpload] = useState<File[]>([]);
@@ -44,7 +44,7 @@ export const UploadBox = () => {
 				<div className="box is-border-dashed is-no-shadow u-padding-24">
 					<div className="upload-file-box">
 						<DropZone handleFilesChange={handleFilesChange} />
-						<InputFile handleFilesChange={handleFilesChange} />
+						<MultipleFileInput handleFilesChange={handleFilesChange} />
 						<FilesToUploadList
 							filesToUpload={filesToUpload}
 							handleDelete={handleDelete}
