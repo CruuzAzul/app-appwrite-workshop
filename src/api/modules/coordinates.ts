@@ -1,6 +1,6 @@
 import {ID} from 'appwrite';
 
-import {Coordinates} from '@/models/coordinates';
+import {Coordinate, Coordinates} from '@/models/coordinates';
 
 import {database} from '../config/client.config';
 import {EnvConfig} from '../config/env.config';
@@ -24,8 +24,8 @@ export const deleteCoordinates = async (id: string): Promise<void> => {
 };
 
 export const createCoordinates = async (
-	coordinatesData: Coordinates
-): Promise<Coordinates> => {
+	coordinatesData: Coordinate
+): Promise<Coordinate> => {
 	const {document: coordinates} = await database.createDocument<Coordinates>(
 		EnvConfig.databaseId,
 		EnvConfig.coordinatesCollectionId,

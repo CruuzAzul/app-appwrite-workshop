@@ -1,5 +1,5 @@
 import {getCoordinatesList} from '@/api/modules/coordinates';
-import {CoordinateCard} from '@/components/app/database/coordinates/CoordinateCard';
+import {CoordinatesCard} from '@/components/app/database/coordinates/CoordinatesCard';
 import {Coordinates} from '@/models/coordinates';
 
 export const CoordinatesList = async () => {
@@ -12,7 +12,7 @@ export const CoordinatesList = async () => {
 			</h2>
 			<ul className="numeric-list">
 				{(coordinatesList ?? []).map((coordinates: Coordinates) => (
-					<CoordinateCard key={coordinates.name} coordinates={coordinates} />
+					<CoordinatesCard key={coordinates.name} coordinates={coordinates} />
 				))}
 			</ul>
 		</div>
