@@ -5,13 +5,13 @@ import {FC} from 'react';
 import {deleteCoordinates} from '@/api/modules/coordinates';
 import {Coordinates} from '@/models/coordinates';
 
-export interface CoordinatesCardProps {
+interface CoordinatesCardProps {
 	coordinates: Coordinates;
 }
 
 export const CoordinatesCard: FC<CoordinatesCardProps> = ({coordinates}) => {
 	const handleDelete = async () => {
-		await deleteCoordinates(coordinates['$id']);
+		await deleteCoordinates(coordinates.$id);
 	};
 
 	return (
