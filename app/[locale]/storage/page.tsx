@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import {Files} from '@/components/app/storage/Files';
+import {ROUTES} from '@/config/routes.config';
 import {getScopedI18n} from '@/locales/server';
 
 export default async function Storage() {
@@ -13,7 +14,10 @@ export default async function Storage() {
 			</h1>
 			<p className="u-font-content body-text-1 u-bold">{t('description')}</p>
 			<Files />
-			<Link href="storage/upload" className="u-color-text-pink link u-bold">
+			<Link
+				href={ROUTES.storage.upload}
+				className="u-color-text-pink link u-bold"
+			>
 				{t('link')}
 			</Link>
 		</main>

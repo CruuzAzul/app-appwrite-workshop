@@ -6,6 +6,7 @@ import {AppwriteException, ID, Models} from 'appwrite';
 import {useRouter} from 'next/navigation';
 
 import {account} from '@/api/config/client.config';
+import {ROUTES} from '@/config/routes.config';
 
 type AccountState = {
 	user: Models.User<Models.Preferences> | null;
@@ -58,7 +59,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		try {
 			await account.createEmailSession(email, password);
 			await loadAccount();
-			router.push('/dashboard');
+			router.push(ROUTES.dashboard);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
 			console.error(appwriteException.message);
@@ -70,7 +71,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			const session = await account.create(ID.unique(), email, password, name);
 			setUser(session);
 			await login(email, password);
-			router.push('/dashboard');
+			router.push(ROUTES.dashboard);
 		} catch (error) {
 			console.error(error);
 		}
@@ -96,7 +97,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 	const logout = async () => {
 		await account.deleteSession('current');
 		setUser(null);
-		router.push('/dashboard');
+		router.push(ROUTES.dashboard);
 	};
 
 	useEffect(() => {

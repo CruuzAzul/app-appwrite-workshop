@@ -2,6 +2,7 @@
 
 import {FC} from 'react';
 
+import {ROUTES} from '@/config/routes.config';
 import {UseAccount} from '@/hooks/useAccount';
 import {useCurrentLocale, useScopedI18n} from '@/locales/client';
 
@@ -13,7 +14,7 @@ export const SocialLogin: FC<{
 	const {socialLogin} = UseAccount();
 	const currentPathname =
 		typeof window !== 'undefined' ? window.location.origin : '';
-	const successRedirectUrl = `${currentPathname}/${locale}/dashboard`;
+	const successRedirectUrl = `${currentPathname}/${locale}/${ROUTES.dashboard}`;
 	const failureRedirectUrl = `${currentPathname}/${locale}/failure`;
 
 	const handleSignInWithSocialLogin = async () => {
