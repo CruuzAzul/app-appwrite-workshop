@@ -45,4 +45,12 @@ export default {
 		password: 'Password',
 		email: 'Email address',
 	},
+	home: {
+		startButton: 'Start the aventure',
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget mattis\n' +
+			'tellus. Proin feugiat, magna at posuere bibendum, urna nisl pulvinar\n' +
+			'ipsum, eu eleifend justo sem quis risus. Vestibulum fringilla varius\n' +
+			'sagittis.',
+	},
 } as const;
