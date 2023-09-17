@@ -71,4 +71,12 @@ export default {
 			},
 		},
 	},
+	register: {
+		title: 'Créez votre compte',
+		signUpButton: 'S’inscrire',
+		alreadyHaveAccount: 'Vous avez déjà un compte ? ',
+		signIn: 'Connectez vous',
+		name: 'Nom',
+		email: 'Adresse Email',
+	},
 } as const;

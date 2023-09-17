@@ -5,6 +5,7 @@ import {useState} from 'react';
 import Link from 'next/link';
 import Typewriter from 'react-ts-typewriter';
 
+import {ROUTES} from '@/config/routes.config';
 import {useScopedI18n} from '@/locales/client';
 
 export default function HomePage() {
@@ -25,7 +26,7 @@ export default function HomePage() {
 				/>
 			</p>
 			{displayStartButton && (
-				<Link className="button" href="dashboard">
+				<Link className="button" href={ROUTES.dashboard}>
 					<span className="text">{t('startButton')}</span>
 					<span className="icon-paper-airplane" aria-hidden="true" />
 				</Link>

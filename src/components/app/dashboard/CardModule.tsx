@@ -19,7 +19,7 @@ export const CardModule: FC<CardModuleProps> = ({module}) => {
 	const t = useI18n();
 
 	return (
-		<li className="u-cursor-pointer" onClick={() => router.push(`${path}`)}>
+		<li className="u-cursor-pointer" onClick={() => router.push(path)}>
 			<div className="card">
 				<div className="grid-item-1">
 					<div className="grid-item-1-start-start">

@@ -4,6 +4,7 @@ import {FormEvent, useState} from 'react';
 
 import {RegisterForm} from '@/components/app/authentication/RegisterForm';
 import {UseAccount} from '@/hooks/useAccount';
+import {I18nProviderClient} from '@/locales/client';
 
 export default function Register() {
 	const {register} = UseAccount();
@@ -19,14 +20,16 @@ export default function Register() {
 	};
 
 	return (
-		<RegisterForm
-			onSubmit={handleSignup}
-			setName={setName}
-			setEmail={setEmail}
-			setPassword={setPassword}
-			name={name}
-			email={email}
-			password={password}
-		/>
+		<I18nProviderClient>
+			<RegisterForm
+				onSubmit={handleSignup}
+				setName={setName}
+				setEmail={setEmail}
+				setPassword={setPassword}
+				name={name}
+				email={email}
+				password={password}
+			/>
+		</I18nProviderClient>
 	);
 }

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
+import {ROUTES} from '@/config/routes.config';
 import {useScopedI18n} from '@/locales/client';
 
 export const LoginForm: FC<{
@@ -37,7 +38,7 @@ export const LoginForm: FC<{
 						</button>
 						<p className="u-padding-32">
 							{t('noAccount')}
-							<Link href="/register" className="link u-color-text-info	">
+							<Link href={ROUTES.register} className="link u-color-text-info	">
 								{t('signUp')}
 							</Link>
 						</p>

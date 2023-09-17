@@ -71,4 +71,12 @@ export default {
 			},
 		},
 	},
+	register: {
+		title: 'Create your account',
+		signUpButton: 'Sign-up',
+		alreadyHaveAccount: 'Already have an account ? ',
+		signIn: 'Sign-in',
+		name: 'Name',
+		email: 'Email address',
+	},
 } as const;
