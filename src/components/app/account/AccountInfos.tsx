@@ -3,7 +3,7 @@
 import {UseAccount} from '@/hooks/useAccount';
 
 export const AccountInfos = () => {
-	const {user, loading, error} = UseAccount();
+	const {user, loading} = UseAccount();
 
 	const shouldDisplayIndice = !loading && !user;
 	const shouldDisplayUserInfos = !loading && user;

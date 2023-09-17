@@ -8,7 +8,7 @@ import {ReactNode} from 'react';
 import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 
-import {AccountProvider} from '@/hooks/useAccount';
+import Providers from '@/components/app/home/Providers';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: ReactNode}) {
 	return (
 		<html lang="fr">
-			<AccountProvider>
+			<Providers>
 				<body className={inter.className}>{children}</body>
-			</AccountProvider>
+			</Providers>
 		</html>
 	);
 }
