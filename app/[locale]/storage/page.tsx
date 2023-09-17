@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {Files} from '@/components/app/storage/Files';
 import {getScopedI18n} from '@/locales/server';
 
-export const Storage = async () => {
+export default async function Storage() {
 	const t = await getScopedI18n('storage');
 
 	return (
@@ -18,6 +18,4 @@ export const Storage = async () => {
 			</Link>
 		</main>
 	);
-};
-
-export default Storage;
+}
