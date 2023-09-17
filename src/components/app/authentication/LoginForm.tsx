@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
+import {useScopedI18n} from '@/locales/client';
 
 export const LoginForm: FC<{
 	onSubmit: (e: FormEvent<EventTarget>) => Promise<void>;
@@ -13,15 +14,17 @@ export const LoginForm: FC<{
 	email: string;
 	password: string;
 }> = ({onSubmit, setEmail, setPassword, email, password}) => {
+	const t = useScopedI18n('login');
+
 	return (
 		<section className="u-flex-vertical u-main-center u-cross-center u-full-screen-height u-gap-32">
 			<h1 className="eyebrow-heading-1 u-text-center u-color-text-pink">
-				Accédez à votre compte
+				{t('title')}
 			</h1>
 			<div className="card u-width-600 u-min-width-200">
 				<form onSubmit={onSubmit} className="u-flex-vertical u-row-gap-24">
 					<ul className="form-list">
-						<TextInput label="Email" setValue={setEmail} type="email" />
+						<TextInput label={t('email')} setValue={setEmail} type="email" />
 						<PasswordInput setValue={setPassword} />
 					</ul>
 					<div className="u-flex-vertical u-main-center u-cross-center">
@@ -30,12 +33,12 @@ export const LoginForm: FC<{
 							disabled={!email || !password}
 							className="button"
 						>
-							Connexion
+							{t('connection')}
 						</button>
 						<p className="u-padding-32">
-							Vous n&apos;avez pas encore un compte ?{' '}
+							{t('noAccount')}
 							<Link href="/register" className="link u-color-text-info	">
-								Inscrivez-vous
+								{t('signUp')}
 							</Link>
 						</p>
 						<SocialLogin provider="google" />

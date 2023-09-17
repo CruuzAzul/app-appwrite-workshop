@@ -19,6 +19,7 @@
 		"eslint": "8.45.0",
 		"eslint-config-next": "13.4.10",
 		"next": "13.4.10",
+		"next-international": "1.0.1",
 		"node-appwrite": "10.0.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",

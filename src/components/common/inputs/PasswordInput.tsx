@@ -1,16 +1,18 @@
 import {FC, useState} from 'react';
 
 import {TextInput} from '@/components/common/inputs/TextInput';
+import {useScopedI18n} from '@/locales/client';
 
 export const PasswordInput: FC<{
 	setValue: (value: string) => void;
 	placeholder?: string;
 }> = ({setValue, placeholder = ''}) => {
+	const t = useScopedI18n('login');
 	const [visible, setVisible] = useState(false);
 
 	return (
 		<TextInput
-			label="Mot de passe"
+			label={t('password')}
 			setValue={setValue}
 			placeholder={placeholder}
 			type={visible ? 'text' : 'password'}
