@@ -32,20 +32,31 @@ export default function FunctionsCard() {
 					const distantDestinations = await getDestinationList();
 
 					setDestinations((oldDestinations) => {
-						const newDestinations = [...oldDestinations];
+						// const newDestinations = [...oldDestinations];
+						// const oldDestinationsId = oldDestinations.map(
+						// 	(oldDestination) => oldDestination.$id
+						// );
+
+						// const newDestination = distantDestinations.filter(
+						// 	(distantDestination) =>
+						// 		!oldDestinationsId.includes(distantDestination.$id)
+						// )[0];
+
+						// newDestinations.pop();
+						// newDestinations.unshift(newDestination);
+
 						const oldDestinationsId = oldDestinations.map(
 							(oldDestination) => oldDestination.$id
 						);
 
-						const newDestination = distantDestinations.filter(
+						const newDestination = distantDestinations.find(
 							(distantDestination) =>
 								!oldDestinationsId.includes(distantDestination.$id)
-						)[0];
+						);
 
-						newDestinations.pop();
-						newDestinations.unshift(newDestination);
+						if (!newDestination) return oldDestinations;
 
-						return newDestinations;
+						return [newDestination, ...oldDestinations.slice(0, -1)];
 					});
 					setIsLoading(false);
 				}
