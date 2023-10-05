@@ -115,6 +115,8 @@ const createUser = async (user) => {
 			user.password,
 			user.name
 		);
+
+		// TODO : Add preferences to user
 	} catch (error) {
 		console.error(`User ${user.name} already exist`);
 	}
