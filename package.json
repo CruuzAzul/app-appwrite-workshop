@@ -6,7 +6,9 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"setup:data": "node ./script/index.js",
+		"reset:data": "node ./script/reset.js"
 	},
 	"dependencies": {
 		"@appwrite.io/pink": "0.0.6-rc.14",

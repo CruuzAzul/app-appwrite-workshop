@@ -8,7 +8,8 @@ const {
 	Users,
 } = require('node-appwrite');
 
-const destination = require('./data/destination.js');
+const destinations = require('./data/destination.js');
+const userList = require('./data/user.js');
 
 require('dotenv').config();
 
@@ -56,11 +57,8 @@ const createBucket = async (bucketName) => {
 	);
 };
 
-const addFileToBucket = async () => {
-	const file = InputFile.fromPath(
-		'./script/assets/square-logo-pink.svg',
-		'file.svg'
-	);
+const addFileToBucket = async (path, name) => {
+	const file = InputFile.fromPath(path, name);
 
 	return await storage.createFile(
 		process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID,
@@ -70,12 +68,16 @@ const addFileToBucket = async () => {
 };
 
 const createCollection = async (collectionName, collectionId) => {
-	const currentCollectionId = collectionId ?? ID.unique();
+	if (!collectionId) {
+		console.error('No collection Id found');
+
+		return;
+	}
 
 	try {
 		await database.createCollection(
 			process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
-			currentCollectionId,
+			collectionId,
 			collectionName,
 			[
 				Permission.read(Role.any()),
@@ -89,17 +91,35 @@ const createCollection = async (collectionName, collectionId) => {
 };
 
 const createStringAttribute = async (key, collectionId) => {
-	return await database.createStringAttribute(
-		process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
-		collectionId,
-		key,
-		255,
-		true
-	);
+	try {
+		await database.createStringAttribute(
+			process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
+			collectionId,
+			key,
+			255,
+			true
+		);
+	} catch (error) {
+		console.error(
+			`Attribute ${key} already exist on collection with id ${collectionId}`
+		);
+	}
 };
 
-const createUser = async (name) => {
-	return await users.create(ID.unique(), undefined, undefined, undefined, name);
+const createUser = async (user) => {
+	try {
+		await users.create(
+			ID.unique(),
+			user.email,
+			undefined,
+			user.password,
+			user.name
+		);
+
+		// TODO : Add preferences to user
+	} catch (error) {
+		console.error(`User ${user.name} already exist`);
+	}
 };
 
 const createDestinationDocument = async (destination, flight) => {
@@ -135,13 +155,16 @@ const createDestinationCollection = async () => {
 
 const importData = async () => {
 	await createDatabase('Workshop');
-	await createCollection('Clues', process.env.APPWRITE_CLUES_COLLECTION_ID);
-	await createDestinationCollection();
 	await createBucket('Items');
+	await createCollection(
+		'Personal Data',
+		process.env.NEXT_PUBLIC_APPWRITE_PERSONAL_DATA_COLLECTION_ID
+	);
+	await createDestinationCollection();
 
-	await addFileToBucket();
-	['tessa', 'aditya', 'eldad', 'heroes'].forEach(async (name) => {
-		await createUser(name);
+	await addFileToBucket('./script/assets/square-logo-pink.svg', 'file.svg');
+	userList.forEach(async (user) => {
+		await createUser(user);
 	});
 };
 
