@@ -1,3 +1,4 @@
+const {Permission, Role} = require('appwrite');
 const {
 	Client,
 	Databases,
@@ -6,6 +7,8 @@ const {
 	InputFile,
 	Users,
 } = require('node-appwrite');
+
+const destination = require('./data/destination.js');
 
 require('dotenv').config();
 
@@ -18,29 +21,33 @@ const database = new Databases(client);
 const storage = new Storage(client);
 const users = new Users(client);
 
-const createDatabase = async () => {
-	const existingDatabase = database.get(process.env.APPWRITE_DATABASE_ID);
+const createDatabase = async (databaseName) => {
+	const existingDatabase = database.get(
+		process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID
+	);
 
 	if (existingDatabase) {
 		return;
 	}
 
 	return await database.create(
-		process.env.APPWRITE_DATABASE_ID,
-		'databaseName'
+		process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
+		databaseName
 	);
 };
 
-const createBucket = async () => {
-	const existingBucket = storage.getBucket(process.env.APPWRITE_BUCKET_ID);
+const createBucket = async (bucketName) => {
+	const existingBucket = storage.getBucket(
+		process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID
+	);
 
 	if (existingBucket) {
 		return;
 	}
 
 	return await storage.createBucket(
-		process.env.APPWRITE_BUCKET_ID,
-		'Bucket',
+		process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID,
+		bucketName,
 		[],
 		false,
 		true,
@@ -56,26 +63,38 @@ const addFileToBucket = async () => {
 	);
 
 	return await storage.createFile(
-		process.env.APPWRITE_BUCKET_ID,
+		process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID,
 		ID.unique(),
 		file
 	);
 };
 
-const createCollection = async () => {
-	const existingCollection = database.getCollection(
-		process.env.APPWRITE_DATABASE_ID,
-		process.env.APPWRITE_DESTINATION_COLLECTION_ID
-	);
+const createCollection = async (collectionName, collectionId) => {
+	const currentCollectionId = collectionId ?? ID.unique();
 
-	if (existingCollection) {
-		return;
+	try {
+		await database.createCollection(
+			process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
+			currentCollectionId,
+			collectionName,
+			[
+				Permission.read(Role.any()),
+				Permission.delete(Role.any()),
+				Permission.create(Role.any()),
+			]
+		);
+	} catch (error) {
+		console.error(`${collectionName} already exist`);
 	}
+};
 
-	return await database.createCollection(
-		process.env.APPWRITE_DATABASE_ID,
-		process.env.APPWRITE_DESTINATION_COLLECTION_ID,
-		'Solutions'
+const createStringAttribute = async (key, collectionId) => {
+	return await database.createStringAttribute(
+		process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
+		collectionId,
+		key,
+		255,
+		true
 	);
 };
 
@@ -83,30 +102,47 @@ const createUser = async (name) => {
 	return await users.create(ID.unique(), undefined, undefined, undefined, name);
 };
 
-const createDestination = async () => {
-	const destinationName = process.argv[2];
-
-	if (!destinationName) return;
-
+const createDestinationDocument = async (destination, flight) => {
 	return await database.createDocument(
-		process.env.APPWRITE_DATABASE_ID,
-		process.env.APPWRITE_DESTINATION_COLLECTION_ID,
+		process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
+		process.env.NEXT_PUBLIC_APPWRITE_DESTINATION_COLLECTION_ID,
 		ID.unique(),
 		{
-			name: destinationName,
+			destination,
+			flight,
 		}
 	);
 };
 
+const createDestinationCollection = async () => {
+	await createCollection(
+		'Destinations',
+		process.env.NEXT_PUBLIC_APPWRITE_DESTINATION_COLLECTION_ID
+	);
+	await createStringAttribute(
+		'destination',
+		process.env.NEXT_PUBLIC_APPWRITE_DESTINATION_COLLECTION_ID
+	);
+	await createStringAttribute(
+		'flight',
+		process.env.NEXT_PUBLIC_APPWRITE_DESTINATION_COLLECTION_ID
+	);
+
+	destinations.forEach((destination) => {
+		createDestinationDocument(destination.name, destination.flight);
+	});
+};
+
 const importData = async () => {
-	await createDatabase();
-	await createCollection();
-	await createBucket();
+	await createDatabase('Workshop');
+	await createCollection('Clues', process.env.APPWRITE_CLUES_COLLECTION_ID);
+	await createDestinationCollection();
+	await createBucket('Items');
+
 	await addFileToBucket();
 	['tessa', 'aditya', 'eldad', 'heroes'].forEach(async (name) => {
 		await createUser(name);
 	});
 };
 
-// createDestination().then(console.log);
 importData();

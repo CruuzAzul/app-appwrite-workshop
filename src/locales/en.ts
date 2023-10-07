@@ -79,4 +79,11 @@ export default {
 		name: 'Name',
 		email: 'Email address',
 	},
+	functions: {
+		title: 'Our database is under attack ...',
+		description:
+			'Our clues collection you’ve retrieved so far isn’t secure ... any user can access the documents it contains. However, we can prevent anyone but you from accessing it, and we’re going to use a Cloud Function to do just that!',
+		addButton: 'Add a destination',
+		addButtonLoading: 'Loading ...',
+	},
 } as const;

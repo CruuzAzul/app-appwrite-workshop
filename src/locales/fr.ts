@@ -79,4 +79,11 @@ export default {
 		name: 'Nom',
 		email: 'Adresse Email',
 	},
+	functions: {
+		title: 'Notre base de données est attaquée ...',
+		description:
+			'Notre collection contenant les indices que vous avez récupéré jusque la n’est pas sécurisé ... n’importe quel utilisateur peut accéder aux documents qu’elle contient. Cependant, on a la possibilité d’empecher d‘autre utilisateur que vous même d’y accéder, et on va utiliser une Cloud Function pour arriver à nos fin !',
+		addButton: 'Ajouter un élément',
+		addButtonLoading: 'Chargement ...',
+	},
 } as const;

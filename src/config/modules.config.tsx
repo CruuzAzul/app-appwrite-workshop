@@ -73,4 +73,17 @@ export const modulesConfig = [
 		],
 		icons: ['icon-database', 'icon-shield-check'],
 	},
+	{
+		moduleName: 'Functions',
+		path: 'functions',
+		status: 'Ready',
+		tag: 'Server SDK',
+		infos: [
+			{
+				icon: 'icon-info',
+				description: 'moduleConfig.functions.description',
+			},
+		],
+		icons: ['icon-lightning-bolt', 'icon-server'],
+	},
 ];
