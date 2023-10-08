@@ -1,24 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { Client, Databases } from 'node-appwrite';
 
-const decryptMap = {
-  IITK2E: 'Nantes',
-  OEJ0DJ: 'Toulouse',
-  MEO312: 'Strasbourg',
-  BA342H: 'Lille',
-  MP0909: 'Paris',
-  JI93JZ: 'Lyon',
-  QAPZE3: 'Grenoble',
-  O0121S: 'Rennes',
-  POA123: 'Nice',
-  MLMLM2: 'Marseille',
-};
+import { decrypt } from './decrypt.js';
 
-export const decrypt = (textToDecrypt) => {
-  return decryptMap[textToDecrypt];
-};
-
-export default async ({ req, res, log, error }) => {
+export default async ({ req, res }) => {
   const client = new Client()
     .setEndpoint(process.env.APPWRITE_ENDPOINT)
     .setProject(process.env.APPWRITE_PROJECT_ID)
