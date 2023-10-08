@@ -1,9 +1,9 @@
-import {getStorageFiles} from '@/api/modules/storage';
 import {getScopedI18n} from '@/locales/server';
+import {getPuzzlePieces} from '@/workshop/api/modules/storage/puzzle';
 
 export const Files = async () => {
 	const t = await getScopedI18n('storage');
-	const filesList = await getStorageFiles();
+	const filesList = await getPuzzlePieces();
 	const {total, files} = filesList;
 
 	return (

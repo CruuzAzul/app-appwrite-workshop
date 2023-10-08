@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import {UseAccount} from '@/hooks/useAccount';
+import {UseAccount} from '@/workshop/hooks/useAccount';
 
 export const Logout = () => {
 	const {logout, user} = UseAccount();

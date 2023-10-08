@@ -2,8 +2,8 @@ import {ID} from 'appwrite';
 
 import {Destination, DestinationType} from '@/models/destination';
 
-import {database} from '../config/client.config';
-import {EnvConfig} from '../config/env.config';
+import {database} from '../../config/client.config';
+import {EnvConfig} from '../../config/env.config';
 
 export const getDestinationList = async (): Promise<Destination[]> => {
 	const {documents: destinationList} =

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 import {Files} from '@/components/app/storage/Files';
-import {ROUTES} from '@/config/routes.config';
 import {getScopedI18n} from '@/locales/server';
+import {ROUTES} from '@/routing/routes.config';
 
 export default async function Storage() {
 	const t = await getScopedI18n('storage');

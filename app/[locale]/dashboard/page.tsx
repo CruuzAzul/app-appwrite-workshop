@@ -1,5 +1,5 @@
 import {CardModule} from '@/components/app/dashboard/CardModule';
-import {modulesConfig} from '@/config/modules.config';
+import {modulesConfig} from '@/routing/modules.config';
 
 export default function Home() {
 	return (

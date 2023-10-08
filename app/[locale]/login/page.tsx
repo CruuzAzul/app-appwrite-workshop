@@ -3,7 +3,7 @@
 import {FormEvent, useState} from 'react';
 
 import {LoginForm} from '@/components/app/authentication/LoginForm';
-import {UseAccount} from '@/hooks/useAccount';
+import {UseAccount} from '@/workshop/hooks/useAccount';
 
 export default function Login() {
 	const {login} = UseAccount();

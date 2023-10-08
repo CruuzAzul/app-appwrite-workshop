@@ -2,12 +2,12 @@
 
 import {FormEvent, useState} from 'react';
 
-import {uploadFiles} from '@/api/modules/storage';
 import {DropZone} from '@/components/app/storage/DropZone';
 import {ErrorMessage} from '@/components/app/storage/ErrorMessage';
 import {FilesToUploadList} from '@/components/app/storage/FilesToUploadList';
 import {UploadButton} from '@/components/app/storage/UploadButton';
 import {MultipleFileInput} from '@/components/common/inputs/MultipleFileInput';
+import {uploadImageKey} from '@/workshop/api/modules/storage/puzzle';
 
 export const UploadBox = () => {
 	const [filesToUpload, setFilesToUpload] = useState<File[]>([]);
@@ -31,7 +31,7 @@ export const UploadBox = () => {
 		e.preventDefault();
 
 		try {
-			await uploadFiles(filesToUpload);
+			await uploadImageKey(filesToUpload);
 			setFilesToUpload([]);
 		} catch {
 			setError("Une erreur est survenue lors de l'upload de vos fichier");

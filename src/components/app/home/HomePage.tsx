@@ -5,8 +5,8 @@ import {useState} from 'react';
 import Link from 'next/link';
 import Typewriter from 'react-ts-typewriter';
 
-import {ROUTES} from '@/config/routes.config';
 import {useScopedI18n} from '@/locales/client';
+import {ROUTES} from '@/routing/routes.config';
 
 export default function HomePage() {
 	const [displayStartButton, setDisplayStartButton] = useState(false);

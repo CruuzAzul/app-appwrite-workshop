@@ -2,58 +2,22 @@
 
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 
-import {AppwriteException, ID, Models} from 'appwrite';
+import {AppwriteException, ID} from 'appwrite';
 import {useRouter} from 'next/navigation';
 
-import {account} from '@/api/config/client.config';
-import {ROUTES} from '@/config/routes.config';
-
-type AccountState = {
-	user: Models.User<Models.Preferences> | null;
-	loading: boolean;
-	error: string | null;
-	logout: () => Promise<void>;
-	login: (email: string, password: string) => Promise<void>;
-	register: (email: string, password: string, name: string) => Promise<void>;
-	socialLogin: (
-		provider: string,
-		successRedirectUrl: string,
-		failureRedirectUrl: string
-	) => Promise<void>;
-};
-
-const defaultState: AccountState = {
-	user: null,
-	loading: true,
-	error: null,
-	logout: async () => {},
-	register: async () => {},
-	login: async () => {},
-	socialLogin: async () => {},
-};
+import {defaultState} from '@/constants/defaultUserState';
+import {ROUTES} from '@/routing/routes.config';
+import {AccountState} from '@/types/AccountState.type';
+import {UserType} from '@/types/UserHook.type';
+import {account} from '@/workshop/api/config/client.config';
 
 const accountContext = createContext<AccountState>(defaultState);
 
 export const AccountProvider = ({children}: {children: ReactNode}) => {
-	const [user, setUser] = useState<Models.User<Models.Preferences> | null>(
-		null
-	);
+  const router = useRouter();
+	const [user, setUser] = useState<UserType>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
-	const router = useRouter();
-
-	const loadAccount = async () => {
-		try {
-			const loadedAccount = await account.get();
-			setUser(loadedAccount);
-			setError('');
-		} catch (error) {
-			console.error(error);
-			setError('No user logged in...');
-		} finally {
-			setLoading(false);
-		}
-	};
 
 	const login = async (email: string, password: string) => {
 		try {
@@ -77,6 +41,12 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
+  const logout = async () => {
+    await account.deleteSession('current');
+    setUser(null);
+    router.push(ROUTES.dashboard);
+  };
+
 	const socialLogin = async (
 		provider: string,
 		successRedirectUrl: string,
@@ -94,11 +64,18 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
-	const logout = async () => {
-		await account.deleteSession('current');
-		setUser(null);
-		router.push(ROUTES.dashboard);
-	};
+  const loadAccount = async () => {
+    try {
+      const loadedAccount = await account.get();
+      setUser(loadedAccount);
+      setError('');
+    } catch (error) {
+      console.error(error);
+      setError('No user logged in...');
+    } finally {
+      setLoading(false);
+    }
+  };
 
 	useEffect(() => {
 		void loadAccount();

@@ -2,8 +2,8 @@ import {ID} from 'appwrite';
 
 import {Coordinate, Coordinates} from '@/models/coordinates';
 
-import {database} from '../config/client.config';
-import {EnvConfig} from '../config/env.config';
+import {database} from '../../config/client.config';
+import {EnvConfig} from '../../config/env.config';
 
 export const getCoordinatesList = async (): Promise<Coordinates[]> => {
 	const {documents: coordinatesList} =

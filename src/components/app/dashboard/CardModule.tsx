@@ -4,8 +4,8 @@ import {FC} from 'react';
 
 import {useRouter} from 'next/navigation';
 
-import {ModuleConfig} from '@/config/modules.config';
 import {useI18n} from '@/locales/client';
+import {ModuleConfig} from '@/routing/modules.config';
 
 interface CardModuleProps {
 	module: ModuleConfig;

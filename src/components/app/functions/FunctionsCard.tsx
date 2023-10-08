@@ -3,16 +3,16 @@ import {useEffect, useState} from 'react';
 
 import {RealtimeResponseEvent} from 'appwrite';
 
-import {AppwriteClient} from '@/api/config/client.config';
-import {EnvConfig} from '@/api/config/env.config';
+import {useScopedI18n} from '@/locales/client';
+import {Destination} from '@/models/destination';
+import {EventType, getEventType} from '@/utils/realtime.utils';
+import {AppwriteClient} from '@/workshop/api/config/client.config';
+import {EnvConfig} from '@/workshop/api/config/env.config';
 import {
 	createDestination,
 	deleteDestination,
 	getDestinationList,
-} from '@/api/modules/destinations';
-import {useScopedI18n} from '@/locales/client';
-import {Destination} from '@/models/destination';
-import {EventType, getEventType} from '@/utils/realtime.utils';
+} from '@/workshop/api/modules/functions/destinations';
 
 export default function FunctionsCard() {
 	const t = useScopedI18n('functions');
@@ -32,19 +32,6 @@ export default function FunctionsCard() {
 					const distantDestinations = await getDestinationList();
 
 					setDestinations((oldDestinations) => {
-						// const newDestinations = [...oldDestinations];
-						// const oldDestinationsId = oldDestinations.map(
-						// 	(oldDestination) => oldDestination.$id
-						// );
-
-						// const newDestination = distantDestinations.filter(
-						// 	(distantDestination) =>
-						// 		!oldDestinationsId.includes(distantDestination.$id)
-						// )[0];
-
-						// newDestinations.pop();
-						// newDestinations.unshift(newDestination);
-
 						const oldDestinationsId = oldDestinations.map(
 							(oldDestination) => oldDestination.$id
 						);

@@ -1,14 +1,14 @@
 import {AppwriteException, ID, Models} from 'appwrite';
 
-import {storage} from '@/api/config/client.config';
-import {EnvConfig} from '@/api/config/env.config';
 import {FilePreview, FilesList} from '@/models/storage';
+import {storage} from '@/workshop/api/config/client.config';
+import {EnvConfig} from '@/workshop/api/config/env.config';
 
-export const getStorageFiles = async (): Promise<FilesList> => {
+export const getPuzzlePieces = async (): Promise<FilesList> => {
 	return await storage.listFiles(EnvConfig.storageBucketId);
 };
 
-export const uploadFiles = async (
+export const uploadImageKey = async (
 	files: File[]
 ): Promise<Awaited<Models.File>[]> => {
 	try {
@@ -26,7 +26,11 @@ export const uploadFiles = async (
 	}
 };
 
-export const getFilesForPreviews = ({
+export const getPuzzlePiecesForPreviews = ({fileId}: FilePreview): URL => {
+	return storage.getFilePreview(EnvConfig.storageBucketId, fileId);
+};
+
+export const getPuzzlePiecesForTransformedPreviews = ({
 	fileId,
 	width,
 	height,
@@ -57,7 +61,7 @@ export const getFilesForPreviews = ({
 	);
 };
 
-export const getFileForView = (fileId: string): URL => {
+export const getPuzzlePiecesForView = (fileId: string): URL => {
 	try {
 		return storage.getFileView(EnvConfig.storageBucketId, fileId);
 	} catch (error: any) {
