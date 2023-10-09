@@ -6,7 +6,7 @@ import {AppwriteException} from 'appwrite';
 
 import {FileInput} from '@/components/common/inputs/FileInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
-import {createCoordinates} from '@/workshop/api/modules/databases/coordinates';
+import {createCoordinates} from '@/workshop/api/modules/database/coordinates';
 import {
 	getPuzzlePiecesForView,
 	uploadImageKey,

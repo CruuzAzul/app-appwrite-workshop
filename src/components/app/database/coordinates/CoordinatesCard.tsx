@@ -3,7 +3,7 @@
 import {FC} from 'react';
 
 import {Coordinates} from '@/models/coordinates';
-import {deleteCoordinates} from '@/workshop/api/modules/databases/coordinates';
+import {deleteCoordinates} from '@/workshop/api/modules/database/coordinates';
 
 interface CoordinatesCardProps {
 	coordinates: Coordinates;

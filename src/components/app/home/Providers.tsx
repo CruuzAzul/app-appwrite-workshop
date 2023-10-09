@@ -2,8 +2,8 @@
 
 import {ReactNode} from 'react';
 
+import {AccountProvider} from '@/hooks/useAccount';
 import {I18nProviderClient} from '@/locales/client';
-import {AccountProvider} from '@/workshop/hooks/useAccount';
 
 export default function Providers({children}: {children: ReactNode}) {
 	return (

@@ -1,6 +1,6 @@
 'use client';
 
-import {UseAccount} from '@/workshop/hooks/useAccount';
+import {UseAccount} from '@/hooks/useAccount';
 
 export const AccountInfos = () => {
 	const {user, loading} = UseAccount();

@@ -1,5 +1,5 @@
 import {getPuzzlePieces} from '@/workshop/api/modules/storage/puzzle';
-import Puzzle from '@/workshop/components/puzzle';
+import Puzzle from '@/workshop/components/storage/puzzle';
 
 export default async function StoragePreview() {
 	const filesList = await getPuzzlePieces();

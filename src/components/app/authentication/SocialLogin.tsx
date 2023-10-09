@@ -2,9 +2,9 @@
 
 import {FC} from 'react';
 
+import {UseAccount} from '@/hooks/useAccount';
 import {useCurrentLocale, useScopedI18n} from '@/locales/client';
 import {ROUTES} from '@/routing/routes.config';
-import {UseAccount} from '@/workshop/hooks/useAccount';
 
 export const SocialLogin: FC<{
 	provider: string;
