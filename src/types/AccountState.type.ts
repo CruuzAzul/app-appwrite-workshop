@@ -1,7 +1,7 @@
 import {Models} from "appwrite";
 
 export type AccountState = {
-  user: Models.User<Models.Preferences> | null;
+  user: Models.User<Models.Preferences> | null | undefined;
   loading: boolean;
   error: string | null;
   logout: () => Promise<void>;
