@@ -4,10 +4,13 @@ import React, {useRef, useState} from 'react';
 
 import {AppwriteException} from 'appwrite';
 
-import {createCoordinates} from '@/api/modules/coordinates';
-import {getFileForView, uploadFiles} from '@/api/modules/storage';
 import {FileInput} from '@/components/common/inputs/FileInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
+import {createCoordinates} from '@/workshop/api/modules/database/coordinates';
+import {
+	getPuzzlePiecesForView,
+	uploadImageKey,
+} from '@/workshop/api/modules/storage/puzzle';
 
 export const CoordinatesForm = () => {
 	const formRef = useRef<HTMLFormElement | null>(null);
@@ -27,9 +30,9 @@ export const CoordinatesForm = () => {
 		const picture = pictureInput.files?.[0];
 
 		if (picture) {
-			const uploadedFile = await uploadFiles([picture]);
+			const uploadedFile = await uploadImageKey([picture]);
 
-			return getFileForView(uploadedFile[0].$id);
+			return getPuzzlePiecesForView(uploadedFile[0].$id);
 		}
 
 		return undefined;

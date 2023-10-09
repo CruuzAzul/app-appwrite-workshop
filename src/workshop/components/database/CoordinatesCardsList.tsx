@@ -4,11 +4,11 @@ import {FC, useEffect, useState} from 'react';
 
 import {RealtimeResponseEvent} from 'appwrite';
 
-import {AppwriteClient} from '@/api/config/client.config';
-import {EnvConfig} from '@/api/config/env.config';
 import {CoordinatesCard} from '@/components/app/database/coordinates/CoordinatesCard';
 import {Coordinates} from '@/models/coordinates';
 import {EventType, getEventType} from '@/utils/realtime.utils';
+import {AppwriteClient} from '@/workshop/api/config/client.config';
+import {EnvConfig} from '@/workshop/api/config/env.config';
 
 interface CoordinatesCardsListProps {
 	coordinatesList: Coordinates[];

@@ -1,8 +1,8 @@
-import {getFilesForPreviews, getStorageFiles} from '@/api/modules/storage';
-import {DraggableFilePreview} from '@/components/app/storage/DraggableFilePreview';
+import {getPuzzlePieces} from '@/workshop/api/modules/storage/puzzle';
+import Puzzle from '@/workshop/components/storage/puzzle';
 
 export default async function StoragePreview() {
-	const filesList = await getStorageFiles();
+	const filesList = await getPuzzlePieces();
 	const {files} = filesList;
 
 	return (
@@ -11,19 +11,7 @@ export default async function StoragePreview() {
 				Est-ce que l&apos;on arrive à trouver un truc avec ça ?
 			</h1>
 			<div className="u-min-width-100-percent u-height-100-percent u-flex u-main-center u-cross-center u-gap-32">
-				{files.map((file) => {
-					const imgSrc = getFilesForPreviews({
-						fileId: file.$id,
-						background: file.mimeType === 'image/png' ? '000000' : undefined,
-					});
-
-					return (
-						<DraggableFilePreview
-							key={file.name}
-							imgSrc={JSON.parse(JSON.stringify(imgSrc))}
-						/>
-					);
-				})}
+				<Puzzle files={files} />
 			</div>
 		</main>
 	);

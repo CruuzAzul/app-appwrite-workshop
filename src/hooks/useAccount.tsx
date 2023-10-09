@@ -2,62 +2,32 @@
 
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 
-import {AppwriteException, ID, Models} from 'appwrite';
+import {AppwriteException} from 'appwrite';
 import {useRouter} from 'next/navigation';
 
-import {account} from '@/api/config/client.config';
-import {ROUTES} from '@/config/routes.config';
-
-type AccountState = {
-	user: Models.User<Models.Preferences> | null;
-	loading: boolean;
-	error: string | null;
-	logout: () => Promise<void>;
-	login: (email: string, password: string) => Promise<void>;
-	register: (email: string, password: string, name: string) => Promise<void>;
-	socialLogin: (
-		provider: string,
-		successRedirectUrl: string,
-		failureRedirectUrl: string
-	) => Promise<void>;
-};
-
-const defaultState: AccountState = {
-	user: null,
-	loading: true,
-	error: null,
-	logout: async () => {},
-	register: async () => {},
-	login: async () => {},
-	socialLogin: async () => {},
-};
+import {defaultState} from '@/constants/defaultUserState';
+import {ROUTES} from '@/routing/routes.config';
+import {AccountState} from '@/types/AccountState.type';
+import {UserType} from '@/types/UserHook.type';
+import {account} from '@/workshop/api/config/client.config';
+import {
+	login,
+	logout,
+	register,
+	socialLogin,
+} from '@/workshop/api/modules/account/account';
 
 const accountContext = createContext<AccountState>(defaultState);
 
 export const AccountProvider = ({children}: {children: ReactNode}) => {
-	const [user, setUser] = useState<Models.User<Models.Preferences> | null>(
-		null
-	);
+  const router = useRouter();
+  const [user, setUser] = useState<UserType | undefined>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
-	const router = useRouter();
 
-	const loadAccount = async () => {
+  const appLogin = async (email: string, password: string) => {
 		try {
-			const loadedAccount = await account.get();
-			setUser(loadedAccount);
-			setError('');
-		} catch (error) {
-			console.error(error);
-			setError('No user logged in...');
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	const login = async (email: string, password: string) => {
-		try {
-			await account.createEmailSession(email, password);
+			await login(email, password);
 			await loadAccount();
 			router.push(ROUTES.dashboard);
 		} catch (error: any) {
@@ -66,39 +36,48 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
-	const register = async (email: string, password: string, name: string) => {
+  const appRegister = async (email: string, password: string, name: string) => {
 		try {
-			const session = await account.create(ID.unique(), email, password, name);
+			const session = await register(email, password, name, appLogin);
 			setUser(session);
-			await login(email, password);
 			router.push(ROUTES.dashboard);
-		} catch (error) {
-			console.error(error);
-		}
-	};
-
-	const socialLogin = async (
-		provider: string,
-		successRedirectUrl: string,
-		failureRedirectUrl: string
-	) => {
-		try {
-			account.createOAuth2Session(
-				provider,
-				successRedirectUrl,
-				failureRedirectUrl
-			);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
 			console.error(appwriteException.message);
 		}
 	};
 
-	const logout = async () => {
-		await account.deleteSession('current');
+	const appLogout = async () => {
+		await logout();
 		setUser(null);
 		router.push(ROUTES.dashboard);
 	};
+
+	const appSocialLogin = async (
+		provider: string,
+		successRedirectUrl: string,
+		failureRedirectUrl: string
+	) => {
+		try {
+			await socialLogin(provider, successRedirectUrl, failureRedirectUrl);
+		} catch (error: any) {
+			const appwriteException = error as AppwriteException;
+			console.error(appwriteException.message);
+		}
+	};
+
+  const loadAccount = async () => {
+    try {
+      const loadedAccount = await account.get();
+      setUser(loadedAccount);
+      setError('');
+    } catch (error) {
+      console.error(error);
+      setError('No user logged in...');
+    } finally {
+      setLoading(false);
+    }
+  };
 
 	useEffect(() => {
 		void loadAccount();
@@ -106,7 +85,15 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 
 	return (
 		<accountContext.Provider
-			value={{user, loading, error, logout, login, register, socialLogin}}
+			value={{
+				user,
+				loading,
+				error,
+				logout: appLogout,
+				login: appLogin,
+				register: appRegister,
+				socialLogin: appSocialLogin,
+			}}
 		>
 			{children}
 		</accountContext.Provider>

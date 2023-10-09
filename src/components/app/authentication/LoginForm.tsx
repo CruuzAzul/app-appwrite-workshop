@@ -5,8 +5,8 @@ import Link from 'next/link';
 import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
-import {ROUTES} from '@/config/routes.config';
 import {useScopedI18n} from '@/locales/client';
+import {ROUTES} from '@/routing/routes.config';
 
 export const LoginForm: FC<{
 	onSubmit: (e: FormEvent<EventTarget>) => Promise<void>;

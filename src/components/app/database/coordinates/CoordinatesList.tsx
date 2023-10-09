@@ -1,6 +1,6 @@
-import {getCoordinatesList} from '@/api/modules/coordinates';
-import {CoordinatesCardsList} from '@/components/app/database/coordinates/CoordinatesCardsList';
 import {getScopedI18n} from '@/locales/server';
+import {getCoordinatesList} from '@/workshop/api/modules/database/coordinates';
+import {CoordinatesCardsList} from '@/workshop/components/database/CoordinatesCardsList';
 
 export const CoordinatesList = async () => {
 	const t = await getScopedI18n('databases.coordinates.list');

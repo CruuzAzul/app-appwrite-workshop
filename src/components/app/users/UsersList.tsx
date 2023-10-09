@@ -1,7 +1,7 @@
-import {getUsersList} from '@/api/modules/users';
+import {getTravelersList} from '@/workshop/api/modules/users/travelers';
 
 export const UsersList = async () => {
-	const users = await getUsersList();
+	const users = await getTravelersList();
 
 	return (
 		<div className="card u-flex-vertical u-gap-32 u-width-fit-content">
