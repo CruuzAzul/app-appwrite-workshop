@@ -86,4 +86,15 @@ export default {
 		addButton: 'Add a destination',
 		addButtonLoading: 'Loading ...',
 	},
+	validation: {
+		content: 'Enter the correct answer in the solution application',
+		button: 'Go to solution application',
+		seeClue: 'See the clue',
+		title: {
+			functions: 'Functions module is done ! 🎉',
+			databases: 'Database module is done ! 🎉',
+			storage: 'Storage module is done ! 🎉',
+			users: 'Users module is done ! 🎉',
+		},
+	},
 } as const;

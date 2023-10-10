@@ -86,4 +86,15 @@ export default {
 		addButton: 'Ajouter un élément',
 		addButtonLoading: 'Chargement ...',
 	},
+	validation: {
+		content: 'Entrez la bonne réponse dans l’application de solution',
+		button: 'Aller sur l’application de solution',
+		seeClue: 'Voir l’indice',
+		title: {
+			functions: 'Le module de fonction est terminé ! 🎉',
+			databases: 'Le module de base de données est terminé ! 🎉',
+			storage: 'Le module de storage est terminé ! 🎉',
+			users: 'Le module users est terminé ! 🎉',
+		},
+	},
 } as const;

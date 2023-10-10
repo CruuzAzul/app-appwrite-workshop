@@ -1,5 +1,6 @@
+import FunctionsCard from '@/components/app/functions/FunctionsCard';
+import {FunctionsCheckModal} from '@/components/app/functions/FunctionsCheckModal';
 import {getScopedI18n} from '@/locales/server';
-import FunctionsCard from '@/workshop/components/functions/FunctionsCard';
 
 export default async function Functions() {
 	const t = await getScopedI18n('functions');
@@ -11,6 +12,7 @@ export default async function Functions() {
 			</h1>
 			<p className="u-font-content body-text-1 u-bold">{t('description')}</p>
 			<FunctionsCard />
+			<FunctionsCheckModal />
 		</main>
 	);
 }

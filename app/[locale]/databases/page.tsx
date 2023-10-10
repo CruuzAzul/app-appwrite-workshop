@@ -1,5 +1,6 @@
 import {CoordinatesForm} from '@/components/app/database/coordinates/CoordinatesForm';
 import {CoordinatesList} from '@/components/app/database/coordinates/CoordinatesList';
+import {DatabaseCheckModal} from '@/components/app/database/coordinates/DatabaseCheckModal';
 import {getScopedI18n} from '@/locales/server';
 
 export default async function Databases() {
@@ -13,6 +14,7 @@ export default async function Databases() {
 			<div className="u-flex u-flex-vertical u-gap-32">
 				<CoordinatesList />
 				<CoordinatesForm />
+				<DatabaseCheckModal />
 			</div>
 		</main>
 	);
