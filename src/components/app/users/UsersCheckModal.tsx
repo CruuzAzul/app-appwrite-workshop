@@ -16,8 +16,8 @@ export const UsersCheckModal = ({userList}: UsersCheckModal) => {
 	const dialogRef = useRef<HTMLDialogElement>(null);
 
 	useEffect(() => {
-		if (userList.length > 0) {
-			setIsFinishedModule((oldFinishedModule: any) => ({
+		if (userList.length > 0 && !finishedModule.storage) {
+			setIsFinishedModule((oldFinishedModule) => ({
 				...oldFinishedModule,
 				storage: true,
 			}));
@@ -33,7 +33,7 @@ export const UsersCheckModal = ({userList}: UsersCheckModal) => {
 		<>
 			<button
 				onClick={seeClue}
-				className={`button ${finishedModule.function ? '' : 'u-none'}`}
+				className={`button ${finishedModule.databases ? '' : 'u-none'}`}
 			>
 				{t('seeClue')}
 			</button>

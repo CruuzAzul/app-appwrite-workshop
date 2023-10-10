@@ -44,9 +44,10 @@ export const DatabaseCheckModal = () => {
 							coord.name === sortedSolution[index].name &&
 							coord.latitude === sortedSolution[index].latitude &&
 							coord.longitude === sortedSolution[index].longitude
-					)
+					) &&
+					!finishedModule.databases
 				) {
-					setIsFinishedModule((oldFinishedModule: any) => ({
+					setIsFinishedModule((oldFinishedModule) => ({
 						...oldFinishedModule,
 						databases: true,
 					}));
@@ -68,7 +69,7 @@ export const DatabaseCheckModal = () => {
 		<>
 			<button
 				onClick={seeClue}
-				className={`button ${finishedModule.function ? '' : 'u-none'}`}
+				className={`button ${finishedModule.databases ? '' : 'u-none'}`}
 			>
 				{t('seeClue')}
 			</button>

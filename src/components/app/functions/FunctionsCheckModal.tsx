@@ -31,9 +31,10 @@ export const FunctionsCheckModal = () => {
 				if (
 					eventType === EventType.UPDATE &&
 					response.payload.destination === FUNCTIONS_SOLUTION.destination &&
-					response.payload.flight === FUNCTIONS_SOLUTION.flight
+					response.payload.flight === FUNCTIONS_SOLUTION.flight &&
+					!finishedModule.functions
 				) {
-					setIsFinishedModule((oldFinishedModule: any) => ({
+					setIsFinishedModule((oldFinishedModule) => ({
 						...oldFinishedModule,
 						functions: true,
 					}));
@@ -55,7 +56,7 @@ export const FunctionsCheckModal = () => {
 		<div>
 			<button
 				onClick={seeClue}
-				className={`button ${finishedModule.function ? '' : 'u-none'}`}
+				className={`button ${finishedModule.functions ? '' : 'u-none'}`}
 			>
 				{t('seeClue')}
 			</button>

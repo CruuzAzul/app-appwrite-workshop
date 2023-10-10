@@ -2,46 +2,29 @@
 
 import {useEffect, useRef} from 'react';
 
-import {RealtimeResponseEvent} from 'appwrite';
+import {Models} from 'appwrite';
 
 import {useFinishedModule} from '@/hooks/useFinishedModule';
 import {useScopedI18n} from '@/locales/client';
-import {EventType, getEventType} from '@/utils/realtime.utils';
-import {AppwriteClient} from '@/workshop/api/config/client.config';
-import {EnvConfig} from '@/workshop/api/config/env.config';
 
-const STORAGE_SOLUTION = 'Capture d’écran 2023-10-08 à 15.34.04.png';
+interface AccountCheckModalProps {
+	user?: Models.User<Models.Preferences> | null;
+}
 
-export const StorageCheckModal = () => {
+export const AccountCheckModal = ({user}: AccountCheckModalProps) => {
 	const [finishedModule, setIsFinishedModule] = useFinishedModule();
 	const t = useScopedI18n('validation');
 	const dialogRef = useRef<HTMLDialogElement>(null);
-	const bucket = `buckets.${EnvConfig.storageBucketId}.files`;
 
 	useEffect(() => {
-		const unsubscribe = AppwriteClient.subscribe(
-			bucket,
-			(response: RealtimeResponseEvent<File>) => {
-				const eventType = getEventType({events: response.events});
-
-				if (
-					eventType === EventType.CREATE &&
-					response.payload.name === STORAGE_SOLUTION &&
-					!finishedModule.storage
-				) {
-					setIsFinishedModule((oldFinishedModule) => ({
-						...oldFinishedModule,
-						storage: true,
-					}));
-					dialogRef.current?.showModal();
-				}
-			}
-		);
-
-		return () => {
-			unsubscribe();
-		};
-	}, [bucket]);
+		if (user && !finishedModule.account) {
+			setIsFinishedModule((oldFinishedModule) => ({
+				...oldFinishedModule,
+				users: true,
+			}));
+			dialogRef.current?.showModal();
+		}
+	}, [user]);
 
 	const seeClue = () => {
 		dialogRef.current?.showModal();
@@ -51,7 +34,7 @@ export const StorageCheckModal = () => {
 		<div>
 			<button
 				onClick={seeClue}
-				className={`button ${finishedModule.storage ? '' : 'u-none'}`}
+				className={`button ${finishedModule.account ? '' : 'u-none'}`}
 			>
 				{t('seeClue')}
 			</button>
@@ -60,7 +43,7 @@ export const StorageCheckModal = () => {
 					<header className="modal-header">
 						<div className="u-flex u-main-space-between u-cross-center">
 							<h4 className="modal-title heading-level-5">
-								{t('title.storage')}
+								{t('title.account')}
 							</h4>
 							<button
 								className="button is-text is-small is-only-icon"
@@ -69,6 +52,7 @@ export const StorageCheckModal = () => {
 								<span className="icon-x" aria-hidden="true"></span>
 							</button>
 						</div>
+						s
 					</header>
 					<div className="modal-content">
 						<p>{t('content')}</p>

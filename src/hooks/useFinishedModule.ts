@@ -1,17 +1,20 @@
 import useLocalStorage from './useLocalStorage';
 
-const defaultFinishedModule = {
+type Module = 'functions' | 'databases' | 'storage' | 'users' | 'account';
+
+type FinishedModule = Record<Module, boolean>;
+
+const defaultFinishedModule: FinishedModule = {
 	functions: false,
 	databases: false,
 	storage: false,
 	users: false,
+	account: false,
 };
 
 export const useFinishedModule = () => {
-	const [finishedValue, setFinishedValue] = useLocalStorage(
+	return useLocalStorage(
 		'appwrite-workshop-finished-module',
 		defaultFinishedModule
 	);
-
-	return [finishedValue, setFinishedValue];
 };

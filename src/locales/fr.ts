@@ -95,6 +95,7 @@ export default {
 			databases: 'Le module de base de données est terminé ! 🎉',
 			storage: 'Le module de storage est terminé ! 🎉',
 			users: 'Le module users est terminé ! 🎉',
+			account: 'Le module account est terminé ! 🎉',
 		},
 	},
 } as const;
