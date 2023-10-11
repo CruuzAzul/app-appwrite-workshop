@@ -1,13 +1,18 @@
-import {AppwriteException, ID} from 'appwrite';
-
 import {UserType} from '@/types/UserHook.type';
-import {account} from '@/workshop/api/config/client.config';
 
 export async function login(email: string, password: string) {
 	try {
-		await account.createEmailSession(email, password);
-	} catch (error: any) {
-    throw new AppwriteException(error);
+		/**
+		 * ----------------------------------------
+		 * HERE : Session creation code (login)
+		 * ----------------------------------------
+		 */
+	} catch (error) {
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
 	}
 }
 
@@ -18,21 +23,27 @@ export async function register(
 	login: (email: string, password: string) => Promise<void>
 ): Promise<UserType> {
 	try {
-		const session = await account.create(ID.unique(), email, password, name);
-		await login(email, password);
-
-		return session;
-	} catch (error: any) {
-    throw new AppwriteException(error);
+		/**
+		 * ----------------------------------------
+		 * HERE : Account creation code (register)
+		 * It looks like we need to return a `session` here
+		 * ----------------------------------------
+		 */
+	} catch (error) {
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
 	}
 }
 
 export async function logout() {
-  try {
-    await account.deleteSession('current');
-  } catch (error: any) {
-    throw new AppwriteException(error);
-  }
+	/**
+	 * ----------------------------------------
+	 * HERE : Session logout code
+	 * ----------------------------------------
+	 */
 }
 
 export async function socialLogin(
@@ -41,12 +52,16 @@ export async function socialLogin(
 	failureRedirectUrl: string
 ) {
 	try {
-		account.createOAuth2Session(
-			provider,
-			successRedirectUrl,
-			failureRedirectUrl
-		);
+		/**
+		 * ----------------------------------------
+		 * HERE : Session connection code (social login)
+		 * ----------------------------------------
+		 */
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
 	}
 }
