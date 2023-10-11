@@ -1,11 +1,13 @@
-import {AppwriteException, ID, Models} from 'appwrite';
+import {Models} from 'appwrite';
 
 import {FilePreview, FilesList} from '@/models/storage';
-import {storage} from '@/workshop/api/config/client.config';
-import {EnvConfig} from '@/workshop/api/config/env.config';
 
 export const getPuzzlePieces = async (): Promise<FilesList> => {
-	return await storage.listFiles(EnvConfig.storageBucketId);
+	/**
+	 * ----------------------------------------
+	 * HERE : Code for retrieving the list of files
+	 * ----------------------------------------
+	 */
 };
 
 export const uploadImageKey = async (
@@ -14,57 +16,42 @@ export const uploadImageKey = async (
 	try {
 		return await Promise.all(
 			files.map(async (file) => {
-				return await storage.createFile(
-					EnvConfig.storageBucketId,
-					ID.unique(),
-					file
-				);
+				/**
+				 * ----------------------------------------
+				 * HERE : Code for uploading a file
+				 * ----------------------------------------
+				 */
 			})
 		);
 	} catch (error: any) {
-		throw new AppwriteException(error);
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
 	}
 };
 
 export const getPuzzlePiecesForPreviews = ({fileId}: FilePreview): URL => {
-	return storage.getFilePreview(EnvConfig.storageBucketId, fileId);
-};
-
-export const getPuzzlePiecesForTransformedPreviews = ({
-	fileId,
-	width,
-	height,
-	gravity,
-	quality,
-	borderWidth,
-	borderColor,
-	borderRadius,
-	opacity,
-	rotation,
-	background,
-	output,
-}: FilePreview): URL => {
-	return storage.getFilePreview(
-		EnvConfig.storageBucketId,
-		fileId,
-		width,
-		height,
-		gravity,
-		quality,
-		borderWidth,
-		borderColor,
-		borderRadius,
-		opacity,
-		rotation,
-		background,
-		output
-	);
+	/**
+	 * ----------------------------------------
+	 * HERE : Retrieving the src link to display the image
+	 * ----------------------------------------
+	 */
 };
 
 export const getPuzzlePiecesForView = (fileId: string): URL => {
 	try {
-		return storage.getFileView(EnvConfig.storageBucketId, fileId);
+		/**
+		 * ----------------------------------------
+		 * HERE : Retrieving the URL for displaying the image
+		 * ----------------------------------------
+		 */
 	} catch (error: any) {
-		throw new AppwriteException(error);
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
 	}
 };

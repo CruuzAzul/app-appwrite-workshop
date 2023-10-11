@@ -1,10 +1,11 @@
-import {Client, Users} from 'node-appwrite';
+/**
+ * ----------------------------------------
+ * HERE : Initialization of the Appwrite server SDK
+ * ----------------------------------------
+ */
 
-import {EnvConfig} from './env.config';
-
-export const AppwriteClient = new Client()
-	.setEndpoint(EnvConfig.endpoint ?? '')
-	.setProject(EnvConfig.projectId ?? '')
-	.setKey(EnvConfig.apiKey ?? '');
-
-export const users = new Users(AppwriteClient);
+/**
+ * ----------------------------------------
+ * HERE : Initialization of the Users services
+ * ----------------------------------------
+ */

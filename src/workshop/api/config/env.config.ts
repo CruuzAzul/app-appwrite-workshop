@@ -1,3 +1,7 @@
+/**
+ * No changes may be made to this file
+ */
+
 export const EnvConfig = {
 	endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT ?? '',
 	projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID ?? '',

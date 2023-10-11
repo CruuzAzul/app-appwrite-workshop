@@ -20,12 +20,12 @@ import {
 const accountContext = createContext<AccountState>(defaultState);
 
 export const AccountProvider = ({children}: {children: ReactNode}) => {
-  const router = useRouter();
-  const [user, setUser] = useState<UserType | undefined>(null);
+	const router = useRouter();
+	const [user, setUser] = useState<UserType | undefined>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
 
-  const appLogin = async (email: string, password: string) => {
+	const appLogin = async (email: string, password: string) => {
 		try {
 			await login(email, password);
 			await loadAccount();
@@ -36,7 +36,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
-  const appRegister = async (email: string, password: string, name: string) => {
+	const appRegister = async (email: string, password: string, name: string) => {
 		try {
 			const session = await register(email, password, name, appLogin);
 			setUser(session);
@@ -66,18 +66,18 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
-  const loadAccount = async () => {
-    try {
-      const loadedAccount = await account.get();
-      setUser(loadedAccount);
-      setError('');
-    } catch (error) {
-      console.error(error);
-      setError('No user logged in...');
-    } finally {
-      setLoading(false);
-    }
-  };
+	const loadAccount = async () => {
+		try {
+			const loadedAccount = await account.get();
+			setUser(loadedAccount);
+			setError('');
+		} catch (error) {
+			console.error(error);
+			setError('No user logged in...');
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	useEffect(() => {
 		void loadAccount();

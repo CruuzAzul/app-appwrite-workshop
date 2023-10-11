@@ -1,14 +1,18 @@
-import {AppwriteException, ID} from 'appwrite';
-
 import {UserType} from '@/types/UserHook.type';
-import {account} from '@/workshop/api/config/client.config';
 
 export async function login(email: string, password: string): Promise<void> {
 	try {
-		await account.createEmailSession(email, password);
+		/**
+		 * ----------------------------------------
+		 * HERE : Session creation code (login)
+		 * ----------------------------------------
+		 */
 	} catch (error) {
-		const appwriteException = error as AppwriteException;
-		console.error(appwriteException.message);
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
 	}
 }
 
@@ -19,33 +23,49 @@ export async function register(
 	login: (email: string, password: string) => Promise<void>
 ): Promise<UserType | undefined> {
 	try {
-		const session = await account.create(ID.unique(), email, password, name);
-		await login(email, password);
+		let session: UserType | undefined;
+
+		/**
+		 * ----------------------------------------
+		 * HERE : Account creation code (register)
+		 * It looks like we need to return a `session` here
+		 * ----------------------------------------
+		 */
 
 		return session;
 	} catch (error) {
-		const appwriteException = error as AppwriteException;
-		console.error(appwriteException.message);
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
 	}
 }
 
 export async function logout() {
-	await account.deleteSession('current');
+	/**
+	 * ----------------------------------------
+	 * HERE : Session logout code
+	 * ----------------------------------------
+	 */
 }
 
 export async function socialLogin(
-  provider: string,
-  successRedirectUrl: string,
-  failureRedirectUrl: string
+	provider: string,
+	successRedirectUrl: string,
+	failureRedirectUrl: string
 ) {
-  try {
-    account.createOAuth2Session(
-      provider,
-      successRedirectUrl,
-      failureRedirectUrl
-    );
-  } catch (error: any) {
-    const appwriteException = error as AppwriteException;
-    console.error(appwriteException.message);
-  }
+	try {
+		/**
+		 * ----------------------------------------
+		 * HERE : Session connection code (social login)
+		 * ----------------------------------------
+		 */
+	} catch (error: any) {
+		/**
+		 * ----------------------------------------
+		 * HERE : Appwrite error handling here
+		 * ----------------------------------------
+		 */
+	}
 }

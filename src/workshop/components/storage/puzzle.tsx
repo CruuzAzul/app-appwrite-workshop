@@ -1,13 +1,17 @@
 import {Models} from 'appwrite';
 
 import {DraggableFilePreview} from '@/components/app/storage/DraggableFilePreview';
-import {getPuzzlePiecesForTransformedPreviews} from '@/workshop/api/modules/storage/puzzle';
+import {getPuzzlePiecesForPreviews} from '@/workshop/api/modules/storage/puzzle';
 
 export default async function Puzzle({files}: {files: Models.File[]}) {
 	return files.map((file) => {
-		const imgSrc = getPuzzlePiecesForTransformedPreviews({
+		const imgSrc = getPuzzlePiecesForPreviews({
 			fileId: file.$id,
-			background: '000000',
+			/**
+			 * ----------------------------------------
+			 * HERE : Add additional parameters
+			 * ----------------------------------------
+			 */
 		});
 
 		return (
