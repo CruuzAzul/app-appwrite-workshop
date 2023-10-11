@@ -97,5 +97,19 @@ export default {
 			users: 'Users module is done ! 🎉',
 			account: 'Account module is done ! 🎉',
 		},
+		question: {
+			functions: 'What is the latest runtime released to date?',
+			databases: 'Which database is used by Appwrite to store your data?',
+			storage: 'What are the methods through which we can query the storage?',
+			users: 'What do we need to use the Users API?',
+			account: 'How many OAuth providers are available on Appwrite?',
+		},
+		answer: {
+			functions: ['Deno', 'PHP', 'Bun'],
+			databases: ['PostgreSQL', 'Mongo DB', 'Maria DB'],
+			storage: ['SDK, Rest, GraphQL', 'SDK, Rest', 'SDK, GraphQL'],
+			users: ['Server SDK', 'API key', 'Server SDK and API key'],
+			account: ['10', '37', '50'],
+		},
 	},
 } as const;

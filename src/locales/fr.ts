@@ -97,5 +97,21 @@ export default {
 			users: 'Le module users est terminé ! 🎉',
 			account: 'Le module account est terminé ! 🎉',
 		},
+		question: {
+			functions: 'Quel est le dernier runtime sorti à ce jour ?',
+			databases:
+				'Quel base de donnée est utilisé par Appwrite pour stocker vos données ?',
+			storage:
+				'Quelles sont les méthodes avec lesquelles nous pouvons requêter le storage ?',
+			users: 'De quoi a-t-on besoin pour utiliser la Users API',
+			account: 'Combien de provider OAuth sont disponible sur Appwrite ?',
+		},
+		answer: {
+			functions: ['Deno', 'PHP', 'Bun'],
+			databases: ['PostgreSQL', 'Mongo DB', 'Maria DB'],
+			storage: ['SDK, Rest, GraphQL', 'SDK, Rest', 'SDK, GraphQL'],
+			users: ['SDK serveur', 'API key', 'SDK serveur et API key'],
+			account: ['10', '37', '50'],
+		},
 	},
 } as const;

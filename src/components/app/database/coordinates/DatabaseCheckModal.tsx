@@ -2,6 +2,7 @@
 
 import {useEffect, useRef} from 'react';
 
+import {CheckModal} from '@/components/common/modal/CheckModal';
 import {useFinishedModule} from '@/hooks/useFinishedModule';
 import {useScopedI18n} from '@/locales/client';
 import {Coordinate} from '@/models/coordinates';
@@ -16,7 +17,7 @@ const DATABASE_SOLUTION: Coordinate[] = [
 ];
 
 export const DatabaseCheckModal = () => {
-	const [finishedModule, setIsFinishedModule] = useFinishedModule();
+	const {finishedModule, setFinishedModule} = useFinishedModule();
 	const t = useScopedI18n('validation');
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const coordinatesCollection = `databases.${EnvConfig.databaseId}.collections.${EnvConfig.coordinatesCollectionId}.documents`;
@@ -47,7 +48,7 @@ export const DatabaseCheckModal = () => {
 					) &&
 					!finishedModule.databases
 				) {
-					setIsFinishedModule((oldFinishedModule) => ({
+					setFinishedModule((oldFinishedModule) => ({
 						...oldFinishedModule,
 						databases: true,
 					}));
@@ -61,45 +62,5 @@ export const DatabaseCheckModal = () => {
 		};
 	}, [coordinatesCollection]);
 
-	const seeClue = () => {
-		dialogRef.current?.showModal();
-	};
-
-	return (
-		<>
-			<button
-				onClick={seeClue}
-				className={`button ${finishedModule.databases ? '' : 'u-none'}`}
-			>
-				{t('seeClue')}
-			</button>
-			<dialog className="modal is-big u-position-absolute" ref={dialogRef}>
-				<form className="modal-form" method="dialog">
-					<header className="modal-header">
-						<div className="u-flex u-main-space-between u-cross-center">
-							<h4 className="modal-title heading-level-5">
-								{t('title.databases')}
-							</h4>
-							<button
-								className="button is-text is-small is-only-icon"
-								aria-label="Close modal"
-							>
-								<span className="icon-x" aria-hidden="true"></span>
-							</button>
-						</div>
-					</header>
-					<div className="modal-content">
-						<p>{t('content')}</p>
-					</div>
-					<div className="modal-footer">
-						<div className="u-flex u-main-end">
-							<a className="button" href="google.com" target="_blank">
-								{t('button')}
-							</a>
-						</div>
-					</div>
-				</form>
-			</dialog>
-		</>
-	);
+	return <CheckModal module="databases" ref={dialogRef} />;
 };
