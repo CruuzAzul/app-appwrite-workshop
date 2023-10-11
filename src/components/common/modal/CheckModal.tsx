@@ -1,6 +1,6 @@
 'use client';
 
-import {Ref, forwardRef, useEffect, useRef} from 'react';
+import {forwardRef, useState} from 'react';
 
 import {Module, useFinishedModule} from '@/hooks/useFinishedModule';
 import {useScopedI18n} from '@/locales/client';
@@ -12,12 +12,18 @@ interface CheckModalProps {
 export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 	({module}, ref) => {
 		const {finishedModule} = useFinishedModule();
+		const [isClicked, setIsClicked] = useState<number | null>(null);
 		const t = useScopedI18n('validation');
 
 		const seeClue = () => {
 			if (ref) {
 				(ref as any)?.current?.showModal();
 			}
+		};
+
+		const onAnswerClick = (index: 0 | 1 | 2) => {
+			navigator.clipboard.writeText(t(`answer.${module}.${index}`));
+			setIsClicked(index);
 		};
 
 		return (
@@ -45,6 +51,21 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 						</header>
 						<div className="modal-content">
 							<p>{t('content')}</p>
+							<p className="u-bold">{t(`question.${module}`)}</p>
+							<ul className="u-flex u-main-space-between u-width-full-line">
+								{([0, 1, 2] as const).map((index) => (
+									<li key={index} className="u-bold">
+										<span
+											className="button is-secondary"
+											onClick={() => onAnswerClick(index)}
+										>
+											{isClicked === index
+												? t('copied')
+												: t(`answer.${module}.${index}`)}
+										</span>
+									</li>
+								))}
+							</ul>
 						</div>
 						<div className="modal-footer">
 							<div className="u-flex u-main-end">

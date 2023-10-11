@@ -21,7 +21,7 @@ export const AccountCheckModal = ({user}: AccountCheckModalProps) => {
 		if (user && !finishedModule.account) {
 			setFinishedModule((oldFinishedModule) => ({
 				...oldFinishedModule,
-				users: true,
+				account: true,
 			}));
 			dialogRef.current?.showModal();
 		}

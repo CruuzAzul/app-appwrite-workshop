@@ -90,6 +90,7 @@ export default {
 		content: 'Entrez la bonne réponse dans l’application de solution',
 		button: 'Aller sur l’application de solution',
 		seeClue: 'Voir l’indice',
+		copied: 'Copié !',
 		title: {
 			functions: 'Le module de fonction est terminé ! 🎉',
 			databases: 'Le module de base de données est terminé ! 🎉',

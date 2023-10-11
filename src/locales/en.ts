@@ -90,6 +90,7 @@ export default {
 		content: 'Enter the correct answer in the solution application',
 		button: 'Go to solution application',
 		seeClue: 'See the clue',
+		copied: 'Copied !',
 		title: {
 			functions: 'Functions module is done ! 🎉',
 			databases: 'Database module is done ! 🎉',
