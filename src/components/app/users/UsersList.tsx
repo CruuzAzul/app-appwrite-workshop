@@ -1,5 +1,7 @@
 import {getTravelersList} from '@/workshop/api/modules/users/travelers';
 
+import {UsersCheckModal} from './UsersCheckModal';
+
 export const UsersList = async () => {
 	const users = await getTravelersList();
 
@@ -52,6 +54,7 @@ export const UsersList = async () => {
 					</div>
 				</div>
 			))}
+			<UsersCheckModal userList={users} />
 		</div>
 	);
 };

@@ -2,6 +2,8 @@
 
 import {UseAccount} from '@/hooks/useAccount';
 
+import {AccountCheckModal} from './AccountCheckModal';
+
 export const AccountInfos = () => {
 	const {user, loading} = UseAccount();
 
@@ -55,6 +57,7 @@ export const AccountInfos = () => {
 					</span>
 				</div>
 			)}
+			<AccountCheckModal user={user} />
 		</div>
 	);
 };

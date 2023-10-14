@@ -86,4 +86,33 @@ export default {
 		addButton: 'Ajouter un élément',
 		addButtonLoading: 'Chargement ...',
 	},
+	validation: {
+		content: 'Entrez la bonne réponse dans l’application de solution',
+		button: 'Aller sur l’application de solution',
+		seeClue: 'Voir l’indice',
+		copied: 'Copié !',
+		title: {
+			functions: 'Le module de fonction est terminé ! 🎉',
+			databases: 'Le module de base de données est terminé ! 🎉',
+			storage: 'Le module de storage est terminé ! 🎉',
+			users: 'Le module users est terminé ! 🎉',
+			account: 'Le module account est terminé ! 🎉',
+		},
+		question: {
+			functions: 'Quel est le dernier runtime sorti à ce jour ?',
+			databases:
+				'Quel base de donnée est utilisé par Appwrite pour stocker vos données ?',
+			storage:
+				'Quelles sont les méthodes avec lesquelles nous pouvons requêter le storage ?',
+			users: 'De quoi a-t-on besoin pour utiliser la Users API',
+			account: 'Combien de provider OAuth sont disponible sur Appwrite ?',
+		},
+		answer: {
+			functions: ['Deno', 'PHP', 'Bun'],
+			databases: ['PostgreSQL', 'Mongo DB', 'Maria DB'],
+			storage: ['SDK, Rest, GraphQL', 'SDK, Rest', 'SDK, GraphQL'],
+			users: ['SDK serveur', 'API key', 'SDK serveur et API key'],
+			account: ['10', '37', '50'],
+		},
+	},
 } as const;
