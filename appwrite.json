@@ -72,15 +72,6 @@
 					"min": -180,
 					"max": 180,
 					"default": null
-				},
-				{
-					"key": "picture",
-					"type": "string",
-					"status": "available",
-					"required": false,
-					"array": false,
-					"format": "url",
-					"default": null
 				}
 			],
 			"indexes": []

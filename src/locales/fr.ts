@@ -67,7 +67,6 @@ export default {
 				name: 'Nom',
 				latitude: 'Latitude',
 				longitude: 'Longitude',
-				picture: 'Photo',
 			},
 		},
 	},
