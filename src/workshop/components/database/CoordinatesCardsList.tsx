@@ -19,9 +19,10 @@ export const CoordinatesCardsList: FC<CoordinatesCardsListProps> = ({
 }) => {
 	const [updatedCoordinatesList, setUpdatedCoordinatesList] =
 		useState(coordinatesList);
-	const coordinatesCollection = `databases.${EnvConfig.databaseId}.collections.${EnvConfig.coordinatesCollectionId}.documents`;
 
 	useEffect(() => {
+    const coordinatesCollection = `databases.${EnvConfig.databaseId}∆.collections.${EnvConfig.coordinatesCollectionId}.documents`;
+
 		const unsubscribe = AppwriteClient.subscribe(
 			coordinatesCollection,
 			(response: RealtimeResponseEvent<Coordinates>) => {
@@ -52,7 +53,7 @@ export const CoordinatesCardsList: FC<CoordinatesCardsListProps> = ({
 		return () => {
 			unsubscribe();
 		};
-	}, [coordinatesCollection]);
+	}, []);
 
 	return (
 		<ul className="numeric-list">

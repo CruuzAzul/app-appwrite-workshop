@@ -5,14 +5,14 @@ import {RealtimeResponseEvent} from 'appwrite';
 
 import {useScopedI18n} from '@/locales/client';
 import {Destination} from '@/models/destination';
-import {EventType, getEventType} from '@/utils/realtime.utils';
-import {AppwriteClient} from '@/workshop/api/config/client.config';
-import {EnvConfig} from '@/workshop/api/config/env.config';
 import {
 	createDestination,
 	deleteDestination,
 	getDestinationList,
-} from '@/workshop/api/modules/functions/destinations';
+} from '@/services/functions/destinations';
+import {EventType, getEventType} from '@/utils/realtime.utils';
+import {AppwriteClient} from '@/workshop/api/config/client.config';
+import {EnvConfig} from '@/workshop/api/config/env.config';
 
 export default function FunctionsCard() {
 	const t = useScopedI18n('functions');

@@ -6,13 +6,12 @@ import {database} from '../../config/client.config';
 import {EnvConfig} from '../../config/env.config';
 
 export const getCoordinatesList = async (): Promise<Coordinates[]> => {
-	const {documents: coordinatesList} =
-		await database.listDocuments<Coordinates>(
-			EnvConfig.databaseId,
-			EnvConfig.coordinatesCollectionId
-		);
+	const {documents} = await database.listDocuments<Coordinates>(
+		EnvConfig.databaseId,
+		EnvConfig.coordinatesCollectionId
+	);
 
-	return coordinatesList;
+	return documents;
 };
 
 export const deleteCoordinates = async (id: string): Promise<void> => {
@@ -26,12 +25,10 @@ export const deleteCoordinates = async (id: string): Promise<void> => {
 export const createCoordinates = async (
 	coordinatesData: Coordinate
 ): Promise<Coordinate> => {
-	const {document: coordinates} = await database.createDocument<Coordinates>(
+  return await database.createDocument<Coordinates>(
 		EnvConfig.databaseId,
 		EnvConfig.coordinatesCollectionId,
 		ID.unique(),
 		coordinatesData
 	);
-
-	return coordinates;
 };
