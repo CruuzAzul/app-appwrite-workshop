@@ -39,7 +39,7 @@ export const CoordinatesCardsList: FC<CoordinatesCardsListProps> = ({
 					case EventType.DELETE:
 						const deletedItemId = response.payload.$id;
 						const filtered = updatedCoordinatesList.filter(
-							(item) => item.id !== deletedItemId
+							(item) => item.$id !== deletedItemId
 						);
 						setUpdatedCoordinatesList([...filtered]);
 						break;
