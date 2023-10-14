@@ -1,6 +1,8 @@
+const {resolve} = require('path');
+
 const {Client, Databases, Storage, Users} = require('node-appwrite');
 
-require('dotenv').config();
+require('dotenv').config({path: resolve(__dirname, '../.env.local')});
 
 const client = new Client()
 	.setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)

@@ -1,3 +1,5 @@
+const {resolve} = require('path');
+
 const {Permission, Role} = require('appwrite');
 const {
 	Client,
@@ -11,7 +13,7 @@ const {
 const destinations = require('./data/destination.js');
 const userList = require('./data/user.js');
 
-require('dotenv').config();
+require('dotenv').config({path: resolve(__dirname, '../.env.local')});
 
 const client = new Client()
 	.setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
@@ -23,38 +25,32 @@ const storage = new Storage(client);
 const users = new Users(client);
 
 const createDatabase = async (databaseName) => {
-	const existingDatabase = database.get(
-		process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID
-	);
-
-	if (existingDatabase) {
-		return;
+	try {
+		return await database.get(process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID);
+	} catch (error) {
+		return await database.create(
+			process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
+			databaseName
+		);
 	}
-
-	return await database.create(
-		process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
-		databaseName
-	);
 };
 
 const createBucket = async (bucketName) => {
-	const existingBucket = storage.getBucket(
-		process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID
-	);
-
-	if (existingBucket) {
-		return;
+	try {
+		return await storage.getBucket(
+			process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID
+		);
+	} catch (error) {
+		return await storage.createBucket(
+			process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID,
+			bucketName,
+			[],
+			false,
+			true,
+			undefined,
+			['svg']
+		);
 	}
-
-	return await storage.createBucket(
-		process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID,
-		bucketName,
-		[],
-		false,
-		true,
-		undefined,
-		['svg']
-	);
 };
 
 const addFileToBucket = async (path, name) => {
