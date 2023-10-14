@@ -31,17 +31,18 @@ export const CoordinatesCardsList: FC<CoordinatesCardsListProps> = ({
 
 				switch (eventType) {
 					case EventType.CREATE:
-						setUpdatedCoordinatesList([
+						setUpdatedCoordinatesList((currentCoordinatesList) => [
 							response.payload as Coordinates,
-							...updatedCoordinatesList,
+							...currentCoordinatesList,
 						]);
 						break;
 					case EventType.DELETE:
 						const deletedItemId = response.payload.$id;
-						const filtered = updatedCoordinatesList.filter(
-							(item) => item.$id !== deletedItemId
+						setUpdatedCoordinatesList((currentCoordinatesList) =>
+							currentCoordinatesList.filter(
+								(item) => item.$id !== deletedItemId
+							)
 						);
-						setUpdatedCoordinatesList([...filtered]);
 						break;
 					default:
 						break;

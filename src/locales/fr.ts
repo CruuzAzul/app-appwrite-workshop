@@ -113,5 +113,14 @@ export default {
 			users: ['SDK serveur', 'API key', 'SDK serveur et API key'],
 			account: ['10', '37', '50'],
 		},
+		redirect: 'Se rendre aux coordonées',
+		endContent:
+			'Bravo ! Vous avez réussi à réunir toutes les coordonnées qui nous seront necessaires pour atteindre le trésor, allons-y sans tarder !',
+	},
+	treasure: {
+		title: 'Félicitation ! Tu es arrivé à la fin de ce voyage !',
+		content:
+			'Il ne te reste plus qu’à ouvrir le coffre pour découvrir le secret de la réussite d’Appwrite',
+		secret: 'La communauté Open-Source',
 	},
 } as const;

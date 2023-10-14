@@ -5,10 +5,12 @@ import React, {useRef, useState} from 'react';
 import {AppwriteException} from 'appwrite';
 
 import {TextInput} from '@/components/common/inputs/TextInput';
+import {useScopedI18n} from '@/locales/client';
 import {createCoordinates} from '@/workshop/api/modules/database/coordinates';
 
 export const CoordinatesForm = () => {
 	const formRef = useRef<HTMLFormElement | null>(null);
+	const t = useScopedI18n('databases.coordinates.form');
 	const [error, setError] = useState<AppwriteException | null>(null);
 
 	const getInputValue = (
@@ -40,7 +42,7 @@ export const CoordinatesForm = () => {
 	return (
 		<div className="card u-width-600">
 			<h2 className="eyebrow-heading-1 u-padding-block-end-32 u-color-text-pink">
-				Vous avez trouvé une nouvelle coordonnée ? :
+				{t('title')}
 			</h2>
 			<form
 				onSubmit={handleSubmit}
@@ -57,7 +59,7 @@ export const CoordinatesForm = () => {
 				)}
 				<div className="u-flex-vertical u-main-center u-cross-center">
 					<button type="submit" className="button">
-						Noter cette coordonnée
+						{t('submitButton')}
 					</button>
 				</div>
 			</form>

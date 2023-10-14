@@ -111,5 +111,14 @@ export default {
 			users: ['Server SDK', 'API key', 'Server SDK and API key'],
 			account: ['10', '37', '50'],
 		},
+		redirect: 'Go to coordinates',
+		endContent:
+			'Congratulations! You’ve managed to gather all the coordinates we need to reach the treasure, so let’s get going!',
+	},
+	treasure: {
+		title: 'Well done ! You’ve arrived at the end of this journey !',
+		content:
+			'You just need to click on the treasure to find out about the secret that made Appwrite successfull',
+		secret: 'Open-Source community',
 	},
 } as const;

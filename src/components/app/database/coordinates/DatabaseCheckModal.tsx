@@ -1,8 +1,9 @@
 'use client';
 
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
-import {CheckModal} from '@/components/common/modal/CheckModal';
+import Link from 'next/link';
+
 import {useFinishedModule} from '@/hooks/useFinishedModule';
 import {useScopedI18n} from '@/locales/client';
 import {Coordinate} from '@/models/coordinates';
@@ -62,5 +63,45 @@ export const DatabaseCheckModal = () => {
 		};
 	}, [coordinatesCollection]);
 
-	return <CheckModal module="databases" ref={dialogRef} />;
+	const seeModal = () => {
+		dialogRef.current?.showModal();
+	};
+
+	return (
+		<>
+			<button
+				onClick={seeModal}
+				className={`button ${finishedModule['databases'] ? '' : 'u-none'}`}
+			>
+				{t('seeClue')}
+			</button>
+			<dialog className="modal is-big u-position-absolute" ref={dialogRef}>
+				<form className="modal-form" method="dialog">
+					<header className="modal-header">
+						<div className="u-flex u-main-space-between u-cross-center">
+							<h4 className="modal-title heading-level-5">
+								{t('title.databases')}
+							</h4>
+							<button
+								className="button is-text is-small is-only-icon"
+								aria-label="Close modal"
+							>
+								<span className="icon-x" aria-hidden="true"></span>
+							</button>
+						</div>
+					</header>
+					<div className="modal-content">
+						<p>{t('endContent')}</p>
+					</div>
+					<div className="modal-footer">
+						<div className="u-flex u-main-end">
+							<Link className="button" href="/treasure">
+								{t('redirect')}
+							</Link>
+						</div>
+					</div>
+				</form>
+			</dialog>
+		</>
+	);
 };

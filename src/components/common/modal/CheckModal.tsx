@@ -1,6 +1,6 @@
 'use client';
 
-import {forwardRef, useState} from 'react';
+import {MouseEventHandler, forwardRef, useState} from 'react';
 
 import {Module, useFinishedModule} from '@/hooks/useFinishedModule';
 import {useScopedI18n} from '@/locales/client';
@@ -15,10 +15,15 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 		const [isClicked, setIsClicked] = useState<number | null>(null);
 		const t = useScopedI18n('validation');
 
-		const seeClue = () => {
+		const seeClue: MouseEventHandler = (event) => {
+			event.stopPropagation();
 			if (ref) {
 				(ref as any)?.current?.showModal();
 			}
+		};
+
+		const stopPropagation: MouseEventHandler = (event) => {
+			event.stopPropagation();
 		};
 
 		const onAnswerClick = (index: 0 | 1 | 2) => {
@@ -34,7 +39,11 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 				>
 					{t('seeClue')}
 				</button>
-				<dialog className="modal is-big u-position-absolute" ref={ref}>
+				<dialog
+					className="modal is-big u-position-absolute"
+					ref={ref}
+					onClick={stopPropagation}
+				>
 					<form className="modal-form" method="dialog">
 						<header className="modal-header">
 							<div className="u-flex u-main-space-between u-cross-center">
