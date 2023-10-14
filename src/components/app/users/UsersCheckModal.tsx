@@ -4,6 +4,7 @@ import {useEffect, useRef} from 'react';
 
 import {CheckModal} from '@/components/common/modal/CheckModal';
 import {useFinishedModule} from '@/hooks/useFinishedModule';
+import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
 import {useScopedI18n} from '@/locales/client';
 import {Users} from '@/models/users';
 
@@ -12,15 +13,16 @@ interface UsersCheckModal {
 }
 
 export const UsersCheckModal = ({userList}: UsersCheckModal) => {
-	const {finishedModule, setFinishedModule} = useFinishedModule();
+	const {setFinishedModule} = useFinishedModule();
+	const isModuleFinished = useIsFinishedModule('users');
 	const t = useScopedI18n('validation');
 	const dialogRef = useRef<HTMLDialogElement>(null);
 
 	useEffect(() => {
-		if (userList.length > 0 && !finishedModule.storage) {
+		if (userList.length > 0 && !isModuleFinished) {
 			setFinishedModule((oldFinishedModule) => ({
 				...oldFinishedModule,
-				storage: true,
+				users: true,
 			}));
 			dialogRef.current?.showModal();
 		}

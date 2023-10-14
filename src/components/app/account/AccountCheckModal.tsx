@@ -6,6 +6,7 @@ import {Models} from 'appwrite';
 
 import {CheckModal} from '@/components/common/modal/CheckModal';
 import {useFinishedModule} from '@/hooks/useFinishedModule';
+import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
 import {useScopedI18n} from '@/locales/client';
 
 interface AccountCheckModalProps {
@@ -13,12 +14,13 @@ interface AccountCheckModalProps {
 }
 
 export const AccountCheckModal = ({user}: AccountCheckModalProps) => {
-	const {finishedModule, setFinishedModule} = useFinishedModule();
+	const {setFinishedModule} = useFinishedModule();
+	const isModuleFinished = useIsFinishedModule('account');
 	const t = useScopedI18n('validation');
 	const dialogRef = useRef<HTMLDialogElement>(null);
 
 	useEffect(() => {
-		if (user && !finishedModule.account) {
+		if (user && !isModuleFinished) {
 			setFinishedModule((oldFinishedModule) => ({
 				...oldFinishedModule,
 				account: true,
