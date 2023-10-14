@@ -26,11 +26,7 @@ export const uploadImageKey = async (
 	}
 };
 
-export const getPuzzlePiecesForPreviews = ({fileId}: FilePreview): URL => {
-	return storage.getFilePreview(EnvConfig.storageBucketId, fileId);
-};
-
-export const getPuzzlePiecesForTransformedPreviews = ({
+export const getPuzzlePiecesForPreviews = ({
 	fileId,
 	width,
 	height,
@@ -59,12 +55,4 @@ export const getPuzzlePiecesForTransformedPreviews = ({
 		background,
 		output
 	);
-};
-
-export const getPuzzlePiecesForView = (fileId: string): URL => {
-	try {
-		return storage.getFileView(EnvConfig.storageBucketId, fileId);
-	} catch (error: any) {
-		throw new AppwriteException(error);
-	}
 };

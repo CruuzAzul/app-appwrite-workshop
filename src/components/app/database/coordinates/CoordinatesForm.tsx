@@ -4,13 +4,8 @@ import React, {useRef, useState} from 'react';
 
 import {AppwriteException} from 'appwrite';
 
-import {FileInput} from '@/components/common/inputs/FileInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
 import {createCoordinates} from '@/workshop/api/modules/database/coordinates';
-import {
-	getPuzzlePiecesForView,
-	uploadImageKey,
-} from '@/workshop/api/modules/storage/puzzle';
 
 export const CoordinatesForm = () => {
 	const formRef = useRef<HTMLFormElement | null>(null);
@@ -23,21 +18,6 @@ export const CoordinatesForm = () => {
 		return (elements.namedItem(name) as HTMLInputElement).value;
 	};
 
-	const uploadAndRetrievePicture = async (
-		elements: HTMLFormControlsCollection
-	): Promise<URL | undefined> => {
-		const pictureInput = elements.namedItem('picture') as HTMLInputElement;
-		const picture = pictureInput.files?.[0];
-
-		if (picture) {
-			const uploadedFile = await uploadImageKey([picture]);
-
-			return getPuzzlePiecesForView(uploadedFile[0].$id);
-		}
-
-		return undefined;
-	};
-
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
@@ -47,7 +27,6 @@ export const CoordinatesForm = () => {
 			name: getInputValue(elements, 'name'),
 			latitude: parseFloat(getInputValue(elements, 'latitude')),
 			longitude: parseFloat(getInputValue(elements, 'longitude')),
-			picture: await uploadAndRetrievePicture(elements),
 		};
 
 		try {
@@ -72,7 +51,6 @@ export const CoordinatesForm = () => {
 					<TextInput id="name" label="Name" type="text" />
 					<TextInput id="latitude" label="Latitude" type="number" />
 					<TextInput id="longitude" label="Longitude" type="number" />
-					<FileInput id="picture" label="Picture" />
 				</ul>
 				{error && (
 					<p className="u-color-text-pink u-text-center">{error.message}</p>
