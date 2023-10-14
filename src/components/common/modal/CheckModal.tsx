@@ -69,7 +69,11 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 						</div>
 						<div className="modal-footer">
 							<div className="u-flex u-main-end">
-								<a className="button" href="google.com" target="_blank">
+								<a
+									className="button"
+									href="appventure-compass.vercel.app"
+									target="_blank"
+								>
 									{t('button')}
 								</a>
 							</div>
