@@ -8,6 +8,8 @@ import {TextInput} from '@/components/common/inputs/TextInput';
 import {useScopedI18n} from '@/locales/client';
 import {ROUTES} from '@/routing/routes.config';
 
+import { ErrorMessage } from '../storage/ErrorMessage';
+
 export const RegisterForm: FC<{
 	onSubmit: (e: FormEvent<EventTarget>) => Promise<void>;
 	setName: (value: ((prevState: string) => string) | string) => void;
@@ -16,7 +18,17 @@ export const RegisterForm: FC<{
 	name: string;
 	email: string;
 	password: string;
-}> = ({onSubmit, setName, setEmail, setPassword, name, email, password}) => {
+	error?: string;
+}> = ({
+	onSubmit,
+	setName,
+	setEmail,
+	setPassword,
+	name,
+	email,
+	password,
+	error,
+}) => {
 	const t = useScopedI18n('register');
 
 	return (
@@ -31,6 +43,7 @@ export const RegisterForm: FC<{
 						<TextInput label={t('email')} setValue={setEmail} type="email" />
 						<PasswordInput setValue={setPassword} />
 					</ul>
+					{error && <ErrorMessage error={error}></ErrorMessage>}
 					<div className="u-flex-vertical u-main-center u-cross-center">
 						<button
 							type="submit"

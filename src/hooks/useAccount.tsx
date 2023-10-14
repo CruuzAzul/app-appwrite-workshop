@@ -3,7 +3,7 @@
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 
 import {AppwriteException} from 'appwrite';
-import {useRouter} from 'next/navigation';
+import {usePathname, useRouter} from 'next/navigation';
 
 import {defaultState} from '@/constants/defaultUserState';
 import {ROUTES} from '@/routing/routes.config';
@@ -20,29 +20,32 @@ import {
 const accountContext = createContext<AccountState>(defaultState);
 
 export const AccountProvider = ({children}: {children: ReactNode}) => {
-  const router = useRouter();
-  const [user, setUser] = useState<UserType | undefined>(null);
+	const router = useRouter();
+	const currentRoute = usePathname();
+	const [user, setUser] = useState<UserType | undefined>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
 
-  const appLogin = async (email: string, password: string) => {
+	const appLogin = async (email: string, password: string) => {
 		try {
 			await login(email, password);
 			await loadAccount();
 			router.push(ROUTES.dashboard);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
+			setError(appwriteException.message);
 			console.error(appwriteException.message);
 		}
 	};
 
-  const appRegister = async (email: string, password: string, name: string) => {
+	const appRegister = async (email: string, password: string, name: string) => {
 		try {
 			const session = await register(email, password, name, appLogin);
 			setUser(session);
 			router.push(ROUTES.dashboard);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
+			setError(appwriteException.message);
 			console.error(appwriteException.message);
 		}
 	};
@@ -66,22 +69,25 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		}
 	};
 
-  const loadAccount = async () => {
-    try {
-      const loadedAccount = await account.get();
-      setUser(loadedAccount);
-      setError('');
-    } catch (error) {
-      console.error(error);
-      setError('No user logged in...');
-    } finally {
-      setLoading(false);
-    }
-  };
+	const loadAccount = async () => {
+		try {
+			const loadedAccount = await account.get();
+			setUser(loadedAccount);
+			setError('');
+		} catch (error) {
+			console.error(error);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	useEffect(() => {
 		void loadAccount();
 	}, []);
+
+	useEffect(() => {
+		setError('');
+	}, [currentRoute]);
 
 	return (
 		<accountContext.Provider

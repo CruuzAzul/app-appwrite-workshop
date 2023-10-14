@@ -6,7 +6,7 @@ import {LoginForm} from '@/components/app/authentication/LoginForm';
 import {UseAccount} from '@/hooks/useAccount';
 
 export default function Login() {
-	const {login} = UseAccount();
+	const {login, error} = UseAccount();
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -24,6 +24,7 @@ export default function Login() {
 			setPassword={setPassword}
 			email={email}
 			password={password}
+			error={error}
 		/>
 	);
 }
