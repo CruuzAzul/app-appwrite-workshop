@@ -116,9 +116,17 @@ export default {
 			'Congratulations! You’ve managed to gather all the coordinates we need to reach the treasure, so let’s get going!',
 	},
 	treasure: {
-		title: 'Well done ! You’ve arrived at the end of this journey !',
+		title: 'Congratulations ! 🥳',
 		content:
-			'You just need to click on the treasure to find out about the secret that made Appwrite successfull',
-		secret: 'Open-Source community',
+			"You've successfully completed your AppVenture! Now you're ready to continue your journey and explore what makes Appwrite so extraordinary... The treasure you've been looking for has always been there, right in front of you. Now it's time to discover it. 🏴‍",
+		contentStep1:
+			"Take a step back and reflect on everything you've learned on this AppVenture! You've discovered Appwrite, a powerful BAAS (Backend as a Service) that lets you manage authentication, file storage, databases and much more, all in one place! 🤩",
+		contentStep2:
+			"You've built an app that uses these features to solve puzzles, collect clues and reach new heights! 🏔️ You may have found this impressive, but know that this is just the beginning of what you can achieve with Appwrite.... 🚀",
+		secretIntro:
+			"Congratulations, you've done it... You've explored Appwrite's mysteries, solved its riddles, mastered its features to discover the ultimate treasure that makes Appwrite what it is today... \n",
+		secret: 'The open source community behind this project 🫶🏼',
+		communityButton: 'Join the community',
+		workshopOpinion: 'Give your opinion on the workshop',
 	},
 } as const;
