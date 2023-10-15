@@ -6,6 +6,7 @@ import {RealtimeResponseEvent} from 'appwrite';
 
 import {CheckModal} from '@/components/common/modal/CheckModal';
 import {useFinishedModule} from '@/hooks/useFinishedModule';
+import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
 import {useScopedI18n} from '@/locales/client';
 import {Destination, DestinationType} from '@/models/destination';
 import {EventType, getEventType} from '@/utils/realtime.utils';
@@ -18,7 +19,8 @@ const FUNCTIONS_SOLUTION: DestinationType = {
 };
 
 export const FunctionsCheckModal = () => {
-	const {finishedModule, setFinishedModule} = useFinishedModule();
+	const {setFinishedModule} = useFinishedModule();
+	const isFinishedModule = useIsFinishedModule('functions');
 	const t = useScopedI18n('validation');
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const destinationCollection = `databases.${EnvConfig.databaseId}.collections.${EnvConfig.destinationCollectionId}.documents`;
@@ -30,10 +32,10 @@ export const FunctionsCheckModal = () => {
 				const eventType = getEventType({events: response.events});
 
 				if (
-					eventType === EventType.UPDATE &&
+					[EventType.UPDATE, EventType.CREATE].includes(eventType) &&
 					response.payload.destination === FUNCTIONS_SOLUTION.destination &&
 					response.payload.flight === FUNCTIONS_SOLUTION.flight &&
-					!finishedModule.functions
+					!isFinishedModule
 				) {
 					setFinishedModule((oldFinishedModule) => ({
 						...oldFinishedModule,
