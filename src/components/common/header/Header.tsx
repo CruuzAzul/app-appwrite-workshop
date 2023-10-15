@@ -9,11 +9,11 @@ export const Header = () => {
 				<Image
 					width={60}
 					height={60}
-					src="https://appwrite.io/images-ee/press/square-logo-pink.svg"
+					src="/appwrite.svg"
 					alt="Workshop logo"
 				/>
 				<span className="eyebrow-heading-1 heading-level-1 u-color-text-pink u-padding-inline-8">
-					Appwrite Workshop
+					AppVenture
 				</span>
 			</h1>
 			<Logout />

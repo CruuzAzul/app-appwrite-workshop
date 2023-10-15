@@ -46,12 +46,11 @@ export default {
 		email: 'Adresse email',
 	},
 	home: {
-		startButton: 'Commencer l’aventure',
+		startButton: "Démarrer l'AppVenture",
+		title:
+			"Voyage au coeur d'Appwrite :\n Le backend open-source qui challenge Firebase 🧳",
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget mattis\n' +
-			'tellus. Proin feugiat, magna at posuere bibendum, urna nisl pulvinar\n' +
-			'ipsum, eu eleifend justo sem quis risus. Vestibulum fringilla varius\n' +
-			'sagittis.',
+			"Bienvenue dans l'AppVenture ! 🗺️ \n Elle sera votre carte au trésor, votre boussole et votre compagnon fidèle dans votre quête, vous aidant à déverrouiller les secrets de chaque destination que nous explorerons ! 🧳",
 	},
 	databases: {
 		coordinates: {

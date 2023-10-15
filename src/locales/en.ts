@@ -46,7 +46,8 @@ export default {
 		email: 'Email address',
 	},
 	home: {
-		startButton: 'Start the aventure',
+		startButton: 'Start the AppVenture',
+    title: 'Journey to the heart of Appwrite: the open-source backend that challenges Firebase 🧳',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget mattis\n' +
 			'tellus. Proin feugiat, magna at posuere bibendum, urna nisl pulvinar\n' +
