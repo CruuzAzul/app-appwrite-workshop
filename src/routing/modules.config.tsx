@@ -50,7 +50,7 @@ export const modulesConfig = [
 	{
 		moduleName: 'Databases',
 		path: 'databases',
-		status: 'In progress',
+		status: 'Ready',
 		tag: 'Client SDK',
 		infos: [
 			{

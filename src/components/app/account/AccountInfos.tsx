@@ -15,7 +15,7 @@ export const AccountInfos = () => {
 			{loading && (
 				<span className="text u-bold u-color-text-info u-flex u-cross-center u-gap-8">
 					<div className="loader" />
-					Recharche de compte en cours...
+					Recherche de compte en cours...
 				</span>
 			)}
 			{shouldDisplayIndice && (
