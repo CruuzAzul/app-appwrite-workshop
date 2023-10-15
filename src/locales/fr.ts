@@ -120,7 +120,7 @@ export default {
 	treasure: {
 		title: 'Félicitation ! Tu es arrivé à la fin de ce voyage !',
 		content:
-			'Il ne te reste plus qu’à ouvrir le coffre pour découvrir le secret de la réussite d’Appwrite',
+			'Il ne te reste plus qu’à suivre le chemin pour découvrir le secret de la réussite d’Appwrite',
 		secret: 'La communauté Open-Source',
 	},
 } as const;
