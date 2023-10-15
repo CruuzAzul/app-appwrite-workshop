@@ -25,7 +25,7 @@ export const deleteCoordinates = async (id: string): Promise<void> => {
 export const createCoordinates = async (
 	coordinatesData: Coordinate
 ): Promise<Coordinate> => {
-  return await database.createDocument<Coordinates>(
+	return await database.createDocument<Coordinates>(
 		EnvConfig.databaseId,
 		EnvConfig.coordinatesCollectionId,
 		ID.unique(),

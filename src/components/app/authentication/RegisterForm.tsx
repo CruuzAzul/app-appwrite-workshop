@@ -8,7 +8,7 @@ import {TextInput} from '@/components/common/inputs/TextInput';
 import {useScopedI18n} from '@/locales/client';
 import {ROUTES} from '@/routing/routes.config';
 
-import { ErrorMessage } from '../storage/ErrorMessage';
+import {ErrorMessage} from '../storage/ErrorMessage';
 
 export const RegisterForm: FC<{
 	onSubmit: (e: FormEvent<EventTarget>) => Promise<void>;

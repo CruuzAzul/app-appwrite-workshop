@@ -21,7 +21,7 @@ export const CoordinatesCardsList: FC<CoordinatesCardsListProps> = ({
 		useState(coordinatesList);
 
 	useEffect(() => {
-    const coordinatesCollection = `databases.${EnvConfig.databaseId}∆.collections.${EnvConfig.coordinatesCollectionId}.documents`;
+		const coordinatesCollection = `databases.${EnvConfig.databaseId}∆.collections.${EnvConfig.coordinatesCollectionId}.documents`;
 
 		const unsubscribe = AppwriteClient.subscribe(
 			coordinatesCollection,

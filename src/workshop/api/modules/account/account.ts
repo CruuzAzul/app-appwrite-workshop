@@ -34,18 +34,18 @@ export async function logout() {
 }
 
 export async function socialLogin(
-  provider: string,
-  successRedirectUrl: string,
-  failureRedirectUrl: string
+	provider: string,
+	successRedirectUrl: string,
+	failureRedirectUrl: string
 ) {
-  try {
-    account.createOAuth2Session(
-      provider,
-      successRedirectUrl,
-      failureRedirectUrl
-    );
-  } catch (error: any) {
-    const appwriteException = error as AppwriteException;
-    console.error(appwriteException.message);
-  }
+	try {
+		account.createOAuth2Session(
+			provider,
+			successRedirectUrl,
+			failureRedirectUrl
+		);
+	} catch (error: any) {
+		const appwriteException = error as AppwriteException;
+		console.error(appwriteException.message);
+	}
 }
