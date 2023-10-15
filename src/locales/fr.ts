@@ -118,9 +118,17 @@ export default {
 			'Bravo ! Vous avez réussi à réunir toutes les coordonnées qui nous seront necessaires pour atteindre le trésor, allons-y sans tarder !',
 	},
 	treasure: {
-		title: 'Félicitation ! Tu es arrivé à la fin de ce voyage !',
+		title: 'Félicitation ! 🥳',
 		content:
-			'Il ne te reste plus qu’à ouvrir le coffre pour découvrir le secret de la réussite d’Appwrite',
-		secret: 'La communauté Open-Source',
+			'Vous avez terminé votre AppVenture avec succès ! Vous êtes maintenant prêt à poursuivre votre voyage et à explorer ce qui rend Appwrite si extraordinaire... Le trésor que vous cherchez a toujours été là, depuis le début, sous vos yeux. Il est temps de le découvrir. 🏴‍',
+		contentStep1:
+			"Faites un pas en arrière et réfléchissez à tout ce que vous avez appris lors de cette AppVenture ! Vous avez découvert Appwrite, un BAAS (Backend as a Service) puissant qui vous permet de gérer l'authentification, le stockage de fichiers, les bases de données et bien plus encore, le tout en un seul endroit ! 🤩",
+		contentStep2:
+			"Vous avez construit une application qui utilise ces fonctionnalités pour résoudre des énigmes, collecter des indices et atteindre de nouveaux sommets ! 🏔️ Vous avez peut-être trouvé cela impressionnant, mais sachez que ce n'est que le début de ce que vous pouvez accomplir avec Appwrite... 🚀",
+		secretIntro:
+			"Bravo, vous y êtes... Vous avez exploré les mystères d'Appwrite, résolu des énigmes, maîtrisé ses fonctionnalités pour découvrir le trésor ultime qui fait d'Appwrite ce qu'il est aujourd'hui... \n",
+		secret: 'La communauté open source qui soutient ce projet 🫶🏼',
+		communityButton: 'Rejoindre la communauté',
+		workshopOpinion: 'Donnez votre avis sur le workshop',
 	},
 } as const;
