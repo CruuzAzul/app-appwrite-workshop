@@ -6,6 +6,7 @@ import {RealtimeResponseEvent} from 'appwrite';
 
 import {CheckModal} from '@/components/common/modal/CheckModal';
 import {useFinishedModule} from '@/hooks/useFinishedModule';
+import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
 import {EventType, getEventType} from '@/utils/realtime.utils';
 import {AppwriteClient} from '@/workshop/api/config/client.config';
 import {EnvConfig} from '@/workshop/api/config/env.config';
@@ -13,7 +14,8 @@ import {EnvConfig} from '@/workshop/api/config/env.config';
 const STORAGE_SOLUTION = 'Capture d’écran 2023-10-08 à 15.34.04.png';
 
 export const StorageCheckModal = () => {
-	const {finishedModule, setFinishedModule} = useFinishedModule();
+	const {setFinishedModule} = useFinishedModule();
+	const isModuleFinished = useIsFinishedModule('storage');
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const bucket = `buckets.${EnvConfig.storageBucketId}.files`;
 
@@ -26,7 +28,7 @@ export const StorageCheckModal = () => {
 				if (
 					eventType === EventType.CREATE &&
 					response.payload.name === STORAGE_SOLUTION &&
-					!finishedModule.storage
+					!isModuleFinished
 				) {
 					setFinishedModule((oldFinishedModule) => ({
 						...oldFinishedModule,

@@ -5,6 +5,7 @@ import {useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
 
 import {useFinishedModule} from '@/hooks/useFinishedModule';
+import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
 import {useScopedI18n} from '@/locales/client';
 import {Coordinate} from '@/models/coordinates';
 import {AppwriteClient} from '@/workshop/api/config/client.config';
@@ -18,7 +19,8 @@ const DATABASE_SOLUTION: Coordinate[] = [
 ];
 
 export const DatabaseCheckModal = () => {
-	const {finishedModule, setFinishedModule} = useFinishedModule();
+	const {setFinishedModule} = useFinishedModule();
+	const isModuleFinished = useIsFinishedModule('databases');
 	const t = useScopedI18n('validation');
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const coordinatesCollection = `databases.${EnvConfig.databaseId}.collections.${EnvConfig.coordinatesCollectionId}.documents`;
@@ -47,7 +49,7 @@ export const DatabaseCheckModal = () => {
 							coord.latitude === sortedSolution[index].latitude &&
 							coord.longitude === sortedSolution[index].longitude
 					) &&
-					!finishedModule.databases
+					!isModuleFinished
 				) {
 					setFinishedModule((oldFinishedModule) => ({
 						...oldFinishedModule,
@@ -71,7 +73,7 @@ export const DatabaseCheckModal = () => {
 		<>
 			<button
 				onClick={seeModal}
-				className={`button ${finishedModule['databases'] ? '' : 'u-none'}`}
+				className={`button ${isModuleFinished ? '' : 'u-none'}`}
 			>
 				{t('seeClue')}
 			</button>
