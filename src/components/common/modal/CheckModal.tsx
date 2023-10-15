@@ -1,6 +1,6 @@
 'use client';
 
-import {MouseEventHandler, forwardRef, useState} from 'react';
+import {forwardRef, MouseEventHandler, useState} from 'react';
 
 import {Module, useFinishedModule} from '@/hooks/useFinishedModule';
 import {useScopedI18n} from '@/locales/client';
@@ -33,12 +33,17 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 
 		return (
 			<>
-				<button
-					onClick={seeClue}
-					className={`button ${finishedModule[module] ? '' : 'u-none'}`}
-				>
-					{t('seeClue')}
-				</button>
+				<div className="u-flex u-width-full-line u-main-end">
+					<button
+						onClick={seeClue}
+						className={`button is-secondary ${
+							finishedModule[module] ? '' : 'u-none'
+						}`}
+					>
+            <span className="icon-light-bulb" aria-hidden="true" />
+						{t('seeClue')}
+					</button>
+				</div>
 				<dialog
 					className="modal is-big u-position-absolute"
 					ref={ref}
@@ -80,7 +85,7 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 							<div className="u-flex u-main-end">
 								<a
 									className="button"
-									href="appventure-compass.vercel.app"
+									href="https://appventure-compass.vercel.app"
 									target="_blank"
 								>
 									{t('button')}

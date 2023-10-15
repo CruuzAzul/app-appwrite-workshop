@@ -1,9 +1,14 @@
+import {Metadata} from 'next';
 import Link from 'next/link';
 
 import {Files} from '@/components/app/storage/Files';
 import {StorageCheckModal} from '@/components/app/storage/StorageCheckModal';
 import {getScopedI18n} from '@/locales/server';
 import {ROUTES} from '@/routing/routes.config';
+
+export const metadata: Metadata = {
+	title: 'AppVenture - Storage 💾',
+};
 
 export default async function Storage() {
 	const t = await getScopedI18n('storage');

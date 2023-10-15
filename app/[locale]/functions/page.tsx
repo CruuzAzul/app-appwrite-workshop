@@ -1,6 +1,12 @@
+import {Metadata} from 'next';
+
 import FunctionsCard from '@/components/app/functions/FunctionsCard';
 import {FunctionsCheckModal} from '@/components/app/functions/FunctionsCheckModal';
 import {getScopedI18n} from '@/locales/server';
+
+export const metadata: Metadata = {
+	title: 'AppVenture - Functions ☁️',
+};
 
 export default async function Functions() {
 	const t = await getScopedI18n('functions');

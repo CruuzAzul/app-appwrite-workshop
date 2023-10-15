@@ -1,5 +1,11 @@
+import {Metadata} from 'next';
+
 import {getPuzzlePieces} from '@/workshop/api/modules/storage/puzzle';
 import Puzzle from '@/workshop/components/storage/puzzle';
+
+export const metadata: Metadata = {
+	title: 'AppVenture - Storage 💾',
+};
 
 export default async function StoragePreview() {
 	const filesList = await getPuzzlePieces();

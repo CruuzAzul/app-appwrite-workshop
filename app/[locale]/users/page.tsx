@@ -1,5 +1,11 @@
+import {Metadata} from "next";
+
 import {UsersList} from '@/components/app/users/UsersList';
 import {getScopedI18n} from '@/locales/server';
+
+export const metadata: Metadata = {
+	title: 'AppVenture - Users 👥',
+};
 
 export default async function Users() {
 	const t = await getScopedI18n('users');

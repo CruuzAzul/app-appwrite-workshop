@@ -2,7 +2,7 @@
 
 import {FC} from 'react';
 
-import {useRouter} from 'next/navigation';
+import Link from 'next/link';
 
 import {useI18n} from '@/locales/client';
 import {ModuleConfig} from '@/routing/modules.config';
@@ -12,14 +12,13 @@ interface CardModuleProps {
 }
 
 export const CardModule: FC<CardModuleProps> = ({module}) => {
-	const router = useRouter();
 	const {moduleName, path, status, tag, infos, icons, validationComponent} =
 		module;
 
 	const t = useI18n();
 
 	return (
-		<li className="u-cursor-pointer" onClick={() => router.push(path)}>
+		<li>
 			<div className="card">
 				<div className="grid-item-1">
 					<div className="grid-item-1-start-start">
@@ -44,30 +43,31 @@ export const CardModule: FC<CardModuleProps> = ({module}) => {
 					</div>
 					<div className="grid-item-1-start-end">
 						<div className="status">
+							<ul className="icons u-flex u-gap-8 u-color-text-info">
+								{icons.map((icon, index) => (
+									<li key={index}>
+										<span
+											className={`${icon} u-color-text-info`}
+											aria-hidden="true"
+										/>
+									</li>
+								))}
+							</ul>
+							<div className="tag">
+								<span className="icon-duplicate" aria-hidden="true" />
+								<span className="text">{tag}</span>
+							</div>
 							<button className="tag" disabled>
 								<span className="text">{status}</span>
 							</button>
 						</div>
 					</div>
-					<div className="grid-item-1-end-start">
-						<div className="u-flex u-gap-16 u-flex-wrap">
-							<div className="tag">
-								<span className="icon-duplicate" aria-hidden="true" />
-								<span className="text">{tag}</span>
-							</div>
-						</div>
-					</div>
+					<div className="grid-item-1-end-start" />
 					<div className="grid-item-1-end-end">
-						<ul className="icons u-flex u-gap-8 u-color-text-info">
-							{icons.map((icon, index) => (
-								<li key={index}>
-									<span
-										className={`${icon} u-color-text-info`}
-										aria-hidden="true"
-									/>
-								</li>
-							))}
-						</ul>
+						<Link className="button u-cursor-pointer" href={path}>
+							Commencer le module
+							<span className="icon-lightning-bolt" aria-hidden="true" />
+						</Link>
 					</div>
 					{validationComponent}
 				</div>

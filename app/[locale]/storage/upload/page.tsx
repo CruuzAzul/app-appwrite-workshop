@@ -1,5 +1,11 @@
+import {Metadata} from 'next';
+
 import {UploadBox} from '@/components/app/storage/UploadBox';
 import {getScopedI18n} from '@/locales/server';
+
+export const metadata: Metadata = {
+	title: 'AppVenture - Storage 💾',
+};
 
 export default async function StorageUpload() {
 	const t = await getScopedI18n('storage.upload');

@@ -1,7 +1,13 @@
+import {Metadata} from "next";
+
 import {CoordinatesForm} from '@/components/app/database/coordinates/CoordinatesForm';
 import {CoordinatesList} from '@/components/app/database/coordinates/CoordinatesList';
 import {DatabaseCheckModal} from '@/components/app/database/coordinates/DatabaseCheckModal';
 import {getScopedI18n} from '@/locales/server';
+
+export const metadata: Metadata = {
+	title: 'AppVenture - Databases 💽',
+};
 
 export default async function Databases() {
 	const t = await getScopedI18n('databases.coordinates');
