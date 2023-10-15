@@ -1,9 +1,8 @@
 import {Module} from './useFinishedModule';
 
 export const useIsFinishedModule = (module: Module) => {
-	const storage = JSON.parse(
-		localStorage.getItem('appwrite-workshop-finished-module') ?? ''
-	);
+	const localStorageItem =
+		localStorage.getItem('appwrite-workshop-finished-module') ?? '';
 
-	return storage[module];
+  return localStorageItem ? JSON.parse(localStorageItem)[module] : false;
 };
