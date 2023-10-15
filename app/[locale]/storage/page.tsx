@@ -24,10 +24,10 @@ export default async function Storage() {
 			</h1>
 			<Files />
 			<Link
-				href={ROUTES.storage.upload}
-				className="u-color-text-pink link u-bold"
+				href={ROUTES.storage.preview}
+				className="button u-bold u-font-size-24"
 			>
-				{t('link')}
+				{t('linkPreview')}
 			</Link>
 			<StorageCheckModal />
 		</main>

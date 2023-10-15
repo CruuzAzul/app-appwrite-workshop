@@ -5,8 +5,8 @@ export const ROUTES = {
 	register: 'register',
 	storage: {
 		base: 'storage',
-		preview: 'storage/preview',
-		upload: 'storage/upload',
+		preview: '/storage/preview',
+		upload: '/storage/upload',
 	},
 	users: 'users',
 };
