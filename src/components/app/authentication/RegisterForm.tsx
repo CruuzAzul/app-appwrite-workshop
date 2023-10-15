@@ -8,6 +8,7 @@ import {TextInput} from '@/components/common/inputs/TextInput';
 import {useScopedI18n} from '@/locales/client';
 import {ROUTES} from '@/routing/routes.config';
 
+import styles from './styles.module.css';
 import {ErrorMessage} from '../storage/ErrorMessage';
 
 export const RegisterForm: FC<{
@@ -32,7 +33,9 @@ export const RegisterForm: FC<{
 	const t = useScopedI18n('register');
 
 	return (
-		<section className="u-flex-vertical u-main-center u-cross-center u-full-screen-height u-gap-32">
+		<section
+			className={`u-flex-vertical u-main-center u-cross-center u-full-screen-height u-gap-32 ${styles.background} ${styles.backgroundRegister}`}
+		>
 			<h1 className="eyebrow-heading-1 u-text-center u-color-text-pink">
 				{t('title')}
 			</h1>

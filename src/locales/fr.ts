@@ -20,16 +20,13 @@ export default {
 	},
 	storage: {
 		title: 'On dirait bien que l’on a des fichiers disponibles dans un bucket',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet mollis lectus ut iaculis. In neque ligula, auctor vitae lorem in, venenatis lobortis purus. Ut ac rhoncus ex, ut egestas leo. Mauris nec rutrum magna, sit amet tincidunt justo. Sed pellentesque vitae nibh eget imperdiet. Ut sodales commodo turpis, rutrum porttitor odio porttitor sed. Curabitur et turpis vitae mauris pulvinar consequat non ut ligula. Aenean mi orci, cursus ac libero id, consequat elementum mi. Etiam gravida quam eget tempus maximus. Phasellus et diam congue, accumsan felis eget, egestas arcu. Maecenas cursus sapien id risus faucibus aliquet. Proin eget dictum nulla. Phasellus odio nisi, tempor at lorem sed, commodo gravida tellus.',
-		link: 'Il semblerait qu’il manque quelque chose non ?',
-		'count#zero': 'Vous avez {count} fichier dans ce bucket',
+		linkPreview: 'Et si on regardait à quoi ressemble ces fichiers ?',
+    linkUpload: 'Une fois que vous avez trouvé la clé, ajoutons-la au bucket !',
+    'count#zero': 'Vous avez {count} fichier dans ce bucket',
 		'count#one': 'Vous avez {count} fichier dans ce bucket',
 		'count#other': 'Vous avez {count} fichiers dans ce bucket',
 		upload: {
 			title: 'Ajouter au bucket la clé manquante',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet mollis lectus ut iaculis. In neque ligula, auctor vitae lorem in, venenatis lobortis purus. Ut ac rhoncus ex, ut egestas leo. Mauris nec rutrum magna, sit amet tincidunt justo. Sed pellentesque vitae nibh eget imperdiet. Ut sodales commodo turpis, rutrum porttitor odio porttitor sed. Curabitur et turpis vitae mauris pulvinar consequat non ut ligula. Aenean mi orci, cursus ac libero id, consequat elementum mi. Etiam gravida quam eget tempus maximus. Phasellus et diam congue, accumsan felis eget, egestas arcu. Maecenas cursus sapien id risus faucibus aliquet. Proin eget dictum nulla. Phasellus odio nisi, tempor at lorem sed, commodo gravida tellus.',
 			button: 'Upload les fichiers',
 		},
 	},
@@ -46,12 +43,11 @@ export default {
 		email: 'Adresse email',
 	},
 	home: {
-		startButton: 'Commencer l’aventure',
+		startButton: "Démarrer l'AppVenture",
+		title:
+			"Voyage au coeur d'Appwrite :\n Le backend open-source qui challenge Firebase 🧳",
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget mattis\n' +
-			'tellus. Proin feugiat, magna at posuere bibendum, urna nisl pulvinar\n' +
-			'ipsum, eu eleifend justo sem quis risus. Vestibulum fringilla varius\n' +
-			'sagittis.',
+			"Bienvenue dans l'AppVenture ! 🗺️ \n Elle sera votre carte au trésor, votre boussole et votre compagnon fidèle dans votre quête, vous aidant à déverrouiller les secrets de chaque destination que nous explorerons ! 🧳",
 	},
 	databases: {
 		coordinates: {

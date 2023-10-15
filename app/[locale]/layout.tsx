@@ -13,8 +13,13 @@ import Providers from '@/components/app/home/Providers';
 const inter = Inter({subsets: ['latin']});
 
 export const metadata: Metadata = {
-	title: 'Appwrite Workshop - Home 🏠',
+	title: 'AppVenture - Home 🏠',
 	description: 'Welcome to the Appwrite workshop ! 🎉',
+  icons: {
+    icon: '/appwrite.svg',
+    shortcut: '/appwrite.svg',
+    apple: '/appwrite.svg',
+  },
 };
 
 export default function RootLayout({children}: {children: ReactNode}) {

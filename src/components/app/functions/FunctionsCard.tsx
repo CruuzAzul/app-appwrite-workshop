@@ -81,8 +81,7 @@ export default function FunctionsCard() {
 	};
 
 	return (
-		<div className="card u-min-width-100-percent u-height-100-percent">
-			<h2 className="eyebrow-heading-1 u-padding-block-end-32 u-color-text-pink"></h2>
+		<div className="card u-flex u-flex-vertical u-min-width-100-percent">
 			<table className="table">
 				<thead className="table-head">
 					<tr className="table-row">
@@ -107,7 +106,7 @@ export default function FunctionsCard() {
 					))}
 				</tbody>
 			</table>
-			<button className="button" onClick={addDestination}>
+			<button className="button u-margin-block-start-52 u-cross-child-end" onClick={addDestination}>
 				{isLoading ? t('addButtonLoading') : t('addButton')}
 			</button>
 		</div>

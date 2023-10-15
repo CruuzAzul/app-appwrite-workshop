@@ -1,3 +1,4 @@
+import {Metadata} from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -5,6 +6,10 @@ import {RedirectToHome} from '@/components/app/treasure/RedirectToHome';
 import {getScopedI18n} from '@/locales/server';
 
 import styles from './styles.module.css';
+
+export const metadata: Metadata = {
+	title: 'AppVenture - End 🔚',
+};
 
 export default async function Treasure() {
 	const t = await getScopedI18n('treasure');

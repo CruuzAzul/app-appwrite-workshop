@@ -20,7 +20,7 @@ export const modulesConfig = [
 		moduleName: 'Account',
 		path: 'login',
 		status: 'Ready',
-		tag: 'Interactive',
+		tag: 'Client SDK',
 		infos: [
 			{
 				icon: 'icon-info',
@@ -31,7 +31,7 @@ export const modulesConfig = [
 				description: 'moduleConfig.account.warning',
 			},
 		],
-		icons: ['icon-user-circle', 'icon-shield-check'],
+		icons: ['icon-user-circle'],
 		validationComponent: <AccountInfos />,
 	},
 	{
@@ -45,33 +45,33 @@ export const modulesConfig = [
 				description: 'moduleConfig.users.description',
 			},
 		],
-		icons: ['icon-users', 'icon-server'],
+		icons: ['icon-users'],
 	},
 	{
 		moduleName: 'Databases',
 		path: 'databases',
 		status: 'In progress',
-		tag: 'Interactive',
+		tag: 'Client SDK',
 		infos: [
 			{
 				icon: 'icon-info',
 				description: 'moduleConfig.databases.description',
 			},
 		],
-		icons: ['icon-database', 'icon-shield-check'],
+		icons: ['icon-database'],
 	},
 	{
 		moduleName: 'Storage',
 		path: 'storage',
 		status: 'Ready',
-		tag: 'Interactive',
+		tag: 'Client SDK',
 		infos: [
 			{
 				icon: 'icon-info',
 				description: 'moduleConfig.storage.description',
 			},
 		],
-		icons: ['icon-database', 'icon-shield-check'],
+		icons: ['icon-paper-clip'],
 	},
 	{
 		moduleName: 'Functions',
@@ -84,6 +84,6 @@ export const modulesConfig = [
 				description: 'moduleConfig.functions.description',
 			},
 		],
-		icons: ['icon-lightning-bolt', 'icon-server'],
+		icons: ['icon-cloud'],
 	},
 ];
