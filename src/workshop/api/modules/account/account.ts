@@ -1,3 +1,5 @@
+import {AppwriteException} from "appwrite";
+
 import {UserType} from '@/types/UserHook.type';
 
 export async function login(email: string, password: string) {
@@ -8,11 +10,8 @@ export async function login(email: string, password: string) {
 		 * ----------------------------------------
 		 */
 	} catch (error) {
-		/**
-		 * ----------------------------------------
-		 * HERE : Appwrite error handling here
-		 * ----------------------------------------
-		 */
+    const appwriteException = error as AppwriteException;
+    console.error(appwriteException.message);
 	}
 }
 
@@ -30,11 +29,8 @@ export async function register(
 		 * ----------------------------------------
 		 */
 	} catch (error) {
-		/**
-		 * ----------------------------------------
-		 * HERE : Appwrite error handling here
-		 * ----------------------------------------
-		 */
+    const appwriteException = error as AppwriteException;
+    console.error(appwriteException.message);
 	}
 }
 
@@ -58,10 +54,7 @@ export async function socialLogin(
 		 * ----------------------------------------
 		 */
 	} catch (error: any) {
-		/**
-		 * ----------------------------------------
-		 * HERE : Appwrite error handling here
-		 * ----------------------------------------
-		 */
+    const appwriteException = error as AppwriteException;
+    console.error(appwriteException.message);
 	}
 }
