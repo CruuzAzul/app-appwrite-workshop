@@ -1,4 +1,4 @@
-import {AppwriteException} from "appwrite";
+import {AppwriteException} from 'appwrite';
 
 import {UserType} from '@/types/UserHook.type';
 
@@ -9,9 +9,8 @@ export async function login(email: string, password: string): Promise<void> {
 		 * HERE : Session creation code (login)
 		 * ----------------------------------------
 		 */
-	} catch (error) {
-    const appwriteException = error as AppwriteException;
-    console.error(appwriteException.message);
+	} catch (error: any) {
+		throw new AppwriteException(error);
 	}
 }
 
@@ -20,7 +19,7 @@ export async function register(
 	password: string,
 	name: string,
 	login: (email: string, password: string) => Promise<void>
-): Promise<UserType | undefined> {
+): Promise<UserType> {
 	try {
 		/**
 		 * ----------------------------------------
@@ -28,18 +27,21 @@ export async function register(
 		 * It looks like we need to return a `session` here
 		 * ----------------------------------------
 		 */
-	} catch (error) {
-    const appwriteException = error as AppwriteException;
-    console.error(appwriteException.message);
+	} catch (error: any) {
+		throw new AppwriteException(error);
 	}
 }
 
 export async function logout() {
-	/**
-	 * ----------------------------------------
-	 * HERE : Session logout code
-	 * ----------------------------------------
-	 */
+	try {
+		/**
+		 * ----------------------------------------
+		 * HERE : Session logout code
+		 * ----------------------------------------
+		 */
+	} catch (error: any) {
+		throw new AppwriteException(error);
+	}
 }
 
 export async function socialLogin(
@@ -54,7 +56,6 @@ export async function socialLogin(
 		 * ----------------------------------------
 		 */
 	} catch (error: any) {
-    const appwriteException = error as AppwriteException;
-    console.error(appwriteException.message);
+		throw new AppwriteException(error);
 	}
 }
