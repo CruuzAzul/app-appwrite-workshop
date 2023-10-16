@@ -2,7 +2,6 @@ import {FC, FormEvent} from 'react';
 
 import Link from 'next/link';
 
-import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
 import {useScopedI18n} from '@/locales/client';
@@ -61,7 +60,7 @@ export const RegisterForm: FC<{
 								{t('signIn')}
 							</Link>
 						</p>
-						<SocialLogin provider="google" />
+						{/*<SocialLogin provider="google" />*/}
 					</div>
 				</form>
 			</div>

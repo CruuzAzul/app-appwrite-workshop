@@ -2,7 +2,6 @@ import {FC, FormEvent} from 'react';
 
 import Link from 'next/link';
 
-import {SocialLogin} from '@/components/app/authentication/SocialLogin';
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
 import {TextInput} from '@/components/common/inputs/TextInput';
 import {useScopedI18n} from '@/locales/client';
@@ -22,7 +21,9 @@ export const LoginForm: FC<{
 	const t = useScopedI18n('login');
 
 	return (
-		<section className={`u-flex-vertical u-main-center u-cross-center u-full-screen-height u-gap-32 ${styles.background} ${styles.backgroundLogin}`}>
+		<section
+			className={`u-flex-vertical u-main-center u-cross-center u-full-screen-height u-gap-32 ${styles.background} ${styles.backgroundLogin}`}
+		>
 			<h1 className="eyebrow-heading-1 u-text-center u-color-text-pink">
 				{t('title')}
 			</h1>
@@ -47,7 +48,7 @@ export const LoginForm: FC<{
 								{t('signUp')}
 							</Link>
 						</p>
-						<SocialLogin provider="google" />
+						{/*<SocialLogin provider="google" />*/}
 					</div>
 				</form>
 			</div>
