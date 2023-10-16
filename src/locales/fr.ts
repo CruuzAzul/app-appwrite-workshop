@@ -21,8 +21,8 @@ export default {
 	storage: {
 		title: 'On dirait bien que l’on a des fichiers disponibles dans un bucket',
 		linkPreview: 'Et si on regardait à quoi ressemble ces fichiers ?',
-    linkUpload: 'Une fois que vous avez trouvé la clé, ajoutons-la au bucket !',
-    'count#zero': 'Vous avez {count} fichier dans ce bucket',
+		linkUpload: 'Une fois que vous avez trouvé la clé, ajoutons-la au bucket !',
+		'count#zero': 'Vous avez {count} fichier dans ce bucket',
 		'count#one': 'Vous avez {count} fichier dans ce bucket',
 		'count#other': 'Vous avez {count} fichiers dans ce bucket',
 		upload: {
@@ -75,11 +75,15 @@ export default {
 		email: 'Adresse Email',
 	},
 	functions: {
-		title: 'Notre base de données est attaquée ...',
+		title: 'Liste de destination',
 		description:
-			'Notre collection contenant les indices que vous avez récupéré jusque la n’est pas sécurisé ... n’importe quel utilisateur peut accéder aux documents qu’elle contient. Cependant, on a la possibilité d’empecher d‘autre utilisateur que vous même d’y accéder, et on va utiliser une Cloud Function pour arriver à nos fin !',
+			'Une fois dans les nuages, il ne vous reste plus qu’à trouver la destination vers laquelle vous devez aller pour trouver une nouvelle coordonnée. Cependant, elles sont toutes cryptés, vous allez donc devoir décrypter tout ça …',
 		addButton: 'Ajouter un élément',
 		addButtonLoading: 'Chargement ...',
+		destination: 'Destination',
+		flight: 'Numéro de vol',
+		noData:
+			'Veuillez initialiser le service Database dans votre configuration client',
 	},
 	validation: {
 		content: 'Entrez la bonne réponse dans l’application de solution',

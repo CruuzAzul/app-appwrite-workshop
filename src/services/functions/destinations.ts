@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import {ID} from 'appwrite';
 
 import {Destination, DestinationType} from '@/models/destination';
@@ -5,6 +7,10 @@ import {database} from '@/workshop/api/config/client.config';
 import {EnvConfig} from '@/workshop/api/config/env.config';
 
 export const getDestinationList = async (): Promise<Destination[]> => {
+	if (!database) {
+		return [];
+	}
+
 	const {documents} = await database.listDocuments<Destination>(
 		EnvConfig.databaseId,
 		EnvConfig.destinationCollectionId
