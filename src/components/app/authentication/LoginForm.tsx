@@ -1,5 +1,6 @@
 import {FC, FormEvent} from 'react';
 
+import {AppwriteException} from "appwrite";
 import Link from 'next/link';
 
 import {PasswordInput} from '@/components/common/inputs/PasswordInput';
