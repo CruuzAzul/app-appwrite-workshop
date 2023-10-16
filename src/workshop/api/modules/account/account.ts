@@ -3,12 +3,11 @@ import {AppwriteException, ID} from 'appwrite';
 import {UserType} from '@/types/UserHook.type';
 import {account} from '@/workshop/api/config/client.config';
 
-export async function login(email: string, password: string): Promise<void> {
+export async function login(email: string, password: string) {
 	try {
 		await account.createEmailSession(email, password);
-	} catch (error) {
-		const appwriteException = error as AppwriteException;
-		console.error(appwriteException.message);
+	} catch (error: any) {
+    throw new AppwriteException(error);
 	}
 }
 
@@ -17,20 +16,23 @@ export async function register(
 	password: string,
 	name: string,
 	login: (email: string, password: string) => Promise<void>
-): Promise<UserType | undefined> {
+): Promise<UserType> {
 	try {
 		const session = await account.create(ID.unique(), email, password, name);
 		await login(email, password);
 
 		return session;
-	} catch (error) {
-		const appwriteException = error as AppwriteException;
-		console.error(appwriteException.message);
+	} catch (error: any) {
+    throw new AppwriteException(error);
 	}
 }
 
 export async function logout() {
-	await account.deleteSession('current');
+  try {
+    await account.deleteSession('current');
+  } catch (error: any) {
+    throw new AppwriteException(error);
+  }
 }
 
 export async function socialLogin(
@@ -45,7 +47,6 @@ export async function socialLogin(
 			failureRedirectUrl
 		);
 	} catch (error: any) {
-		const appwriteException = error as AppwriteException;
-		console.error(appwriteException.message);
+    throw new AppwriteException(error);
 	}
 }

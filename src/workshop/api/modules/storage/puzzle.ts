@@ -5,7 +5,11 @@ import {storage} from '@/workshop/api/config/client.config';
 import {EnvConfig} from '@/workshop/api/config/env.config';
 
 export const getPuzzlePieces = async (): Promise<FilesList> => {
-	return await storage.listFiles(EnvConfig.storageBucketId);
+  try {
+    return await storage.listFiles(EnvConfig.storageBucketId);
+  } catch (error: any) {
+    throw new AppwriteException(error);
+  }
 };
 
 export const uploadImageKey = async (
@@ -22,7 +26,7 @@ export const uploadImageKey = async (
 			})
 		);
 	} catch (error: any) {
-		throw new AppwriteException(error);
+    throw new AppwriteException(error);
 	}
 };
 
@@ -39,20 +43,24 @@ export const getPuzzlePiecesForPreviews = ({
 	rotation,
 	background,
 	output,
-}: FilePreview): URL => {
-	return storage.getFilePreview(
-		EnvConfig.storageBucketId,
-		fileId,
-		width,
-		height,
-		gravity,
-		quality,
-		borderWidth,
-		borderColor,
-		borderRadius,
-		opacity,
-		rotation,
-		background,
-		output
-	);
+}: FilePreview): URL | undefined => {
+  try {
+		return storage.getFilePreview(
+			EnvConfig.storageBucketId,
+			fileId,
+			width,
+			height,
+			gravity,
+			quality,
+			borderWidth,
+			borderColor,
+			borderRadius,
+			opacity,
+			rotation,
+			background,
+			output
+		);
+	} catch (error: any) {
+    throw new AppwriteException(error);
+	}
 };
