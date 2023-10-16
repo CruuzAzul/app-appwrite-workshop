@@ -1,4 +1,4 @@
-import {Models} from 'appwrite';
+import {AppwriteException, Models} from 'appwrite';
 
 import {FilePreview, FilesList} from '@/models/storage';
 
@@ -24,11 +24,8 @@ export const uploadImageKey = async (
 			})
 		);
 	} catch (error: any) {
-		/**
-		 * ----------------------------------------
-		 * HERE : Appwrite error handling here
-		 * ----------------------------------------
-		 */
+		const appwriteException = error as AppwriteException;
+		console.error(appwriteException.message);
 	}
 };
 
