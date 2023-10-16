@@ -20,8 +20,8 @@ export default {
 	},
 	storage: {
 		title: 'It looks like we have some file in a bucket',
-    linkPreview: 'And if we look at what these files look like?',
-    linkUpload: 'Once you have found the key, let’s add it to the bucket!',
+		linkPreview: 'And if we look at what these files look like?',
+		linkUpload: 'Once you have found the key, let’s add it to the bucket!',
 		'count#zero': 'You have {count} file in this bucket',
 		'count#one': 'You have {count} file in this bucket',
 		'count#other': 'You have {count} files in this bucket',
@@ -44,7 +44,8 @@ export default {
 	},
 	home: {
 		startButton: 'Start the AppVenture',
-    title: 'Journey to the heart of Appwrite: the open-source backend that challenges Firebase 🧳',
+		title:
+			'Journey to the heart of Appwrite: the open-source backend that challenges Firebase 🧳',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget mattis\n' +
 			'tellus. Proin feugiat, magna at posuere bibendum, urna nisl pulvinar\n' +
@@ -77,11 +78,15 @@ export default {
 		email: 'Email address',
 	},
 	functions: {
-		title: 'Our database is under attack ...',
+		title: 'Destination list',
 		description:
-			'Our clues collection you’ve retrieved so far isn’t secure ... any user can access the documents it contains. However, we can prevent anyone but you from accessing it, and we’re going to use a Cloud Function to do just that!',
+			'Once in the clouds, all that’s left is to find the destination you need to reach to discover a new coordinate. However, they are all encrypted, so you’ll have to decrypt it all...',
 		addButton: 'Add a destination',
 		addButtonLoading: 'Loading ...',
+		destination: 'Destination',
+		flight: 'Flight',
+		noData:
+			'Please initialize the database service in your client configuration',
 	},
 	validation: {
 		content: 'Enter the correct answer in the solution application',

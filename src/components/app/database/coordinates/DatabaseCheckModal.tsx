@@ -31,7 +31,7 @@ export const DatabaseCheckModal = () => {
 			async () => {
 				const coordinates = await getCoordinatesList();
 
-				if (coordinates.length !== DATABASE_SOLUTION.length) {
+				if (coordinates?.length !== DATABASE_SOLUTION.length) {
 					return;
 				}
 

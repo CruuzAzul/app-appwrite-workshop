@@ -86,10 +86,10 @@ export default function FunctionsCard() {
 				<thead className="table-head">
 					<tr className="table-row">
 						<th className="table-head-col u-padding-16">
-							<span className="eyebrow-heading-3">Destination</span>
+							<span className="eyebrow-heading-3">{t('destination')}</span>
 						</th>
 						<th className="table-head-col u-padding-16">
-							<span className="eyebrow-heading-3">Numéro de vol</span>
+							<span className="eyebrow-heading-3">{t('flight')}</span>
 						</th>
 					</tr>
 				</thead>
@@ -106,7 +106,15 @@ export default function FunctionsCard() {
 					))}
 				</tbody>
 			</table>
-			<button className="button u-margin-block-start-52 u-cross-child-end" onClick={addDestination}>
+			{destinations.length === 0 && (
+				<p className="u-bold" style={{textAlign: 'center', paddingTop: '2rem'}}>
+					{t('noData')}
+				</p>
+			)}
+			<button
+				className="button u-margin-block-start-52 u-cross-child-end"
+				onClick={addDestination}
+			>
 				{isLoading ? t('addButtonLoading') : t('addButton')}
 			</button>
 		</div>
