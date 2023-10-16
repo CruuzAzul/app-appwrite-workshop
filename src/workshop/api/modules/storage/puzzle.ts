@@ -3,11 +3,15 @@ import {AppwriteException, Models} from 'appwrite';
 import {FilePreview, FilesList} from '@/models/storage';
 
 export const getPuzzlePieces = async (): Promise<FilesList> => {
-	/**
-	 * ----------------------------------------
-	 * HERE : Code for retrieving the list of files
-	 * ----------------------------------------
-	 */
+	try {
+		/**
+		 * ----------------------------------------
+		 * HERE : Code for retrieving the list of files
+		 * ----------------------------------------
+		 */
+	} catch (error: any) {
+		throw new AppwriteException(error);
+	}
 };
 
 export const uploadImageKey = async (
@@ -24,15 +28,18 @@ export const uploadImageKey = async (
 			})
 		);
 	} catch (error: any) {
-    const appwriteException = error as AppwriteException;
-		console.error(appwriteException.message);
+    throw new AppwriteException(error);
 	}
 };
 
 export const getPuzzlePiecesForPreviews = ({fileId}: FilePreview): URL => {
-	/**
-	 * ----------------------------------------
-	 * HERE : Retrieving the src link to display the image
-	 * ----------------------------------------
-	 */
+	try {
+		/**
+		 * ----------------------------------------
+		 * HERE : Retrieving the src link to display the image
+		 * ----------------------------------------
+		 */
+	} catch (error: any) {
+		throw new AppwriteException(error);
+	}
 };
