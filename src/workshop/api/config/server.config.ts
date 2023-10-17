@@ -5,6 +5,6 @@ import {EnvConfig} from './env.config';
 export const AppwriteClient = new Client()
 	.setEndpoint(EnvConfig.endpoint ?? '')
 	.setProject(EnvConfig.projectId ?? '')
-	.setKey(EnvConfig.apiKey ?? '');
+	.setKey(EnvConfig.apiKeyUsers ?? '');
 
 export const users = new Users(AppwriteClient);

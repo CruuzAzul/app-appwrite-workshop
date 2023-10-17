@@ -8,5 +8,6 @@ export const EnvConfig = {
 	destinationCollectionId:
 		process.env.NEXT_PUBLIC_APPWRITE_DESTINATION_COLLECTION_ID ?? '',
 	databaseId: process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID ?? '',
-	apiKey: process.env.APPWRITE_API_KEY ?? '',
+	apiKeyScript: process.env.APPWRITE_API_KEY_SCRIPT ?? '',
+	apiKeyUsers: process.env.APPWRITE_API_KEY_USERS ?? '',
 };
