@@ -93,7 +93,7 @@
 			"entrypoint": "src/main.js",
 			"commands": "npm install",
 			"ignore": ["node_modules", ".npm"],
-			"path": "functions/DestinationDecode"
+			"path": "solution/functions/DestinationDecode"
 		}
 	]
 }

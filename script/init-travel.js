@@ -18,7 +18,7 @@ require('dotenv').config({path: resolve(__dirname, '../.env.local')});
 const client = new Client()
 	.setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
 	.setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID)
-	.setKey(process.env.APPWRITE_API_KEY);
+	.setKey(process.env.APPWRITE_API_KEY_SCRIPT);
 
 const database = new Databases(client);
 const storage = new Storage(client);
