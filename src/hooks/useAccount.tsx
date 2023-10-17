@@ -24,7 +24,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 	const currentRoute = usePathname();
 	const [user, setUser] = useState<UserType | undefined>(null);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState('');
+	const [error, setError] = useState<string>('');
 
 	const appLogin = async (email: string, password: string) => {
 		try {
@@ -33,8 +33,8 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			router.push(ROUTES.dashboard);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
-			setError(appwriteException.message);
-			console.error(appwriteException.message);
+			setError(appwriteException.toString());
+			console.error(appwriteException);
 		}
 	};
 
@@ -45,8 +45,8 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			router.push(ROUTES.dashboard);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
-			setError(appwriteException.message);
-			console.error(appwriteException.message);
+			setError(appwriteException.toString());
+			console.error(appwriteException);
 		}
 	};
 
@@ -65,6 +65,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			await socialLogin(provider, successRedirectUrl, failureRedirectUrl);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
+			setError(appwriteException.toString());
 			console.error(appwriteException.message);
 		}
 	};
@@ -75,7 +76,8 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			setUser(loadedAccount);
 			setError('');
 		} catch (error) {
-			console.error(error);
+			const appwriteException = error as AppwriteException;
+			console.error(appwriteException.message);
 		} finally {
 			setLoading(false);
 		}
