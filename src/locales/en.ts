@@ -47,10 +47,7 @@ export default {
 		title:
 			'Journey to the heart of Appwrite: the open-source backend that challenges Firebase 🧳',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget mattis\n' +
-			'tellus. Proin feugiat, magna at posuere bibendum, urna nisl pulvinar\n' +
-			'ipsum, eu eleifend justo sem quis risus. Vestibulum fringilla varius\n' +
-			'sagittis.',
+			'Welcome to the AppVenture! 🗺️ \n It will be your treasure map, your compass, and your faithful companion on your quest, helping you unlock the secrets of every destination we explore! 🧳',
 	},
 	databases: {
 		coordinates: {
