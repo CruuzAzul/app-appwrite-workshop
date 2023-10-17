@@ -144,6 +144,8 @@ const createDestinationCollection = async () => {
 		process.env.NEXT_PUBLIC_APPWRITE_DESTINATION_COLLECTION_ID
 	);
 
+	await new Promise((r) => setTimeout(r, 5000));
+
 	destinations.forEach((destination) => {
 		createDestinationDocument(destination.name, destination.flight);
 	});
