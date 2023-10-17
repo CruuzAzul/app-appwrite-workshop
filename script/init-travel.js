@@ -48,7 +48,7 @@ const createBucket = async (bucketName) => {
 			false,
 			true,
 			undefined,
-			['jpeg']
+			['png']
 		);
 	}
 };
