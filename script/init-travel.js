@@ -48,7 +48,7 @@ const createBucket = async (bucketName) => {
 			false,
 			true,
 			undefined,
-			['svg']
+			['png']
 		);
 	}
 };
@@ -160,7 +160,16 @@ const importData = async () => {
 	);
 	await createDestinationCollection();
 
-	await addFileToBucket('./script/assets/square-logo-pink.svg', 'file.svg');
+	await addFileToBucket('./script/assets/puzzle-1.png', 'puzzle-1.png');
+	await addFileToBucket('./script/assets/puzzle-2.png', 'puzzle-2.png');
+	await addFileToBucket('./script/assets/puzzle-3.png', 'puzzle-3.png');
+	await addFileToBucket('./script/assets/puzzle-4.png', 'puzzle-4.png');
+	await addFileToBucket(
+		'./script/assets/puzzle-code-1234.png',
+		'puzzle-code-1234.png'
+	);
+	await addFileToBucket('./script/assets/puzzle-end.png', 'puzzle-end.png');
+
 	userList.forEach(async (user) => {
 		await createUser(user);
 	});
