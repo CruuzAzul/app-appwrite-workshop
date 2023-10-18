@@ -26,6 +26,10 @@ export const FunctionsCheckModal = () => {
 	const destinationCollection = `databases.${EnvConfig.databaseId}.collections.${EnvConfig.destinationCollectionId}.documents`;
 
 	useEffect(() => {
+		if (!AppwriteClient) {
+			return;
+		}
+
 		const unsubscribe = AppwriteClient.subscribe(
 			destinationCollection,
 			async (response: RealtimeResponseEvent<Destination>) => {

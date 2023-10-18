@@ -1,13 +1,18 @@
+import {getScopedI18n} from '@/locales/server';
 import {getTravelersList} from '@/workshop/api/modules/users/travelers';
 
 import {UsersCheckModal} from './UsersCheckModal';
 
 export const UsersList = async () => {
+	const t = await getScopedI18n('users');
 	const users = await getTravelersList();
 
 	return (
-		<div className="card u-flex-vertical u-gap-32 u-width-fit-content">
-			{users.map((user) => (
+		<div
+			className="card u-flex-vertical u-gap-32 u-width-fit-content"
+			style={{minWidth: '60%'}}
+		>
+			{(users ?? []).map((user) => (
 				<div className="card" key={user.$id}>
 					<div className="user-profile">
 						<span className="avatar is-color-green">
@@ -54,7 +59,12 @@ export const UsersList = async () => {
 					</div>
 				</div>
 			))}
-			<UsersCheckModal userList={users} />
+			{!users && (
+				<p className="u-bold" style={{textAlign: 'center', fontSize: '1.1rem'}}>
+					{t('noData')}
+				</p>
+			)}
+			<UsersCheckModal userList={users ?? []} />
 		</div>
 	);
 };

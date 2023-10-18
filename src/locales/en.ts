@@ -32,6 +32,7 @@ export default {
 	},
 	users: {
 		title: 'Let’s see who can help us...',
+		noData: 'It looks like something’s missing ...',
 	},
 	login: {
 		title: 'Access to your account',

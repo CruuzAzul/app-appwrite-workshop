@@ -7,7 +7,16 @@ export const TextInput: FC<{
 	type?: string;
 	placeholder?: string;
 	children?: ReactNode;
-}> = ({id, label, setValue, type = 'text', placeholder = '', children}) => {
+	required?: boolean;
+}> = ({
+	id,
+	label,
+	setValue,
+	type = 'text',
+	placeholder = '',
+	children,
+	required = false,
+}) => {
 	return (
 		<div className="form-item">
 			<label className="label">{label}</label>
@@ -18,6 +27,7 @@ export const TextInput: FC<{
 					type={type}
 					placeholder={placeholder}
 					onChange={(e) => setValue && setValue(e.target.value)}
+					required={required}
 				/>
 				{children}
 			</div>

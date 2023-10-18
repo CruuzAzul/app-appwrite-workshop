@@ -50,9 +50,9 @@ export const CoordinatesForm = () => {
 				ref={formRef}
 			>
 				<ul className="form-list">
-					<TextInput id="name" label="Name" type="text" />
-					<TextInput id="latitude" label="Latitude" type="number" />
-					<TextInput id="longitude" label="Longitude" type="number" />
+					<TextInput id="name" label="Name" type="text" required />
+					<TextInput id="latitude" label="Latitude" type="number" required />
+					<TextInput id="longitude" label="Longitude" type="number" required />
 				</ul>
 				{error && (
 					<p className="u-color-text-pink u-text-center">{error.message}</p>
