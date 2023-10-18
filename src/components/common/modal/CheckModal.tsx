@@ -40,7 +40,7 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 							finishedModule[module] ? '' : 'u-none'
 						}`}
 					>
-            <span className="icon-light-bulb" aria-hidden="true" />
+						<span className="icon-light-bulb" aria-hidden="true" />
 						{t('seeClue')}
 					</button>
 				</div>
@@ -85,7 +85,7 @@ export const CheckModal = forwardRef<HTMLDialogElement, CheckModalProps>(
 							<div className="u-flex u-main-end">
 								<a
 									className="button"
-									href="https://appventure-compass.vercel.app"
+									href="https://admin-appwrite-workshop.vercel.app"
 									target="_blank"
 								>
 									{t('button')}

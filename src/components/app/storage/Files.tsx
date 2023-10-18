@@ -4,7 +4,7 @@ import {getPuzzlePieces} from '@/workshop/api/modules/storage/puzzle';
 export const Files = async () => {
 	const t = await getScopedI18n('storage');
 	const filesList = await getPuzzlePieces();
-	const {total, files} = filesList;
+	const {total, files} = filesList ?? {total: 0, files: []};
 
 	return (
 		<div className="card u-min-width-100-percent u-height-100-percent">

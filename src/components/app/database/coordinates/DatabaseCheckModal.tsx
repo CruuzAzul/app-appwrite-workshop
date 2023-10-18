@@ -26,6 +26,10 @@ export const DatabaseCheckModal = () => {
 	const coordinatesCollection = `databases.${EnvConfig.databaseId}.collections.${EnvConfig.coordinatesCollectionId}.documents`;
 
 	useEffect(() => {
+		if (!AppwriteClient) {
+			return;
+		}
+
 		const unsubscribe = AppwriteClient.subscribe(
 			coordinatesCollection,
 			async () => {

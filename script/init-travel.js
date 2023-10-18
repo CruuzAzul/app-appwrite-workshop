@@ -44,7 +44,12 @@ const createBucket = async (bucketName) => {
 		return await storage.createBucket(
 			process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID,
 			bucketName,
-			[],
+			[
+				Permission.read(Role.any()),
+				Permission.delete(Role.any()),
+				Permission.create(Role.any()),
+				Permission.update(Role.any()),
+			],
 			false,
 			true,
 			undefined,
@@ -154,10 +159,6 @@ const createDestinationCollection = async () => {
 const importData = async () => {
 	await createDatabase('Workshop');
 	await createBucket('Items');
-	await createCollection(
-		'Personal Data',
-		process.env.NEXT_PUBLIC_APPWRITE_PERSONAL_DATA_COLLECTION_ID
-	);
 	await createDestinationCollection();
 
 	await addFileToBucket('./script/assets/puzzle-1.png', 'puzzle-1.png');

@@ -11,7 +11,7 @@ import {EventType, getEventType} from '@/utils/realtime.utils';
 import {AppwriteClient} from '@/workshop/api/config/client.config';
 import {EnvConfig} from '@/workshop/api/config/env.config';
 
-const STORAGE_SOLUTION = 'Capture d’écran 2023-10-08 à 15.34.04.png';
+const STORAGE_SOLUTION = '3460.png';
 
 export const StorageCheckModal = () => {
 	const {setFinishedModule} = useFinishedModule();
@@ -20,6 +20,10 @@ export const StorageCheckModal = () => {
 	const bucket = `buckets.${EnvConfig.storageBucketId}.files`;
 
 	useEffect(() => {
+		if (!AppwriteClient) {
+			return;
+		}
+
 		const unsubscribe = AppwriteClient.subscribe(
 			bucket,
 			(response: RealtimeResponseEvent<File>) => {

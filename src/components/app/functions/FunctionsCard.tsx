@@ -21,6 +21,10 @@ export default function FunctionsCard() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
+		if (!AppwriteClient) {
+			return;
+		}
+
 		getDestinationList().then((data) => {
 			setDestinations(data);
 		});
