@@ -13,9 +13,10 @@ import {EnvConfig} from '@/workshop/api/config/env.config';
 import {getCoordinatesList} from '@/workshop/api/modules/database/coordinates';
 
 const DATABASE_SOLUTION: Coordinate[] = [
-	{name: 'Première', latitude: 32, longitude: 32},
-	{name: 'Deuxième', latitude: 23, longitude: 23},
-	{name: 'Troisième', latitude: 13, longitude: 32},
+	{name: 'Première', latitude: 32, longitude: 12},
+	{name: 'Deuxième', latitude: 76, longitude: 21},
+	{name: 'Troisième', latitude: 22, longitude: 9},
+	{name: 'Quatrième', latitude: 5, longitude: 7},
 ];
 
 export const DatabaseCheckModal = () => {
@@ -40,16 +41,15 @@ export const DatabaseCheckModal = () => {
 				}
 
 				const sortedCoordinates = coordinates.sort((a, b) =>
-					a.name > b.name ? 1 : -1
+					a.latitude > b.latitude ? 1 : -1
 				);
 				const sortedSolution = DATABASE_SOLUTION.sort((a, b) =>
-					a.name > b.name ? 1 : -1
+					a.latitude > b.latitude ? 1 : -1
 				);
 
 				if (
 					sortedCoordinates.every(
 						(coord, index) =>
-							coord.name === sortedSolution[index].name &&
 							coord.latitude === sortedSolution[index].latitude &&
 							coord.longitude === sortedSolution[index].longitude
 					) &&
