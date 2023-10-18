@@ -30,6 +30,9 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		try {
 			await login(email, password);
 			await loadAccount();
+      if(user) {
+        router.push(ROUTES.dashboard);
+      }
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
 			setError(appwriteException.toString());
@@ -75,7 +78,6 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			const loadedAccount = await account.get();
 			setUser(loadedAccount);
 			setError('');
-			router.push(ROUTES.dashboard);
 		} catch (error) {
 			const appwriteException = error as AppwriteException;
 			console.error(appwriteException.message);
