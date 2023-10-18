@@ -2,6 +2,7 @@ import {Metadata} from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import {RedirectToHome} from '@/components/app/treasure/RedirectToHome';
 import {getScopedI18n} from '@/locales/server';
 
 import styles from './styles.module.css';
@@ -17,6 +18,7 @@ export default async function Treasure() {
 		<main
 			className={`u-flex-vertical u-gap-32 u-cross-center u-padding-64 ${styles.container}`}
 		>
+			<RedirectToHome />
 			<div className={styles.textContainer}>
 				<h1
 					className={`heading-level-1 u-text-center ${styles.title}`}
