@@ -4,7 +4,6 @@ import {useEffect, useMemo} from 'react';
 
 import {redirect} from 'next/navigation';
 
-import {useFinishedModule} from '@/hooks/useFinishedModule';
 import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
 
 export const RedirectToHome = () => {
