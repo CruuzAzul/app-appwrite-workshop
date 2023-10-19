@@ -7,7 +7,11 @@ export default async function Puzzle({files}: {files: Models.File[]}) {
 	return files.map((file) => {
 		const imgSrc = getPuzzlePiecesForPreviews({
 			fileId: file.$id,
-			background: '000000',
+			/**
+			 * ----------------------------------------
+			 * HERE : Add additional parameters
+			 * ----------------------------------------
+			 */
 		});
 
 		return (
