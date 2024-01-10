@@ -28,6 +28,10 @@ pnpm dev
 
 This workshop is under the MIT license. You are free to use, modify, and distribute it according to your needs, with proper attribution 🙏🏼
 
+## 🤝🏼 Contributing
+
+Please read CONTRIBUTING.md to learn about contributing to this project.
+
 <br/><br/>
 
 <h1 align="center">🇫🇷 Application du Workshop : Voyage au coeur d'Appwrite ✍🏼</h1><br />
@@ -59,3 +63,7 @@ pnpm dev
 ## 🪪 Licence
 
 Ce workshop est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer selon vos besoins, sous conditions de créditation 🙏🏼
+
+## 🤝🏼 Contribution
+
+Veuillez lire CONTRIBUTING.md pour en savoir plus sur la contribution à ce projet.
