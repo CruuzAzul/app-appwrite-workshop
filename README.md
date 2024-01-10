@@ -1,34 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">🇬🇧 Workshop Application: Journey into Appwrite's Heart ✍🏼</h1><br />
 
-## Getting Started
+<img width="1790" alt="image" src="https://github.com/CruuzAzul/app-appwrite-workshop/assets/60877626/ba8790e4-6414-4a8e-ac62-9fa23472ff6a">
 
-First, run the development server:
+<h2 align="center">The Open-Source Backend Challenging Firebase 🧳</h2><br />
+
+## 🖥️ How It Works
+
+🚧 **This is the application dedicated to the appwrite workshop: [appwrite-workshop Repo](https://github.com/CruuzAzul/appwrite-workshop)**
+
+To follow the workshop, you can either visit the repository or follow these instructions 👉🏼 [Appwrite Workshop](https://appwrite-workshop.vercel.app/)
+
+## 🆘 Need Help?
+
+If you encounter difficulties during the workshop or have questions, feel free to contact us via our email address or our Github page. We are always happy to help and receive feedback to improve our workshops.
+
+## 🚀 Need to Start the Application?
+
+To start the application within the workshop framework, follow the instructions provided in the documentation.
+
+Alternatively, if you just want to test the application or contribute, you can start the application in dev mode with the command:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🪪 License
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This workshop is under the MIT license. You are free to use, modify, and distribute it according to your needs, with proper attribution 🙏🏼
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<br/><br/>
 
-## Learn More
+<h1 align="center">🇫🇷 Application du Workshop : Voyage au coeur d'Appwrite ✍🏼</h1><br />
 
-To learn more about Next.js, take a look at the following resources:
+<img width="1790" alt="image" src="https://github.com/CruuzAzul/app-appwrite-workshop/assets/60877626/ba8790e4-6414-4a8e-ac62-9fa23472ff6a">
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h2 align="center"> Le backend open-source qui challenge Firebase 🧳</h2><br />
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🖥️ Comment ça marche ?
 
-## Deploy on Vercel
+🚧 **Ceci est l'application dédiée au workshop appwrite : https://github.com/CruuzAzul/appwrite-workshop**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Pour suivre le workshop vous avez juste à aller sur le repo ou à suivre les indications suivantes** 👉🏼 https://appwrite-workshop.vercel.app/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🆘 Besoin d'aide ?
+
+Si vous rencontrez des difficultés pendant le workshop ou si vous avez des questions, n'hésitez pas à nous contacter via notre adresse e-mail ou notre page Github. Nous sommes toujours heureux d'aider et de recevoir des commentaires pour améliorer nos ateliers.
+
+## 🚀 Besoin de démarrer l'application ?
+
+Pour démarrer l'application dans le cadre du workshop vous avez juste à suivre les indications qui vous seront données dans la documentation. 
+
+Sinon, si vous souhaitez juste tester l'application ou contribuer, vous pouvez démarrer l'application en mode dev avec la commande :
+
+```
+pnpm dev
+```
+
+## 🪪 Licence
+
+Ce workshop est sous licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer selon vos besoins, sous conditions de créditation 🙏🏼
