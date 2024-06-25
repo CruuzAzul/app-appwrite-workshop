@@ -1,6 +1,13 @@
 'use client';
 
-import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
+import {
+	createContext,
+	ReactNode,
+	useContext,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 
 import {AppwriteException, OAuthProvider} from 'appwrite';
 import {usePathname, useRouter} from 'next/navigation';
@@ -30,12 +37,13 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		try {
 			await login(email, password);
 			await loadAccount();
-			if (user) {
+			const loggedUser = await account.get();
+			if (loggedUser) {
 				router.push(ROUTES.dashboard);
 			}
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
-			setError(appwriteException.toString());
+			setError(appwriteException.message.toString());
 			console.error(appwriteException);
 		}
 	};
@@ -48,7 +56,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			}
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
-			setError(appwriteException.toString());
+			setError(appwriteException.message.toString());
 			console.error(appwriteException);
 		}
 	};
@@ -68,7 +76,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 			await socialLogin(provider, successRedirectUrl, failureRedirectUrl);
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
-			setError(appwriteException.toString());
+			setError(appwriteException.message.toString());
 			console.error(appwriteException.message);
 		}
 	};
@@ -94,18 +102,21 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		setError('');
 	}, [currentRoute]);
 
+	const contextState = useMemo(
+		() => ({
+			user,
+			loading,
+			error,
+			logout: appLogout,
+			login: appLogin,
+			register: appRegister,
+			socialLogin: appSocialLogin,
+		}),
+		[user, error, loading]
+	);
+
 	return (
-		<accountContext.Provider
-			value={{
-				user,
-				loading,
-				error,
-				logout: appLogout,
-				login: appLogin,
-				register: appRegister,
-				socialLogin: appSocialLogin,
-			}}
-		>
+		<accountContext.Provider value={contextState}>
 			{children}
 		</accountContext.Provider>
 	);
