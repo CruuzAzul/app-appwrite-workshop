@@ -1,13 +1,13 @@
-import {AppwriteException, ID} from 'appwrite';
+import {AppwriteException, ID, OAuthProvider} from 'appwrite';
 
 import {UserType} from '@/types/UserHook.type';
 import {account} from '@/workshop/api/config/client.config';
 
 export async function login(email: string, password: string) {
 	try {
-		await account.createEmailSession(email, password);
+		await account.createEmailPasswordSession(email, password);
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		throw new AppwriteException(error);
 	}
 }
 
@@ -23,20 +23,20 @@ export async function register(
 
 		return session;
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		throw new AppwriteException(error);
 	}
 }
 
 export async function logout() {
-  try {
-    await account.deleteSession('current');
-  } catch (error: any) {
-    throw new AppwriteException(error);
-  }
+	try {
+		await account.deleteSession('current');
+	} catch (error: any) {
+		throw new AppwriteException(error);
+	}
 }
 
 export async function socialLogin(
-	provider: string,
+	provider: OAuthProvider,
 	successRedirectUrl: string,
 	failureRedirectUrl: string
 ) {
@@ -47,6 +47,6 @@ export async function socialLogin(
 			failureRedirectUrl
 		);
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		throw new AppwriteException(error);
 	}
 }
