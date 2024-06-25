@@ -11,7 +11,7 @@ import {useScopedI18n} from '@/locales/client';
 import {Users} from '@/models/users';
 
 interface UsersCheckModal {
-	userList: Models.User<Users>[];
+	userList: Users;
 }
 
 export const UsersCheckModal = ({userList}: UsersCheckModal) => {

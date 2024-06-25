@@ -1,4 +1,4 @@
-import {AppwriteException} from 'appwrite';
+import {AppwriteException, OAuthProvider} from 'appwrite';
 
 import {UserType} from '@/types/UserHook.type';
 
@@ -45,7 +45,7 @@ export async function logout() {
 }
 
 export async function socialLogin(
-	provider: string,
+	provider: OAuthProvider,
 	successRedirectUrl: string,
 	failureRedirectUrl: string
 ) {
