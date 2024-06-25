@@ -2,6 +2,8 @@
 
 import {useEffect, useRef} from 'react';
 
+import {Models} from 'node-appwrite';
+
 import {CheckModal} from '@/components/common/modal/CheckModal';
 import {useFinishedModule} from '@/hooks/useFinishedModule';
 import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
@@ -9,7 +11,7 @@ import {useScopedI18n} from '@/locales/client';
 import {Users} from '@/models/users';
 
 interface UsersCheckModal {
-	userList: Users;
+	userList: Models.User<Users>[];
 }
 
 export const UsersCheckModal = ({userList}: UsersCheckModal) => {
