@@ -2,7 +2,7 @@
 
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 
-import {AppwriteException} from 'appwrite';
+import {AppwriteException, OAuthProvider} from 'appwrite';
 import {usePathname, useRouter} from 'next/navigation';
 
 import {defaultState} from '@/constants/defaultUserState';
@@ -30,9 +30,9 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 		try {
 			await login(email, password);
 			await loadAccount();
-      if(user) {
-        router.push(ROUTES.dashboard);
-      }
+			if (user) {
+				router.push(ROUTES.dashboard);
+			}
 		} catch (error: any) {
 			const appwriteException = error as AppwriteException;
 			setError(appwriteException.toString());
@@ -60,7 +60,7 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
 	};
 
 	const appSocialLogin = async (
-		provider: string,
+		provider: OAuthProvider,
 		successRedirectUrl: string,
 		failureRedirectUrl: string
 	) => {

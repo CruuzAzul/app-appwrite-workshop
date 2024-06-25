@@ -1,4 +1,4 @@
-import {Models} from 'appwrite';
+import {ImageFormat, ImageGravity, Models} from 'appwrite';
 
 export type File = Models.File;
 
@@ -8,7 +8,7 @@ export type FilePreview = {
 	fileId: string;
 	width?: number;
 	height?: number;
-	gravity?: string;
+	gravity?: ImageGravity;
 	quality?: number;
 	borderWidth?: number;
 	borderColor?: string;
@@ -16,5 +16,5 @@ export type FilePreview = {
 	opacity?: number;
 	rotation?: number;
 	background?: string;
-	output?: string;
+	output?: ImageFormat;
 };
