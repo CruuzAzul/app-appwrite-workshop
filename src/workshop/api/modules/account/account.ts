@@ -1,13 +1,16 @@
-import {AppwriteException, ID} from 'appwrite';
+import {AppwriteException, OAuthProvider} from 'appwrite';
 
 import {UserType} from '@/types/UserHook.type';
-import {account} from '@/workshop/api/config/client.config';
 
 export async function login(email: string, password: string) {
 	try {
-		await account.createEmailSession(email, password);
+		/**
+		 * ----------------------------------------
+		 * HERE : Session creation code (login)
+		 * ----------------------------------------
+		 */
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		throw new AppwriteException(error);
 	}
 }
 
@@ -18,35 +21,41 @@ export async function register(
 	login: (email: string, password: string) => Promise<void>
 ): Promise<UserType> {
 	try {
-		const session = await account.create(ID.unique(), email, password, name);
-		await login(email, password);
-
-		return session;
+		/**
+		 * ----------------------------------------
+		 * HERE : Account creation code (register)
+		 * It looks like we need to return a `session` here
+		 * ----------------------------------------
+		 */
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		throw new AppwriteException(error);
 	}
 }
 
 export async function logout() {
-  try {
-    await account.deleteSession('current');
-  } catch (error: any) {
-    throw new AppwriteException(error);
-  }
+	try {
+		/**
+		 * ----------------------------------------
+		 * HERE : Session logout code
+		 * ----------------------------------------
+		 */
+	} catch (error: any) {
+		throw new AppwriteException(error);
+	}
 }
 
 export async function socialLogin(
-	provider: string,
+	provider: OAuthProvider,
 	successRedirectUrl: string,
 	failureRedirectUrl: string
 ) {
 	try {
-		account.createOAuth2Session(
-			provider,
-			successRedirectUrl,
-			failureRedirectUrl
-		);
+		/**
+		 * ----------------------------------------
+		 * HERE : Session connection code (social login)
+		 * ----------------------------------------
+		 */
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		throw new AppwriteException(error);
 	}
 }

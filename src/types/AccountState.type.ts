@@ -1,4 +1,4 @@
-import {AppwriteException, Models} from 'appwrite';
+import {Models, OAuthProvider} from 'appwrite';
 
 export type AccountState = {
 	user: Models.User<Models.Preferences> | null | undefined;
@@ -8,7 +8,7 @@ export type AccountState = {
 	login: (email: string, password: string) => Promise<void>;
 	register: (email: string, password: string, name: string) => Promise<void>;
 	socialLogin: (
-		provider: string,
+		provider: OAuthProvider,
 		successRedirectUrl: string,
 		failureRedirectUrl: string
 	) => Promise<void>;

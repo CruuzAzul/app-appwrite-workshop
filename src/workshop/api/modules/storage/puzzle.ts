@@ -1,15 +1,17 @@
-import {AppwriteException, ID, Models} from 'appwrite';
+import {AppwriteException, Models} from 'appwrite';
 
 import {FilePreview, FilesList} from '@/models/storage';
-import {storage} from '@/workshop/api/config/client.config';
-import {EnvConfig} from '@/workshop/api/config/env.config';
 
 export const getPuzzlePieces = async (): Promise<FilesList> => {
-  try {
-    return await storage.listFiles(EnvConfig.storageBucketId);
-  } catch (error: any) {
-    throw new AppwriteException(error);
-  }
+	try {
+		/**
+		 * ----------------------------------------
+		 * HERE : Code for retrieving the list of files
+		 * ----------------------------------------
+		 */
+	} catch (error: any) {
+		throw new AppwriteException(error);
+	}
 };
 
 export const uploadImageKey = async (
@@ -18,11 +20,11 @@ export const uploadImageKey = async (
 	try {
 		return await Promise.all(
 			files.map(async (file) => {
-				return await storage.createFile(
-					EnvConfig.storageBucketId,
-					ID.unique(),
-					file
-				);
+				/**
+				 * ----------------------------------------
+				 * HERE : Code for uploading a file
+				 * ----------------------------------------
+				 */
 			})
 		);
 	} catch (error: any) {
@@ -30,37 +32,14 @@ export const uploadImageKey = async (
 	}
 };
 
-export const getPuzzlePiecesForPreviews = ({
-	fileId,
-	width,
-	height,
-	gravity,
-	quality,
-	borderWidth,
-	borderColor,
-	borderRadius,
-	opacity,
-	rotation,
-	background,
-	output,
-}: FilePreview): URL | undefined => {
-  try {
-		return storage.getFilePreview(
-			EnvConfig.storageBucketId,
-			fileId,
-			width,
-			height,
-			gravity,
-			quality,
-			borderWidth,
-			borderColor,
-			borderRadius,
-			opacity,
-			rotation,
-			background,
-			output
-		);
+export const getPuzzlePiecesForPreviews = ({fileId}: FilePreview): URL => {
+	try {
+		/**
+		 * ----------------------------------------
+		 * HERE : Retrieving the src link to display the image
+		 * ----------------------------------------
+		 */
 	} catch (error: any) {
-    throw new AppwriteException(error);
+		throw new AppwriteException(error);
 	}
 };
