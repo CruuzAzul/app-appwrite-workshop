@@ -1,3 +1,3 @@
 import {Models} from 'appwrite';
 
-export type Users = Models.User<Models.Preferences>[];
+export type Users = Models.Preferences[];

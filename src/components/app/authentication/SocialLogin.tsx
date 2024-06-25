@@ -2,12 +2,14 @@
 
 import {FC} from 'react';
 
+import {OAuthProvider} from 'appwrite';
+
 import {UseAccount} from '@/hooks/useAccount';
 import {useCurrentLocale, useScopedI18n} from '@/locales/client';
 import {ROUTES} from '@/routing/routes.config';
 
 export const SocialLogin: FC<{
-	provider: string;
+	provider: OAuthProvider;
 }> = ({provider}) => {
 	const t = useScopedI18n('login');
 	const locale = useCurrentLocale();

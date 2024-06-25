@@ -2,6 +2,8 @@
 
 import {useEffect, useRef} from 'react';
 
+import {Models} from 'node-appwrite';
+
 import {CheckModal} from '@/components/common/modal/CheckModal';
 import {useFinishedModule} from '@/hooks/useFinishedModule';
 import {useIsFinishedModule} from '@/hooks/useIsModuleFinished';
