@@ -1,19 +1,34 @@
+const {File} = require('buffer');
+const {realpathSync, readFileSync} = require('fs');
 const {resolve} = require('path');
 
 const {Permission, Role} = require('appwrite');
-const {
-	Client,
-	Databases,
-	ID,
-	Storage,
-	InputFile,
-	Users,
-} = require('node-appwrite');
+const {Client, Databases, ID, Storage, Users} = require('node-appwrite');
+const Sdk = require('node-appwrite');
 
 const destinations = require('./data/destination.js');
 const userList = require('./data/user.js');
 
 require('dotenv').config({path: resolve(__dirname, '../.env.local')});
+
+class InputFile {
+	static fromBuffer(parts, name) {
+		return new File([parts], name);
+	}
+
+	static fromPath(path, name) {
+		const realPath = realpathSync(path);
+		const contents = readFileSync(realPath);
+
+		return this.fromBuffer(contents, name);
+	}
+
+	static fromPlainText(content, name) {
+		const arrayBytes = new TextEncoder().encode(content);
+
+		return this.fromBuffer(arrayBytes, name);
+	}
+}
 
 const client = new Client()
 	.setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
